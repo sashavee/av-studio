@@ -1,26 +1,97 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colors */
+  --bg:     #f2f0ec;
+  --bg2:    #eae8e3;
+  --card:   #eae8e3;
+  --fg:     #1c1a17;
+  --muted:  #8a8478;
+  --border: #e0dbd2;
+  --gold:   #c8291e;
+  --dark:   #1c1a17;
+
+  /* Layout */
+  --content-max:  1400px;
+  --content-px:   clamp(1.5rem, 3vw, 3rem);
+  --section-pt:   clamp(2rem, 4vw, 4rem);
+
+  /* Typography — section headings */
+  --h2-size: clamp(2.8rem, 5vw, 5rem);
+  --h2-weight: 700;
+  --h2-ls: -0.04em;
+  --h2-lh: 1;
+
+  /* Typography — small label above heading */
+  --label-size: 0.65rem;
+  --label-ls: 0.2em;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-inter), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .serif {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-weight: 700;
+}
+
+::selection { background: var(--gold); color: #fff; }
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+.section-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  padding-left:  clamp(1.5rem, 3vw, 3rem);
+  padding-right: clamp(1.5rem, 3vw, 3rem);
+}
+
+.section-pad {
+  padding-top:    clamp(6rem, 12vw, 10rem);
+  padding-bottom: clamp(6rem, 12vw, 10rem);
+}
+
+.section-wrap {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding-top:    clamp(4rem, 6vw, 6rem);
+  padding-bottom: clamp(4rem, 6vw, 6rem);
+}
+
+@keyframes pillsIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes flagIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.7); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.marquee-track { animation: marquee 32s linear infinite; }
+
+@keyframes loader-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes loader-out {
+  from { opacity: 1; }
+  to   { opacity: 0; pointer-events: none; }
 }

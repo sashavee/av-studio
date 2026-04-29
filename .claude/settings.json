@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "fp=$(jq -r '.tool_input.file_path // empty'); echo \"$fp\" | grep -qE '\\.(tsx|ts|css)$' && lsof -ti:3000 >/dev/null 2>&1 && (cd /Users/sashavee/Documents/av-studio && node screenshot.mjs 2>/dev/null) && printf '{\"hookSpecificOutput\":{\"hookEventName\":\"PostToolUse\",\"additionalContext\":\"Screenshots updated after your edit. You MUST now use the Read tool to review check-hero.png, check-problem.png, check-process.png, check-work.png, check-pricing.png, check-contact.png before responding. Do not say the UI looks good without reviewing these images.\"}}' || true",
+            "timeout": 30,
+            "statusMessage": "Taking screenshots..."
+          }
+        ]
+      }
+    ]
+  }
+}
