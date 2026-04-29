@@ -9,7 +9,7 @@ export default function Problem() {
   const appear = (delay: number) => ({
     initial: { opacity: 0, y: 24 },
     animate: inView ? { opacity: 1, y: 0 } : {},
-    transition: { duration: 0.75, delay, ease: "easeOut" },
+    transition: { duration: 0.75, delay, ease: "easeOut" as const },
   });
 
   return (
