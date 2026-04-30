@@ -46,14 +46,14 @@ export default function Problem() {
         {/* Diagonal: bottom-right body */}
         <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem", maxWidth: "55ch", marginLeft: "auto" }}>
           <motion.p {...appear(0.4)} style={{
-            fontSize: "clamp(1rem, 1.4vw, 1.45rem)",
-            lineHeight: 1.6, color: "var(--fg)",
+            fontSize: "var(--body-lg-size)",
+            lineHeight: "var(--body-lg-lh)", color: "var(--fg)",
           }}>
             A single shoot takes weeks to plan and deliver — by which time the campaign window is already closing. You recycle old assets, stretch deadlines, spend budgets you didn&apos;t plan for.
           </motion.p>
           <motion.p {...appear(0.65)} style={{
-            fontSize: "clamp(1rem, 1.4vw, 1.45rem)",
-            lineHeight: 1.6, color: "var(--fg)",
+            fontSize: "var(--body-lg-size)",
+            lineHeight: "var(--body-lg-lh)", color: "var(--fg)",
           }}>
             57% of the fastest-growing brands have already switched to AI content.{" "}
             <span style={{ color: "var(--gold)" }}>The rest are catching up.</span>

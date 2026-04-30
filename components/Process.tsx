@@ -59,8 +59,8 @@ function StepCard({ step, visible, isLast }: { step: typeof steps[0]; visible: b
         {step.title}
       </h3>
       <p style={{
-        fontSize: "clamp(0.9rem, 1vw, 1rem)",
-        lineHeight: 1.7,
+        fontSize: "var(--body-size)",
+        lineHeight: "var(--body-lh)",
         color: "var(--muted)",
         margin: 0,
       }}>
@@ -117,15 +117,15 @@ export default function Process() {
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               color: "var(--gold)",
-              marginBottom: "1rem",
+              marginBottom: "var(--label-gap)",
             }}>
               Four steps. One brief.
             </p>
             <h2 style={{
-              fontSize: "clamp(2.8rem, 5vw, 5rem)",
-              fontWeight: 700,
-              letterSpacing: "-0.04em",
-              lineHeight: 1,
+              fontSize: "var(--h2-size)",
+              fontWeight: "var(--h2-weight)",
+              letterSpacing: "var(--h2-ls)",
+              lineHeight: "var(--h2-lh)",
               color: "var(--fg)",
             }}>
               How it works

@@ -68,16 +68,16 @@ export default function Contact() {
           </p>
           <h2 style={{
             fontFamily: "var(--font-fraunces)",
-            fontSize: "clamp(2rem, 3.5vw, 3.5rem)",
-            fontWeight: 700,
-            lineHeight: 1.05,
-            letterSpacing: "-0.03em",
+            fontSize: "var(--h2-size)",
+            fontWeight: "var(--h2-weight)",
+            lineHeight: "var(--h2-lh)",
+            letterSpacing: "var(--h2-ls)",
             color: "var(--fg)",
             marginBottom: "1.25rem",
           }}>
             Tell us about your brand. We&apos;ll take it from there.
           </h2>
-          <p style={{ color: "var(--muted)", fontSize: "0.95rem", lineHeight: 1.7 }}>
+          <p style={{ color: "var(--muted)", fontSize: "var(--body-size)", lineHeight: "var(--body-lh)" }}>
             Share a bit about what you need — we respond within one business day with a clear next step. No lengthy calls, no decks, no commitments.
           </p>
         </div>

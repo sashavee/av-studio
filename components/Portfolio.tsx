@@ -44,10 +44,10 @@ export default function Portfolio() {
           paddingBottom: "1.5rem",
         }}>
           <h2 style={{
-            fontSize: "clamp(2.8rem, 5vw, 5rem)",
-            fontWeight: 700,
-            letterSpacing: "-0.04em",
-            lineHeight: 1,
+            fontSize: "var(--h2-size)",
+            fontWeight: "var(--h2-weight)",
+            letterSpacing: "var(--h2-ls)",
+            lineHeight: "var(--h2-lh)",
             color: "var(--fg)",
             margin: 0,
           }}>

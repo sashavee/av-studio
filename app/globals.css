@@ -17,14 +17,24 @@
   --section-pt:   clamp(2rem, 4vw, 4rem);
 
   /* Typography — section headings */
-  --h2-size: clamp(2.8rem, 5vw, 5rem);
+  --h2-size: clamp(2.2rem, 3.5vw, 3.5rem);
   --h2-weight: 700;
   --h2-ls: -0.04em;
   --h2-lh: 1;
 
+  /* Typography — body */
+  --body-size: 0.9rem;
+  --body-lh: 1.65;
+  --body-lg-size: clamp(0.95rem, 1.15vw, 1.1rem);
+  --body-lg-lh: 1.65;
+
   /* Typography — small label above heading */
   --label-size: 0.65rem;
   --label-ls: 0.2em;
+
+  /* Section spacing */
+  --label-gap: 0.75rem;
+  --heading-gap: 2rem;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }

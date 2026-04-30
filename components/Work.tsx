@@ -175,8 +175,8 @@ function CategoryCard({ cat, isActive, onActivate }: {
                 {hoveredFmt?.code ?? "\u00A0"}
               </span>
               <p style={{
-                fontSize: "clamp(1.1rem, 1.6vw, 1.4rem)",
-                lineHeight: 1.55,
+                fontSize: "var(--body-size)",
+                lineHeight: "var(--body-lh)",
                 color: "var(--fg)",
                 margin: 0,
                 fontWeight: 400,
@@ -213,7 +213,7 @@ export default function Work() {
 
         <div style={{ marginBottom: "1.5rem" }}>
           <h2 style={{
-            fontSize: "clamp(2rem, 3.5vw, 3.5rem)",
+            fontSize: "var(--h2-size)",
             fontWeight: 700,
             letterSpacing: "-0.04em",
             lineHeight: 1,
