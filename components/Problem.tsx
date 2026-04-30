@@ -15,7 +15,7 @@ export default function Problem() {
   return (
     <section ref={ref} className="section-wrap" style={{ background: "var(--bg)" }}>
       <div style={{
-        width: "100%", maxWidth: "1400px", margin: "0 auto",
+        width: "100%", maxWidth: "1100px", margin: "0 auto",
         padding: "0 clamp(1.5rem, 3vw, 3rem)",
         height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between",
       }}>

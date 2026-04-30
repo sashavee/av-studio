@@ -45,7 +45,7 @@ export default function Footer() {
         flex: 1,
         display: "grid",
         gridTemplateColumns: "1fr 1fr",
-        maxWidth: "1400px",
+        maxWidth: "1100px",
         width: "100%",
         margin: "0 auto",
         padding: "clamp(3rem, 6vw, 5rem) clamp(1.5rem, 3vw, 3rem) clamp(2rem, 4vw, 3rem)",
@@ -169,7 +169,7 @@ export default function Footer() {
       </div>
 
       {/* Middle divider */}
-      <div style={{ maxWidth: "1400px", width: "100%", margin: "0 auto", padding: "0 clamp(1.5rem, 3vw, 3rem)" }}>
+      <div style={{ maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "0 clamp(1.5rem, 3vw, 3rem)" }}>
         <div style={{ borderTop: "1px solid var(--border)" }} />
       </div>
 

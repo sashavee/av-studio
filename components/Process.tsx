@@ -98,7 +98,7 @@ export default function Process() {
     <section ref={containerRef} style={{ height: "280vh", background: "var(--bg)" }}>
       <div style={{ position: "sticky", top: 0, height: "100vh", overflow: "hidden", display: "flex", alignItems: "center" }}>
         <div style={{
-          maxWidth: "1400px",
+          maxWidth: "1100px",
           margin: "0 auto",
           width: "100%",
           paddingTop: "clamp(2rem, 4vw, 4rem)",

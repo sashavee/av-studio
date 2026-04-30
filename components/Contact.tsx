@@ -45,7 +45,7 @@ export default function Contact() {
         alignItems: "center",
       }}
     >
-      <div style={{ maxWidth: "1400px", width: "100%", margin: "0 auto", padding: "0 clamp(1.5rem, 3vw, 3rem)" }}>
+      <div style={{ maxWidth: "1100px", width: "100%", margin: "0 auto", padding: "0 clamp(1.5rem, 3vw, 3rem)" }}>
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}

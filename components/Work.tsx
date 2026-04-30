@@ -209,7 +209,7 @@ export default function Work() {
 
   return (
     <section id="work" style={{ background: "var(--gold)", height: "100vh", boxSizing: "border-box", display: "flex", flexDirection: "column" }}>
-      <div style={{ maxWidth: "1400px", width: "100%", margin: "0 auto", paddingTop: "clamp(2rem, 4vw, 4rem)", paddingBottom: "clamp(2rem, 4vw, 4rem)", paddingLeft: "clamp(1.5rem, 3vw, 3rem)", paddingRight: "clamp(1.5rem, 3vw, 3rem)", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0, boxSizing: "border-box" }}>
+      <div style={{ maxWidth: "1100px", width: "100%", margin: "0 auto", paddingTop: "clamp(2rem, 4vw, 4rem)", paddingBottom: "clamp(2rem, 4vw, 4rem)", paddingLeft: "clamp(1.5rem, 3vw, 3rem)", paddingRight: "clamp(1.5rem, 3vw, 3rem)", flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", minHeight: 0, boxSizing: "border-box" }}>
 
         <div style={{ marginBottom: "1.5rem" }}>
           <h2 style={{

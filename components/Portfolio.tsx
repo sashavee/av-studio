@@ -26,7 +26,7 @@ export default function Portfolio() {
   return (
     <section style={{ background: "var(--bg)", height: "100vh", overflow: "hidden", boxSizing: "border-box", display: "flex", flexDirection: "column", justifyContent: "center" }}>
       <div style={{
-        maxWidth: "1400px",
+        maxWidth: "1100px",
         margin: "0 auto",
         width: "100%",
         paddingTop: "clamp(2rem, 4vw, 4rem)",
