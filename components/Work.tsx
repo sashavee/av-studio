@@ -82,7 +82,7 @@ function CategoryCard({ cat, isActive, onActivate }: {
         minHeight: isActive ? undefined : "100%",
       }}>
         <span style={{
-          fontSize: isActive ? "clamp(1.6rem, 2.5vw, 2.5rem)" : "clamp(1.2rem, 1.8vw, 1.8rem)",
+          fontSize: isActive ? "clamp(1.2rem, 1.8vw, 1.8rem)" : "clamp(0.9rem, 1.3vw, 1.3rem)",
           fontWeight: 700,
           letterSpacing: "-0.04em",
           lineHeight: 1,
@@ -132,7 +132,7 @@ function CategoryCard({ cat, isActive, onActivate }: {
                   onMouseEnter={() => setHoveredFmt(fmt)}
                   onMouseLeave={() => setHoveredFmt(null)}
                   style={{
-                    padding: "0.8rem 2rem",
+                    padding: "0.55rem 1.25rem",
                     borderRadius: "9999px",
                     border: "1px solid var(--fg)",
                     background: isHov ? "var(--fg)" : "transparent",
@@ -142,7 +142,7 @@ function CategoryCard({ cat, isActive, onActivate }: {
                   }}
                 >
                   <span style={{
-                    fontSize: "clamp(1rem, 1.3vw, 1.2rem)",
+                    fontSize: "clamp(0.7rem, 0.85vw, 0.85rem)",
                     fontWeight: 500,
                     letterSpacing: "0.07em",
                     textTransform: "uppercase",
@@ -213,7 +213,7 @@ export default function Work() {
 
         <div style={{ marginBottom: "1.5rem" }}>
           <h2 style={{
-            fontSize: "clamp(2.8rem, 5vw, 5rem)",
+            fontSize: "clamp(2rem, 3.5vw, 3.5rem)",
             fontWeight: 700,
             letterSpacing: "-0.04em",
             lineHeight: 1,
