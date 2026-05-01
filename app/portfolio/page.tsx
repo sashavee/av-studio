@@ -13,7 +13,6 @@ const bots = [
 ];
 
 export default function Portfolio() {
-  const [open, setOpen] = useState<string | null>(null);
   const [mouse, setMouse] = useState({ x: 50, y: 50 });
   const ref = useRef<HTMLElement>(null);
 
@@ -31,16 +30,15 @@ export default function Portfolio() {
     return () => el.removeEventListener("mousemove", move);
   }, []);
 
-  const toggle = (key: string) => setOpen(p => p === key ? null : key);
-
-  const bg = `radial-gradient(ellipse 60% 55% at ${mouse.x}% ${mouse.y}%, #f2ede4 0%, transparent 75%), #8B1A0E`;
+  const bg = `radial-gradient(ellipse 35% 40% at ${mouse.x}% ${mouse.y}%, rgba(180,40,20,0.13) 0%, transparent 100%), #f2ede4`;
 
   return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        html, body { height: 100%; }
+        html, body { height: 100%; background: #f2ede4; }
+        a { text-decoration: none; }
       `}</style>
       <main
         ref={ref}
@@ -49,169 +47,96 @@ export default function Portfolio() {
           background: bg,
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
-          padding: "clamp(1.5rem, 3vw, 3rem)",
-          transition: "background 0.05s linear",
-          overflow: "hidden",
+          padding: "clamp(2rem, 4vw, 4rem)",
         }}
       >
-        {/* Top bar */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <span style={labelStyle}>AV STUDIO</span>
-          <span style={labelStyle}>ПОРТФОЛИО</span>
-        </div>
+        {/* Big heading */}
+        <h1 style={{
+          fontFamily: "'Anton', sans-serif",
+          fontSize: "clamp(3.5rem, 9vw, 10rem)",
+          fontWeight: 400,
+          letterSpacing: "-0.01em",
+          lineHeight: 0.95,
+          color: "#1a1714",
+          textTransform: "uppercase",
+          marginBottom: "clamp(3rem, 7vw, 7rem)",
+        }}>
+          МОИ<br />РАБОТЫ
+        </h1>
 
-        {/* Main accordion */}
-        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 0 }}>
+        {/* Two columns */}
+        <div style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: "clamp(2rem, 6vw, 8rem)",
+          alignItems: "start",
+        }}>
 
           {/* Лендинги */}
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }}>
-            <button
-              onClick={() => toggle("landings")}
-              style={{
-                width: "100%",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                padding: "0.25rem 0",
-                gap: "1rem",
-              }}
-            >
-              <span style={headingStyle}>ЛЕНДИНГИ</span>
-              <span style={{
-                fontFamily: "'Anton', sans-serif",
-                fontSize: "clamp(1.5rem, 3vw, 3rem)",
-                color: "rgba(255,255,255,0.4)",
-                lineHeight: 1,
-                transform: open === "landings" ? "rotate(45deg)" : "rotate(0)",
-                transition: "transform 0.3s ease",
-                display: "inline-block",
-                flexShrink: 0,
-              }}>+</span>
-            </button>
-
-            <div style={{
-              overflow: "hidden",
-              maxHeight: open === "landings" ? "400px" : "0",
-              transition: "max-height 0.45s cubic-bezier(0.77,0,0.18,1)",
-            }}>
-              <div style={{ paddingBottom: "1.5rem", paddingTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.1rem" }}>
-                {landings.map((l, i) => (
-                  <a
-                    key={i}
-                    href={l.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      fontFamily: "'Anton', sans-serif",
-                      fontSize: "clamp(1.5rem, 3vw, 3rem)",
-                      color: "rgba(255,255,255,0.55)",
-                      textDecoration: "none",
-                      letterSpacing: "0.02em",
-                      lineHeight: 1.15,
-                      transition: "color 0.15s",
-                    }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
-                  >
-                    {l.title} ↗
-                  </a>
-                ))}
-              </div>
+          <div>
+            <p style={categoryLabel}>Лендинги</p>
+            <div>
+              {landings.map((l, i) => (
+                <a
+                  key={i}
+                  href={l.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={itemStyle}
+                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(26,23,20,0.35)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1a1714"; }}
+                >
+                  {l.title}
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Чат-боты */}
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }}>
-            <button
-              onClick={() => toggle("bots")}
-              style={{
-                width: "100%",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "baseline",
-                justifyContent: "space-between",
-                padding: "0.25rem 0",
-                gap: "1rem",
-              }}
-            >
-              <span style={headingStyle}>ЧАТ-БОТЫ</span>
-              <span style={{
-                fontFamily: "'Anton', sans-serif",
-                fontSize: "clamp(1.5rem, 3vw, 3rem)",
-                color: "rgba(255,255,255,0.4)",
-                lineHeight: 1,
-                transform: open === "bots" ? "rotate(45deg)" : "rotate(0)",
-                transition: "transform 0.3s ease",
-                display: "inline-block",
-                flexShrink: 0,
-              }}>+</span>
-            </button>
-
-            <div style={{
-              overflow: "hidden",
-              maxHeight: open === "bots" ? "400px" : "0",
-              transition: "max-height 0.45s cubic-bezier(0.77,0,0.18,1)",
-            }}>
-              <div style={{ paddingBottom: "1.5rem", paddingTop: "0.5rem", display: "flex", flexDirection: "column", gap: "0.1rem" }}>
-                {bots.map((b, i) => (
-                  <a
-                    key={i}
-                    href={b.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      fontFamily: "'Anton', sans-serif",
-                      fontSize: "clamp(1.5rem, 3vw, 3rem)",
-                      color: "rgba(255,255,255,0.55)",
-                      textDecoration: "none",
-                      letterSpacing: "0.02em",
-                      lineHeight: 1.15,
-                      transition: "color 0.15s",
-                    }}
-                    onMouseEnter={e => (e.currentTarget.style.color = "#fff")}
-                    onMouseLeave={e => (e.currentTarget.style.color = "rgba(255,255,255,0.55)")}
-                  >
-                    {b.title} ↗
-                  </a>
-                ))}
-              </div>
+          <div>
+            <p style={categoryLabel}>Чат-боты</p>
+            <div>
+              {bots.map((b, i) => (
+                <a
+                  key={i}
+                  href={b.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={itemStyle}
+                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(26,23,20,0.35)"; }}
+                  onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1a1714"; }}
+                >
+                  {b.title}
+                </a>
+              ))}
             </div>
           </div>
 
-          <div style={{ borderTop: "1px solid rgba(255,255,255,0.2)" }} />
-        </div>
-
-        {/* Bottom bar */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
-          <span style={labelStyle}>АЛМАТЫ, КЗ</span>
-          <span style={labelStyle}>@SASHAVEE</span>
         </div>
       </main>
     </>
   );
 }
 
-const headingStyle: React.CSSProperties = {
-  fontFamily: "'Anton', sans-serif",
-  fontSize: "clamp(4rem, 13vw, 14rem)",
-  fontWeight: 400,
-  letterSpacing: "-0.01em",
-  lineHeight: 0.95,
-  color: "#fff",
-  textAlign: "left",
-  userSelect: "none",
+const categoryLabel: React.CSSProperties = {
+  fontFamily: "system-ui, sans-serif",
+  fontSize: "0.6rem",
+  letterSpacing: "0.2em",
+  textTransform: "uppercase",
+  color: "rgba(26,23,20,0.4)",
+  marginBottom: "1rem",
 };
 
-const labelStyle: React.CSSProperties = {
-  fontFamily: "system-ui, sans-serif",
-  fontSize: "0.65rem",
-  letterSpacing: "0.18em",
+const itemStyle: React.CSSProperties = {
+  display: "block",
+  fontFamily: "'Anton', sans-serif",
+  fontSize: "clamp(1.5rem, 3.5vw, 4rem)",
+  fontWeight: 400,
+  letterSpacing: "-0.01em",
+  lineHeight: 1,
+  color: "#1a1714",
   textTransform: "uppercase",
-  color: "rgba(255,255,255,0.5)",
+  padding: "0.6rem 0",
+  borderTop: "1px solid rgba(26,23,20,0.15)",
+  transition: "color 0.15s",
 };
