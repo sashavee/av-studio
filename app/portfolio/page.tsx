@@ -30,12 +30,13 @@ export default function Portfolio() {
     return () => el.removeEventListener("mousemove", move);
   }, []);
 
-  const bg = `radial-gradient(ellipse 35% 40% at ${mouse.x}% ${mouse.y}%, rgba(180,40,20,0.13) 0%, transparent 100%), #f2ede4`;
+  // tall ellipse: 40% wide, 33% tall (= 1/3 screen height)
+  const bg = `radial-gradient(ellipse 40% 33% at ${mouse.x}% ${mouse.y}%, rgba(180,40,20,0.14) 0%, transparent 100%), #f2ede4`;
 
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html, body { height: 100%; background: #f2ede4; }
         a { text-decoration: none; }
@@ -50,20 +51,6 @@ export default function Portfolio() {
           padding: "clamp(2rem, 4vw, 4rem)",
         }}
       >
-        {/* Big heading */}
-        <h1 style={{
-          fontFamily: "'Anton', sans-serif",
-          fontSize: "clamp(3.5rem, 9vw, 10rem)",
-          fontWeight: 400,
-          letterSpacing: "-0.01em",
-          lineHeight: 0.95,
-          color: "#1a1714",
-          textTransform: "uppercase",
-          marginBottom: "clamp(3rem, 7vw, 7rem)",
-        }}>
-          МОИ<br />РАБОТЫ
-        </h1>
-
         {/* Two columns */}
         <div style={{
           display: "grid",
@@ -74,7 +61,7 @@ export default function Portfolio() {
 
           {/* Лендинги */}
           <div>
-            <p style={categoryLabel}>Лендинги</p>
+            <h2 style={sectionHeading}>Лендинги</h2>
             <div>
               {landings.map((l, i) => (
                 <a
@@ -83,18 +70,19 @@ export default function Portfolio() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={itemStyle}
-                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(26,23,20,0.35)"; }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(26,23,20,0.3)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1a1714"; }}
                 >
                   {l.title}
                 </a>
               ))}
+              <div style={{ borderTop: "1px solid rgba(26,23,20,0.15)" }} />
             </div>
           </div>
 
           {/* Чат-боты */}
           <div>
-            <p style={categoryLabel}>Чат-боты</p>
+            <h2 style={sectionHeading}>Чат-боты</h2>
             <div>
               {bots.map((b, i) => (
                 <a
@@ -103,12 +91,13 @@ export default function Portfolio() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={itemStyle}
-                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(26,23,20,0.35)"; }}
+                  onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.color = "rgba(26,23,20,0.3)"; }}
                   onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.color = "#1a1714"; }}
                 >
                   {b.title}
                 </a>
               ))}
+              <div style={{ borderTop: "1px solid rgba(26,23,20,0.15)" }} />
             </div>
           </div>
 
@@ -118,25 +107,24 @@ export default function Portfolio() {
   );
 }
 
-const categoryLabel: React.CSSProperties = {
-  fontFamily: "system-ui, sans-serif",
-  fontSize: "0.6rem",
-  letterSpacing: "0.2em",
+const sectionHeading: React.CSSProperties = {
+  fontFamily: "'Russo One', sans-serif",
+  fontSize: "clamp(3rem, 8vw, 9rem)",
+  fontWeight: 400,
+  letterSpacing: "-0.02em",
+  lineHeight: 1,
+  color: "#1a1714",
   textTransform: "uppercase",
-  color: "rgba(26,23,20,0.4)",
-  marginBottom: "1rem",
+  marginBottom: "1.5rem",
 };
 
 const itemStyle: React.CSSProperties = {
   display: "block",
-  fontFamily: "'Anton', sans-serif",
-  fontSize: "clamp(1.5rem, 3.5vw, 4rem)",
+  fontFamily: "system-ui, sans-serif",
+  fontSize: "clamp(0.85rem, 1.1vw, 1rem)",
   fontWeight: 400,
-  letterSpacing: "-0.01em",
-  lineHeight: 1,
   color: "#1a1714",
-  textTransform: "uppercase",
-  padding: "0.6rem 0",
+  padding: "0.75rem 0",
   borderTop: "1px solid rgba(26,23,20,0.15)",
   transition: "color 0.15s",
 };
