@@ -1,3 +1,5 @@
+"use client";
+
 const landings = [
   { title: "AV Studio", url: "https://avstudio.agency" },
   { title: "Проект 2", url: "#" },
