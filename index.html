@@ -47,7 +47,7 @@ em{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:non
 .pill.dark:hover{background:var(--red)}
 
 /* ---------- HERO (Awake-style red panel) ---------- */
-.hero{background:var(--red);color:#fff;height:calc(100svh - 2*var(--gap));min-height:520px;display:flex;flex-direction:column}
+.hero{background:var(--red);color:#fff;display:flex;flex-direction:column}
 .top{display:flex;justify-content:space-between;align-items:center;padding-top:26px;gap:12px}
 .logo{font:400 30px/1 var(--sans);letter-spacing:-.02em}
 .top .right{display:flex;gap:10px;align-items:center}
@@ -62,9 +62,9 @@ em{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:non
 
 h1{font:700 clamp(36px,min(6.4vw,9vh),130px)/.95 var(--wide);letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap;width:max-content}
 h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06em}
-.hero-main{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,340px);gap:48px;align-items:end;padding-top:clamp(16px,4vh,48px);padding-bottom:clamp(28px,6vh,60px)}
-/* the headline box takes all free space; JS scales the font to fill it (fitHero) */
-.hbox{align-self:stretch;display:flex;align-items:flex-end;min-width:0;min-height:0;overflow:hidden}
+.hero-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,340px);gap:48px;align-items:end;padding-top:clamp(36px,7vh,80px);padding-bottom:clamp(28px,6vh,60px)}
+/* hero is as tall as its content; JS scales the headline to the column width, never taller than one screen (fitHero) */
+.hbox{min-width:0}
 .hero-main p{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:rgba(255,255,255,.92)}
 
 /* menu overlay */
@@ -77,7 +77,7 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 
 /* ---------- WORK ---------- */
 .work-head{padding:96px 0 0;position:relative}
-.big{font:500 clamp(50px,12.4vw,190px)/.9 var(--sans);text-transform:uppercase;letter-spacing:-.035em;text-align:center;white-space:nowrap}
+.big{font:500 clamp(36px,12.4vw,190px)/.9 var(--sans);text-transform:uppercase;letter-spacing:-.035em;text-align:center;white-space:nowrap}
 .works{background:var(--grey);padding:48px 0 40px}
 .wave{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .wwrap{position:relative}
@@ -188,9 +188,7 @@ footer .logo{font-size:30px}
 
 /* narrower screens: text goes under the headline */
 @media (max-width:1100px){
-  .hero{height:auto;min-height:calc(100svh - 2*var(--gap))}
-  .hero-main{grid-template-columns:1fr;gap:28px;padding-top:48px;flex:none;margin-top:auto}
-  .hbox{overflow:visible}
+  .hero-main{grid-template-columns:1fr;gap:28px}
   .hero-main p{max-width:460px}
   h1{font-size:clamp(36px,8.4vw,96px)}
 }
@@ -539,12 +537,14 @@ function setLang(l){
 // as wide as the column allows, as tall as the screen allows, whichever is smaller.
 const hbox = document.querySelector('.hbox'), h1 = hbox.querySelector('h1');
 function fitHero(){
-  const stacked = innerWidth <= 1100;
+  const stacked = innerWidth <= 1100, main = hbox.parentElement, cs = getComputedStyle(main);
   h1.style.fontSize = '100px';
   const byW = hbox.clientWidth / h1.offsetWidth;
-  // stacked: leave room for the top bar and the text under the headline
-  const freeH = stacked ? innerHeight - document.querySelector('.top').offsetHeight - document.querySelector('.hero-main p').offsetHeight - 170 : hbox.clientHeight * 0.94;
-  const byH = freeH / h1.offsetHeight;
+  // height left on one screen after the panel gaps, top bar, paddings (and the text, when it sits below)
+  const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 16;
+  let freeH = innerHeight - 2 * gap - document.querySelector('.top').offsetHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
+  if (stacked) freeH -= main.querySelector('p').offsetHeight + parseFloat(cs.rowGap);
+  const byH = freeH * 0.97 / h1.offsetHeight;
   h1.style.fontSize = Math.max(34, Math.min(100 * Math.min(byW, byH), 170)) + 'px';
 }
 let fitRaf; addEventListener('resize', () => { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitHero); });
