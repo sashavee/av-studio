@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AV Studio — websites for small business, Vilnius</title>
+<meta name="description" content="A small web studio from Vilnius. Fast, affordable, beautiful websites for small businesses in 3 days. From €200.">
+<meta property="og:title" content="AV Studio — we build damn good websites">
+<meta property="og:description" content="Fast. Affordable. Beautiful. Websites for small business in 3 days, from €200.">
+<meta property="og:image" content="https://www.avstudio.agency/assets/og.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#e9344a">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23e9344a'/%3E%3Ctext x='6' y='21' font-family='Arial' font-size='15' fill='%23fff'%3Eav%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Onest:wght@400;500&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#e9344a; --red-soft:#f07a88; --pink:#f8ccd3;
+  --ink:#181d24; --beige:#ebe7e0; --paper:#f5f2ec; --grey:#f0f0f2; --line:#d9d9de; --muted:#6c7079; --white:#fff;
+  --wide:Unbounded,"Arial Black",sans-serif;
+  --sans:Onest,"Helvetica Neue",Arial,sans-serif;
+  --serif:"Playfair Display",Georgia,serif;
+  --gap:16px; --r:18px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit;background:none;border:0}
+button{cursor:pointer}
+em{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:none;letter-spacing:0}
+:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+
+/* every block is a rounded panel inset from the window edge */
+.panel{margin:var(--gap);border-radius:var(--r);position:relative;overflow:hidden}
+.in{padding:0 clamp(20px,2.8vw,40px)}
+
+/* pills */
+.pill{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 22px;border-radius:999px;font-size:16px;transition:background .2s,color .2s,transform .2s var(--ease)}
+.pill:hover{transform:translateY(-2px)}
+.pill.white{background:#fff;color:var(--ink)}
+.pill.dark{background:var(--ink);color:#fff}
+.pill.dark:hover{background:var(--red)}
+
+/* ---------- HERO (Awake-style red panel) ---------- */
+.hero{background:var(--red);color:#fff;height:calc(100svh - 2*var(--gap));min-height:520px;display:flex;flex-direction:column}
+.top{display:flex;justify-content:space-between;align-items:center;padding-top:26px;gap:12px}
+.logo{font:400 30px/1 var(--sans);letter-spacing:-.02em}
+.top .right{display:flex;gap:10px;align-items:center}
+.pill.ghost{background:rgba(255,255,255,.25);color:#fff}
+.pill.ghost:hover{background:rgba(255,255,255,.4)}
+.langs{display:flex;background:rgba(255,255,255,.18);border-radius:999px;padding:4px;height:44px}
+.langs button{padding:0 12px;border-radius:999px;font-size:13px;color:rgba(255,255,255,.85);transition:background .2s,color .2s}
+.langs button:hover{color:#fff}
+.langs button[aria-pressed=true]{background:#fff;color:var(--red)}
+.burger{display:inline-block;width:16px;height:9px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor;position:relative}
+.burger::after{content:"";position:absolute;left:5px;right:0;top:2.5px;border-top:1.5px solid currentColor}
+
+h1{font:700 clamp(36px,min(6.2vw,10.5vh),118px)/.95 var(--wide);letter-spacing:-.045em;text-transform:uppercase}
+h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06em}
+.hero-main{margin-top:auto;display:grid;grid-template-columns:1fr minmax(240px,360px);gap:48px;align-items:end;padding-bottom:clamp(28px,6vh,64px)}
+.hero-main p{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:rgba(255,255,255,.92)}
+
+/* menu overlay */
+.menu{position:fixed;inset:var(--gap);z-index:50;background:var(--ink);color:#fff;border-radius:var(--r);display:flex;flex-direction:column;padding:26px clamp(20px,2.8vw,40px);opacity:0;visibility:hidden;transform:scale(.98);transition:opacity .3s,visibility .3s,transform .3s var(--ease)}
+.menu.open{opacity:1;visibility:visible;transform:none}
+.menu nav{margin:auto 0;display:flex;flex-direction:column;gap:4px}
+.menu nav a{font:700 clamp(40px,7.4vw,104px)/1.08 var(--wide);letter-spacing:-.04em;text-transform:uppercase;transition:color .2s,transform .3s var(--ease)}
+.menu nav a:hover{color:var(--red);transform:translateX(10px)}
+.menu .mfoot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#8a909a}
+
+/* ---------- WORK ---------- */
+.work-head{padding:96px 0 0;position:relative}
+.big{font:500 clamp(50px,12.4vw,190px)/.9 var(--sans);text-transform:uppercase;letter-spacing:-.035em;text-align:center;white-space:nowrap}
+.works{background:var(--grey);padding:48px 0 40px}
+.wave{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.wwrap{position:relative}
+.wlist{list-style:none;position:relative;z-index:1}
+.wlist a{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(18px,2vw,28px) clamp(20px,4.4vw,64px);color:#a6a9b0;transition:color .35s,background .35s}
+.wlist .nm{font:400 clamp(30px,3.5vw,52px)/1.1 var(--sans);letter-spacing:-.025em}
+.wlist .cat{display:flex;align-items:center;gap:16px;font-size:clamp(15px,1.4vw,22px);white-space:nowrap}
+.wlist .cat::after{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.6;transition:background .35s}
+.wlist a.act{color:var(--ink);background:rgba(255,255,255,.62)}
+.wlist a.act .cat::after{background:var(--red);opacity:1}
+.wlist .th{display:none}
+/* floating preview that follows the active row */
+.pv{position:absolute;z-index:2;top:0;left:50%;width:clamp(280px,25vw,400px);aspect-ratio:1/1.1;margin-left:calc(clamp(280px,25vw,400px) * -.35);pointer-events:none;transition:transform .7s var(--ease)}
+.pv .c{position:absolute;inset:0;border-radius:18px;overflow:hidden;display:grid;place-items:center;opacity:0;transform:translateY(70px) scale(.9);filter:blur(16px);transition:opacity .45s,transform .7s var(--ease),filter .5s}
+.pv .c.up{transform:translateY(-70px) scale(.9)}
+.pv .c.act{opacity:1;transform:none;filter:none}
+.shot{width:84%;border-radius:8px;box-shadow:0 20px 44px rgba(0,0,0,.3)}
+.ph{position:absolute;right:6%;bottom:6%;width:24%;border-radius:10px;border:3px solid #111;box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.yours{background:#fff;border:1.5px dashed var(--line)}
+.yours span{font:400 clamp(20px,2vw,30px)/1.15 var(--wide);text-transform:uppercase;text-align:center}
+.yours em{color:var(--red)}
+.more{display:inline-flex;gap:10px;margin:28px clamp(20px,4.4vw,64px) 0;font-size:14px;letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.more:hover{color:var(--red)}
+
+/* ---------- SERVICES ---------- */
+.services{background:var(--ink);color:#fff;padding:56px 0 80px;overflow:visible}
+.services .big{color:#fff;font-size:clamp(46px,7vw,110px);position:sticky;top:30px}
+.stack{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
+.svc{position:sticky;top:clamp(120px,calc(7vw + 84px),200px);background:#fff;color:var(--ink);border-radius:20px;min-height:400px;margin-top:70px;padding:clamp(24px,3vw,44px);display:grid;grid-template-columns:1.15fr 1fr;gap:24px;box-shadow:0 -10px 40px rgba(0,0,0,.25);transform:rotate(var(--tilt))}
+.svc:nth-child(1){--tilt:-2deg}.svc:nth-child(2){--tilt:1.6deg;background:#f4f4f6}.svc:nth-child(3){--tilt:-1deg;background:#e9e9ed}
+.svc .num{color:var(--red);font-size:13px}
+.svc h3{font:500 clamp(30px,3.6vw,48px)/1.05 var(--sans);letter-spacing:-.03em;margin:10px 0 14px}
+.svc p{color:#4a4f58;max-width:520px}
+.svc .meta2{display:flex;align-items:baseline;gap:18px;margin:26px 0;flex-wrap:wrap}
+.svc .price{font:400 clamp(34px,4vw,52px)/1 var(--wide);letter-spacing:-.03em}
+.svc .price small{font:400 15px var(--sans);letter-spacing:0;color:var(--muted);margin-right:6px}
+.svc .time{font-size:14px;color:var(--muted)}
+.svc svg{width:100%;height:100%;max-height:330px;align-self:center}
+.incl{max-width:1180px;margin:110px auto 0;padding:0 clamp(16px,3vw,40px)}
+.incl h4{font-weight:400;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:16px}
+.incl ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.incl li{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:10px 18px;font-size:15px}
+.incl p{color:rgba(255,255,255,.6);font-size:14px;margin-top:18px;max-width:680px}
+
+/* ---------- 3 DAYS ---------- */
+.days{padding-top:88px;padding-bottom:72px}
+.days h2{font:500 clamp(42px,6.4vw,100px)/.95 var(--sans);text-transform:uppercase;letter-spacing:-.035em;margin-bottom:40px}
+.days h2 em{color:var(--red)}
+.dgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);position:relative}
+.dgrid::before{content:"";position:absolute;left:0;right:0;top:44px;border-top:1.5px dashed var(--line)}
+.day{position:relative;background:var(--grey);border-radius:var(--r);padding:28px clamp(20px,2.4vw,32px) 32px;transition:transform .35s var(--ease),background .35s}
+.day:hover{transform:translateY(-6px);background:#eaeaee}
+.day .d{display:inline-flex;align-items:center;gap:10px;height:34px;padding:0 14px;border-radius:999px;background:#fff;font-size:13px;letter-spacing:.06em;text-transform:uppercase}
+.day .d::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red)}
+.day h3{font:500 clamp(24px,2.4vw,32px)/1.1 var(--sans);letter-spacing:-.02em;margin:48px 0 10px}
+.day p{color:var(--muted)}
+
+/* ---------- FAQ ---------- */
+.faq{background:var(--grey);padding:64px 0 72px}
+.faq .wrapf{display:grid;grid-template-columns:1fr 1.5fr;gap:40px}
+.faq h2{font:500 clamp(42px,6vw,90px)/.95 var(--sans);text-transform:uppercase;letter-spacing:-.035em}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font:400 clamp(18px,1.8vw,22px)/1.3 var(--sans)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Cpath d='M10 15h10M15 10v10' stroke='%23fff' stroke-width='1.6'/%3E%3C/svg%3E");transition:transform .25s,background-color .25s}
+details[open] summary::after{transform:rotate(45deg);background-color:var(--red)}
+details p{color:var(--muted);padding:0 50px 22px 0}
+
+/* ---------- BRIEF (I need) ---------- */
+.need{background:var(--red);color:#fff;padding:40px 0 44px}
+.need .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:24px}
+.need h2{font:500 clamp(40px,6vw,84px)/1 var(--sans);letter-spacing:-.03em}
+.need .count{font-size:14px;letter-spacing:.08em;opacity:.8;white-space:nowrap}
+.step{display:none}
+.step.show{display:block;animation:stepIn .45s var(--ease)}
+@keyframes stepIn{from{opacity:0;transform:translateY(14px)}}
+.opts{display:flex;flex-wrap:wrap;gap:14px}
+.opt{height:clamp(52px,6vw,70px);padding:0 clamp(22px,2.6vw,34px);border:2px solid #fff;border-radius:999px;font:500 clamp(20px,2.6vw,36px)/1 var(--sans);color:#fff;transition:background .2s,color .2s,transform .2s var(--ease)}
+.opt:hover{background:rgba(255,255,255,.15)}
+.opt[aria-pressed=true]{background:#fff;color:var(--red)}
+.opt.go{background:#fff;color:var(--red)}
+.opt.go:hover{transform:translateX(4px)}
+.nav-row{margin-top:22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.back{font-size:16px;opacity:.85;text-decoration:underline;text-underline-offset:4px}
+.fields{display:grid;gap:18px;max-width:820px}
+.fields input{width:100%;border-bottom:2px solid rgba(255,255,255,.55);padding:10px 0;font:400 clamp(20px,2.4vw,32px)/1.2 var(--sans);color:#fff;transition:border-color .2s}
+.fields input::placeholder{color:rgba(255,255,255,.65)}
+.fields input:focus{outline:none;border-color:#fff}
+.reach{display:flex;gap:12px;flex-wrap:wrap}
+.reach .pill{height:56px;padding:0 28px;font-size:18px}
+.reach .pill:hover{background:var(--ink);color:#fff}
+
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink);color:#fff;padding:28px 0 26px}
+footer .logo{font-size:30px}
+.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.fgrid a,.fgrid p{display:block;font-size:16px;line-height:2}
+.fgrid a:hover{color:var(--red-soft)}
+.fgrid small{display:block;font-size:13px;color:#8a909a;margin-top:10px}
+.fbot{display:flex;justify-content:space-between;gap:24px;margin-top:64px;font-size:13px;color:#8a909a}
+.fbot a:hover{color:#fff}
+
+/* scroll reveal (JS + motion allowed only) */
+@media (prefers-reduced-motion:no-preference){
+  .js .rv{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s var(--ease)}
+  .js .rv.on{opacity:1;transform:none}
+}
+
+@media (max-width:960px){
+  .hero{height:auto;min-height:calc(100svh - 2*var(--gap))}
+  .hero-main{grid-template-columns:1fr;padding-top:48px}
+  h1{font-size:clamp(36px,8.4vw,80px)}
+  .svc{grid-template-columns:1fr;min-height:0}
+  .svc svg{display:none}
+  .faq .wrapf{grid-template-columns:1fr;gap:16px}
+  .dgrid{grid-template-columns:1fr}
+  .dgrid::before{display:none}
+  .day h3{margin-top:24px}
+}
+/* phones and touch: no hover, so each project shows its own picture */
+@media (max-width:760px),(hover:none){
+  .pv{display:none}
+  .wlist a{flex-wrap:wrap;color:var(--ink);row-gap:6px}
+  .wlist a .cat{color:var(--muted)}
+  .wlist a.act{background:none}
+  .wlist a.act .cat::after{background:currentColor;opacity:.6}
+  .wlist .th{display:grid;place-items:center;position:relative;width:100%;aspect-ratio:16/11;border-radius:14px;overflow:hidden;margin-top:12px}
+  .wlist .th .ph{width:22%}
+}
+@media (max-width:640px){
+  :root{--gap:8px;--r:14px}
+  .top .pill.ghost{display:none}
+  .logo{font-size:26px}
+  .langs button{padding:0 9px}
+  #menuBtn{padding:0 15px}
+  #menuBtn span{display:none}
+  .hero-main{gap:28px}
+  .work-head{padding-top:64px}
+  .wlist .nm{font-size:28px}
+  .wlist .cat{font-size:14px}
+  .svc{position:relative;top:0;margin-top:20px;transform:none}
+  .services .big{position:static}
+  .days{padding-top:64px;padding-bottom:48px}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .fgrid > div:last-child{grid-column:1/-1}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="panel hero" id="top">
+  <div class="in top">
+    <a class="logo" href="#top" aria-label="AV Studio">av.studio</a>
+    <div class="right">
+      <div class="langs" role="group" aria-label="Language">
+        <button data-lang="lt" aria-pressed="false">LT</button>
+        <button data-lang="en" aria-pressed="true">EN</button>
+        <button data-lang="ru" aria-pressed="false">RU</button>
+      </div>
+      <a class="pill ghost" href="#contact" data-i="touch">get in touch.</a>
+      <button class="pill white" id="menuBtn" aria-expanded="false" aria-controls="menu"><span data-i="menu">menu.</span><i class="burger"></i></button>
+    </div>
+  </div>
+
+  <div class="in hero-main">
+    <h1 data-i="h1">We build <em>damn good</em> websites.</h1>
+    <p data-i="hero_p">A small studio from Vilnius. We make websites for small businesses in 3 days: fast, beautiful and affordable.</p>
+  </div>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <div class="top" style="padding:0">
+    <span class="logo">av.studio</span>
+    <button class="pill white" id="menuClose"><span data-i="close">close.</span></button>
+  </div>
+  <nav>
+    <a href="#work" data-i="nav_work">Work</a>
+    <a href="#services" data-i="nav_services">Services</a>
+    <a href="#days" data-i="nav_process">Process</a>
+    <a href="#faq" data-i="nav_faq">FAQ</a>
+    <a href="#contact" data-i="f_contact_l">Contact</a>
+  </nav>
+  <div class="mfoot"><span data-i="city">Vilnius</span><a href="mailto:hello@avstudio.agency">hello@avstudio.agency</a></div>
+</div>
+
+<main>
+<!-- ============ WORK ============ -->
+<div class="work-head" id="work">
+  <h2 class="big rv" data-i="h_work">Our work</h2>
+</div>
+<section class="panel works">
+  <svg class="wave" viewBox="0 0 1400 600" preserveAspectRatio="none" aria-hidden="true"><path d="M1420 60C1100 40 900 110 860 150 1020 170 1140 230 1000 300 860 370 1020 400 1010 470 980 560 820 590 700 640" stroke="#f8ccd3" stroke-width="22" fill="none" stroke-linecap="round"/></svg>
+  <div class="wwrap">
+    <ul class="wlist" id="wlist">
+      <li><a href="https://yevakholopova.com/" target="_blank" rel="noopener" class="act">
+        <span class="nm">Yeva Kholopova</span><span class="cat" data-i="case1">Photographer portfolio</span>
+        <span class="th" style="background:#d8d4cc"><img class="shot" src="assets/case-yeva.jpg" alt="" width="1440" height="900" loading="lazy"><img class="ph" src="assets/case-yeva-m.jpg" alt="" width="508" height="1100" loading="lazy"></span>
+      </a></li>
+      <li><a href="https://tronzy.io/" target="_blank" rel="noopener">
+        <span class="nm">Tronzy</span><span class="cat" data-i="case4">Crypto service</span>
+        <span class="th" style="background:#f5d0d4"><img class="shot" src="assets/case-tronzy.jpg" alt="" width="1440" height="900" loading="lazy"><img class="ph" src="assets/case-tronzy-m.jpg" alt="" width="508" height="1100" loading="lazy"></span>
+      </a></li>
+      <li><a href="work/lumi/">
+        <span class="nm">Lumi Skin Studio</span><span class="cat" data-i="case2">Beauty studio · concept</span>
+        <span class="th" style="background:#b8875f"><img class="shot" src="assets/case-lumi.jpg" alt="" width="1440" height="900" loading="lazy"><img class="ph" src="assets/case-lumi-m.jpg" alt="" width="508" height="1100" loading="lazy"></span>
+      </a></li>
+      <li><a href="work/medis/">
+        <span class="nm">Medis Interiors</span><span class="cat" data-i="case3">Renovation · concept</span>
+        <span class="th" style="background:#d9893b"><img class="shot" src="assets/case-medis.jpg" alt="" width="1440" height="900" loading="lazy"><img class="ph" src="assets/case-medis-m.jpg" alt="" width="508" height="1100" loading="lazy"></span>
+      </a></li>
+      <li><a href="#contact">
+        <span class="nm" data-i="next_t">Your business?</span><span class="cat" data-i="next_k">Next up</span>
+      </a></li>
+    </ul>
+    <div class="pv" id="pv" aria-hidden="true">
+      <div class="c act" style="background:#d8d4cc"><img class="shot" src="assets/case-yeva.jpg" alt="" width="1440" height="900" loading="lazy"><img class="ph" src="assets/case-yeva-m.jpg" alt="" width="508" height="1100" loading="lazy"></div>
+      <div class="c" style="background:#f5d0d4"><img class="shot" src="assets/case-tronzy.jpg" alt="" width="1440" height="900" loading="lazy"><img class="ph" src="assets/case-tronzy-m.jpg" alt="" width="508" height="1100" loading="lazy"></div>
+      <div class="c" style="background:#b8875f"><img class="shot" src="assets/case-lumi.jpg" alt="" width="1440" height="900" loading="lazy"><img class="ph" src="assets/case-lumi-m.jpg" alt="" width="508" height="1100" loading="lazy"></div>
+      <div class="c" style="background:#d9893b"><img class="shot" src="assets/case-medis.jpg" alt="" width="1440" height="900" loading="lazy"><img class="ph" src="assets/case-medis-m.jpg" alt="" width="508" height="1100" loading="lazy"></div>
+      <div class="c yours"><span data-i="next_card">Your site<br><em>goes here</em></span></div>
+    </div>
+  </div>
+  <a class="more" href="#contact"><span data-i="more">I want one too</span> ↗</a>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="panel services" id="services">
+  <h2 class="big" data-i="h_services">Services</h2>
+  <div class="stack">
+    <article class="svc">
+      <div>
+        <div class="num">01</div>
+        <h3 data-i="p1">Landing page</h3>
+        <p data-i="p1d">One page that sells: who you are, services, prices, contacts and a big booking button. Perfect for a start.</p>
+        <div class="meta2"><div class="price"><small data-i="from">from</small>€200</div><span class="time" data-i="p1t">3 days</span></div>
+        <a class="pill dark" href="#contact" data-i="discuss">let's discuss</a>
+      </div>
+      <svg viewBox="0 0 300 330" fill="none" stroke="#b9b9c0" aria-hidden="true">
+        <rect x="70" y="10" width="160" height="310" rx="6" fill="#f2f2f4"/>
+        <rect x="86" y="30" width="128" height="70" fill="#e4e4e8"/><path d="M86 118h100M86 132h70"/>
+        <rect x="86" y="152" width="58" height="50" fill="#e4e4e8"/><rect x="156" y="152" width="58" height="50" fill="#e4e4e8"/>
+        <path d="M86 222h128M86 236h90"/><rect x="110" y="262" width="80" height="24" rx="12" fill="#e9344a" stroke="none"/>
+      </svg>
+    </article>
+    <article class="svc">
+      <div>
+        <div class="num">02</div>
+        <h3 data-i="p2">Business website</h3>
+        <p data-i="p2d">Several pages, a gallery of your work, a request form and basic SEO so people find you on Google.</p>
+        <div class="meta2"><div class="price"><small data-i="from">from</small>€450</div><span class="time" data-i="p2t">5–7 days</span></div>
+        <a class="pill dark" href="#contact" data-i="discuss">let's discuss</a>
+      </div>
+      <svg viewBox="0 0 300 330" fill="none" stroke="#b9b9c0" aria-hidden="true">
+        <rect x="110" y="20" width="80" height="44" fill="#e4e4e8"/>
+        <path d="M150 64v30M50 94h200M50 94v26M150 94v26M250 94v26"/>
+        <rect x="18" y="120" width="64" height="44" fill="#f2f2f4"/><rect x="118" y="120" width="64" height="44" fill="#f2f2f4"/><rect x="218" y="120" width="64" height="44" fill="#f2f2f4"/>
+        <path d="M150 164v34M100 198h100M100 198v24M200 198v24"/>
+        <rect x="68" y="222" width="64" height="44" fill="#f2f2f4"/><rect x="168" y="222" width="64" height="44" fill="#f2f2f4"/>
+        <g fill="#fff" stroke="#999"><rect x="146" y="90" width="8" height="8"/><rect x="146" y="194" width="8" height="8"/></g>
+      </svg>
+    </article>
+    <article class="svc">
+      <div>
+        <div class="num">03</div>
+        <h3 data-i="p3">Redesign</h3>
+        <p data-i="p3d">An old site you're shy to show? We'll make a fresh, fast one on the same domain, keeping what works.</p>
+        <div class="meta2"><div class="price"><small data-i="from">from</small>€300</div><span class="time" data-i="p3t">3–5 days</span></div>
+        <a class="pill dark" href="#contact" data-i="discuss">let's discuss</a>
+      </div>
+      <svg viewBox="0 0 300 330" fill="none" stroke="#b9b9c0" aria-hidden="true">
+        <rect x="10" y="80" width="120" height="170" rx="4" fill="#f2f2f4" stroke-dasharray="4 4"/>
+        <path d="M24 100h70M24 114h92M24 128h50M24 150h92M24 164h80M24 178h92" stroke-dasharray="3 3"/>
+        <path d="M140 165h28m-8-8 8 8-8 8" stroke="#e9344a" stroke-width="2"/>
+        <rect x="178" y="60" width="112" height="210" rx="6" fill="#fff"/>
+        <rect x="190" y="74" width="88" height="60" fill="#e4e4e8"/><path d="M190 150h70M190 164h50"/>
+        <rect x="190" y="182" width="40" height="34" fill="#e4e4e8"/><rect x="238" y="182" width="40" height="34" fill="#e4e4e8"/>
+        <rect x="204" y="232" width="60" height="20" rx="10" fill="#e9344a" stroke="none"/>
+      </svg>
+    </article>
+  </div>
+  <div class="incl">
+    <h4 data-i="incl">Always included</h4>
+    <ul>
+      <li data-i="i1">Mobile version</li><li data-i="i2">Loads in a second</li><li data-i="i3">Basic SEO</li>
+      <li data-i="i4">Domain setup</li><li data-i="i5">2 rounds of edits</li><li data-i="i6">WhatsApp &amp; messenger buttons</li>
+    </ul>
+    <p data-i="note">Hosting and domain usually cost €1–5 a month. Support and small edits after launch from €30/month, only if you want it.</p>
+  </div>
+</section>
+
+<!-- ============ 3 DAYS ============ -->
+<section class="days in" id="days">
+  <h2 class="rv" data-i="h_days">Ready in <em>3 days</em></h2>
+  <div class="dgrid">
+    <div class="day rv"><span class="d" data-i="d1">Day 1</span><h3 data-i="s1">Short brief</h3><p data-i="s1d">Five simple questions in a messenger. Ten minutes, no homework.</p></div>
+    <div class="day rv"><span class="d" data-i="d2">Day 2</span><h3 data-i="s2">Design &amp; build</h3><p data-i="s2d">We design and build the site. You watch it come alive and send edits.</p></div>
+    <div class="day rv"><span class="d" data-i="d3">Day 3</span><h3 data-i="s3">Launch</h3><p data-i="s3d">Final edits, domain connected, the site is live.</p></div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="panel faq" id="faq">
+  <div class="in wrapf">
+    <h2 data-i="h_faq">FAQ</h2>
+    <div>
+      <details><summary data-i="q1">How much does a website cost?</summary><p data-i="a1">From €200 for a landing page. We give you the exact price after a short chat, and it stays fixed.</p></details>
+      <details><summary data-i="q2">How fast will it be ready?</summary><p data-i="a2">A landing page in 3 days. A bigger site in about a week.</p></details>
+      <details><summary data-i="q3">What do I need to prepare?</summary><p data-i="a3">Almost nothing: answer five short questions and send photos if you have them. We'll help with the texts.</p></details>
+      <details><summary data-i="q4">What if I don't like the design?</summary><p data-i="a4">You see the design on day two and we adjust it right away. Two rounds of edits are included.</p></details>
+      <details><summary data-i="q5">Are there monthly fees?</summary><p data-i="a5">Only for the domain and hosting, usually €1–5 a month. Support is optional.</p></details>
+      <details><summary data-i="q6">I know nothing about tech.</summary><p data-i="a6">You don't have to. Domain, hosting, email, Google profile: we set it all up.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BRIEF ============ -->
+<!-- TODO: real contacts. Put the WhatsApp number in WA and the Telegram username in TG (script below). -->
+<section class="panel need" id="contact">
+  <div class="in">
+    <div class="step show" data-step="1">
+      <div class="hd"><h2 data-i="need">I need</h2><span class="count">1 / 3</span></div>
+      <div class="opts" id="opts">
+        <button class="opt" aria-pressed="false" data-i="o1">a landing page</button>
+        <button class="opt" aria-pressed="false" data-i="o2">a business website</button>
+        <button class="opt" aria-pressed="false" data-i="o3">a redesign</button>
+        <button class="opt" aria-pressed="false" data-i="o4">not sure yet</button>
+      </div>
+      <div class="nav-row"><button class="opt go" data-to="2"><span data-i="next">next</span> →</button></div>
+    </div>
+    <div class="step" data-step="2">
+      <div class="hd"><h2 data-i="b2">About your business</h2><span class="count">2 / 3</span></div>
+      <div class="fields">
+        <input id="biz" type="text" autocomplete="organization" data-p="ph1" placeholder="Business name and what you do">
+        <input id="link" type="text" inputmode="url" data-p="ph2" placeholder="Instagram or current site (optional)">
+      </div>
+      <div class="nav-row"><button class="opt go" data-to="3"><span data-i="next">next</span> →</button><button class="back" data-to="1" data-i="back">← back</button></div>
+    </div>
+    <div class="step" data-step="3">
+      <div class="hd"><h2 data-i="where">Where do we talk?</h2><span class="count">3 / 3</span></div>
+      <div class="reach">
+        <a class="pill white" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="pill white" id="tg" href="#" target="_blank" rel="noopener">Telegram</a>
+        <a class="pill white" id="em" href="mailto:hello@avstudio.agency">Email</a>
+      </div>
+      <div class="nav-row"><button class="back" data-to="2" data-i="back">← back</button></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="panel">
+  <div class="in">
+    <div class="logo">av.studio</div>
+    <div class="fgrid">
+      <div><a href="#work" data-i="nav_work">Work</a><a href="#services" data-i="nav_services">Services</a><a href="#days" data-i="nav_process">Process</a><a href="#contact" data-i="f_contact_l">Contact</a></div>
+      <div><small data-i="f_contact">Contact us</small><a href="mailto:hello@avstudio.agency">hello@avstudio.agency</a></div>
+      <div><small data-i="f_based">Based in</small><p><span data-i="f_city">Vilnius</span> <span class="clock">--:--</span><span class="temp"></span></p></div>
+    </div>
+    <div class="fbot">
+      <span>© AV Studio 2026</span>
+      <a href="#top"><span data-i="totop">Back to top</span> ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+
+// Contacts: fill these in once the real ones exist.
+const WA = '';          // e.g. '37060000000'
+const TG = '';          // e.g. 'avstudio'
+const MAIL = 'hello@avstudio.agency';
+
+const T = {
+  lt:{
+    nav_work:'Darbai',nav_services:'Paslaugos',nav_process:'Procesas',nav_faq:'DUK',touch:'parašyti.',menu:'meniu.',close:'uždaryti.',
+    h1:'Kuriame <em>velniškai</em> geras svetaines.',city:'Vilnius',
+    hero_p:'Nedidelė studija iš Vilniaus. Kuriame svetaines smulkiam verslui per 3 dienas: greitai, gražiai ir nebrangiai.',
+    h_work:'Mūsų darbai',case1:'Fotografės portfolio',case4:'Kriptovaliutų paslauga',case2:'Grožio studija · koncepcija',case3:'Renovacija · koncepcija',
+    next_t:'Jūsų verslas?',next_k:'Kitas',next_card:'Čia bus<br><em>jūsų svetainė</em>',more:'Noriu tokios pat',
+    h_services:'Paslaugos',from:'nuo',discuss:'aptarti',
+    p1:'Vieno puslapio svetainė',p1d:'Vienas puslapis, kuris parduoda: kas jūs, paslaugos, kainos, kontaktai ir didelis registracijos mygtukas. Puiku pradžiai.',p1t:'3 dienos',
+    p2:'Įmonės svetainė',p2d:'Keli puslapiai, darbų galerija, užklausos forma ir bazinis SEO, kad jus rastų Google.',p2t:'5–7 dienos',
+    p3:'Atnaujinimas',p3d:'Sena svetainė, kurią gėda rodyti? Padarysime naują ir greitą tuo pačiu domenu, išlaikydami tai, kas veikia.',p3t:'3–5 dienos',
+    incl:'Visada įskaičiuota',i1:'Mobili versija',i2:'Užsikrauna per sekundę',i3:'Bazinis SEO',i4:'Domeno prijungimas',i5:'2 pataisymų ratai',i6:'WhatsApp ir žinučių mygtukai',
+    note:'Talpinimas ir domenas paprastai kainuoja 1–5 € per mėnesį. Priežiūra ir smulkūs pakeitimai po paleidimo nuo 30 €/mėn., tik jei norite.',
+    h_days:'Paruošta per <em>3 dienas</em>',d1:'Diena 1',d2:'Diena 2',d3:'Diena 3',
+    s1:'Trumpas brifas',s1d:'Penki paprasti klausimai žinutėmis. Dešimt minučių, jokių namų darbų.',
+    s2:'Dizainas ir kūrimas',s2d:'Kuriame dizainą ir svetainę. Jūs stebite, kaip ji atgyja, ir siunčiate pataisymus.',
+    s3:'Paleidimas',s3d:'Paskutiniai pataisymai, prijungiame domeną, svetainė veikia.',
+    h_faq:'DUK',
+    q1:'Kiek kainuoja svetainė?',a1:'Nuo 200 € už vieno puslapio svetainę. Tikslią kainą pasakome po trumpo pokalbio, ir ji lieka fiksuota.',
+    q2:'Kaip greitai ji bus paruošta?',a2:'Vieno puslapio svetainė per 3 dienas. Didesnė maždaug per savaitę.',
+    q3:'Ką man reikia paruošti?',a3:'Beveik nieko: atsakyti į penkis trumpus klausimus ir atsiųsti nuotraukas, jei turite. Su tekstais padėsime.',
+    q4:'O jei dizainas nepatiks?',a4:'Dizainą matote antrą dieną ir iškart jį pataisome. Du pataisymų ratai įskaičiuoti.',
+    q5:'Ar yra mėnesinių mokesčių?',a5:'Tik už domeną ir talpinimą, paprastai 1–5 € per mėnesį. Priežiūra pagal norą.',
+    q6:'Nieko neišmanau apie technologijas.',a6:'Ir nereikia. Domeną, talpinimą, el. paštą, Google profilį sutvarkome patys.',
+    need:'Man reikia',o1:'vieno puslapio svetainės',o2:'įmonės svetainės',o3:'atnaujinimo',o4:'dar nežinau',next:'toliau',back:'← atgal',
+    b2:'Apie jūsų verslą',ph1:'Pavadinimas ir kuo užsiimate',ph2:'Instagram arba dabartinė svetainė (jei yra)',where:'Kur patogiau bendrauti?',
+    msg:'Sveiki! Man reikia: ',
+    f_contact_l:'Kontaktai',f_contact:'Susisiekite',f_based:'Įsikūrę',f_city:'Vilniuje',totop:'Į viršų'
+  },
+  ru:{
+    nav_work:'Работы',nav_services:'Услуги',nav_process:'Процесс',nav_faq:'Вопросы',touch:'написать.',menu:'меню.',close:'закрыть.',
+    h1:'Мы делаем <em>чертовски</em> хорошие сайты.',city:'Вильнюс',
+    hero_p:'Небольшая студия из Вильнюса. Делаем сайты для малого бизнеса за 3 дня: быстро, красиво и недорого.',
+    h_work:'Наши работы',case1:'Портфолио фотографа',case4:'Крипто-сервис',case2:'Салон красоты · концепт',case3:'Ремонт квартир · концепт',
+    next_t:'Ваш бизнес?',next_k:'Следующий',next_card:'Здесь будет<br><em>ваш сайт</em>',more:'Хочу так же',
+    h_services:'Услуги',from:'от',discuss:'обсудить',
+    p1:'Лендинг',p1d:'Одна страница, которая продаёт: кто вы, услуги, цены, контакты и большая кнопка записи. Идеально для старта.',p1t:'3 дня',
+    p2:'Сайт компании',p2d:'Несколько страниц, галерея работ, форма заявки и базовое SEO, чтобы вас находили в Google.',p2t:'5–7 дней',
+    p3:'Редизайн',p3d:'Старый сайт, который стыдно показывать? Сделаем новый и быстрый на том же домене, сохранив то, что работает.',p3t:'3–5 дней',
+    incl:'Всегда входит',i1:'Мобильная версия',i2:'Грузится за секунду',i3:'Базовое SEO',i4:'Подключение домена',i5:'2 круга правок',i6:'Кнопки WhatsApp и мессенджеров',
+    note:'Хостинг и домен обычно стоят €1–5 в месяц. Поддержка и мелкие правки после запуска от €30/мес., только если нужно.',
+    h_days:'Готово за <em>3 дня</em>',d1:'День 1',d2:'День 2',d3:'День 3',
+    s1:'Короткий бриф',s1d:'Пять простых вопросов в мессенджере. Десять минут, без домашки.',
+    s2:'Дизайн и сборка',s2d:'Рисуем и собираем сайт. Вы смотрите, как он оживает, и присылаете правки.',
+    s3:'Запуск',s3d:'Последние правки, подключаем домен, сайт работает.',
+    h_faq:'Вопросы',
+    q1:'Сколько стоит сайт?',a1:'От €200 за лендинг. Точную цену называем после короткого разговора, и она фиксируется.',
+    q2:'Как быстро будет готово?',a2:'Лендинг за 3 дня. Сайт побольше примерно за неделю.',
+    q3:'Что мне нужно подготовить?',a3:'Почти ничего: ответить на пять коротких вопросов и прислать фото, если есть. С текстами поможем.',
+    q4:'А если дизайн не понравится?',a4:'Вы видите дизайн на второй день, и мы сразу его правим. Два круга правок входят в цену.',
+    q5:'Будут ежемесячные платежи?',a5:'Только за домен и хостинг, обычно €1–5 в месяц. Поддержка по желанию.',
+    q6:'Я ничего не понимаю в технике.',a6:'И не нужно. Домен, хостинг, почту, профиль в Google настроим сами.',
+    need:'Мне нужен',o1:'лендинг',o2:'сайт компании',o3:'редизайн',o4:'пока не знаю',next:'дальше',back:'← назад',
+    b2:'Пара слов о бизнесе',ph1:'Название и чем занимаетесь',ph2:'Instagram или старый сайт (если есть)',where:'Где удобнее общаться?',
+    msg:'Привет! Мне нужен: ',
+    f_contact_l:'Контакт',f_contact:'Связь',f_based:'Мы в',f_city:'Вильнюсе',totop:'Наверх'
+  }
+};
+
+// English lives in the HTML; read it once so switching back works.
+const nodes = document.querySelectorAll('[data-i]'), phs = document.querySelectorAll('[data-p]');
+T.en = {msg:'Hi! I need: '};
+nodes.forEach(n => { T.en[n.dataset.i] ??= n.innerHTML; });
+phs.forEach(n => { T.en[n.dataset.p] = n.placeholder; });
+
+let lang = 'en';
+function setLang(l){
+  lang = T[l] ? l : 'en';
+  nodes.forEach(n => { const v = T[lang][n.dataset.i]; if (v) n.innerHTML = v; });
+  phs.forEach(n => { n.placeholder = T[lang][n.dataset.p]; });
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+  try { localStorage.setItem('lang', lang); } catch(e) {}
+  updateLinks();
+}
+
+// ---- Brief: 3 tiny steps, answers go into the first message ----
+const opts = [...document.querySelectorAll('#opts .opt')];
+const biz = document.getElementById('biz'), link = document.getElementById('link');
+opts.forEach(o => o.addEventListener('click', () => { o.setAttribute('aria-pressed', o.getAttribute('aria-pressed') !== 'true'); updateLinks(); }));
+[biz, link].forEach(i => i.addEventListener('input', updateLinks));
+document.querySelectorAll('[data-to]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.step').forEach(s => s.classList.toggle('show', s.dataset.step === b.dataset.to));
+  if (b.dataset.to === '2') biz.focus({preventScroll:true});
+}));
+function updateLinks(){
+  const picked = opts.filter(o => o.getAttribute('aria-pressed') === 'true').map(o => o.textContent).join(', ');
+  const text = encodeURIComponent([T[lang].msg + (picked || '…'), biz.value.trim(), link.value.trim()].filter(Boolean).join('\n'));
+  document.getElementById('wa').href = WA ? `https://wa.me/${WA}?text=${text}` : '#';
+  document.getElementById('tg').href = TG ? `https://t.me/${TG}` : '#';
+  document.getElementById('em').href = `mailto:${MAIL}?subject=AV%20Studio&body=${text}`;
+}
+
+let saved = null;
+try { saved = localStorage.getItem('lang'); } catch(e) {}
+const nav = (navigator.language || 'en').slice(0,2);
+setLang(saved || (nav === 'lt' ? 'lt' : ['ru','uk','be'].includes(nav) ? 'ru' : 'en'));
+document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+
+// ---- Work list: hovered row lights up, preview card glides to it ----
+const rows = [...document.querySelectorAll('#wlist a')], cards = [...document.querySelectorAll('#pv .c')], pv = document.getElementById('pv');
+let cur = 0;
+function activate(i){
+  cur = i;
+  rows.forEach((r, k) => r.classList.toggle('act', k === i));
+  cards.forEach((c, k) => { c.classList.toggle('act', k === i); c.classList.toggle('up', k < i); });
+  const r = rows[i], list = r.closest('.wwrap');
+  const y = r.offsetTop + r.offsetHeight / 2 - pv.offsetHeight / 2;
+  pv.style.transform = `translateY(${Math.max(-40, Math.min(y, list.offsetHeight - pv.offsetHeight + 40))}px)`;
+}
+rows.forEach((r, i) => { r.addEventListener('mouseenter', () => activate(i)); r.addEventListener('focus', () => activate(i)); });
+addEventListener('resize', () => activate(cur));
+activate(0);
+
+// ---- Menu overlay ----
+const menu = document.getElementById('menu'), menuBtn = document.getElementById('menuBtn');
+const toggleMenu = open => { menu.classList.toggle('open', open); menu.setAttribute('aria-hidden', !open); menuBtn.setAttribute('aria-expanded', open); };
+menuBtn.addEventListener('click', () => toggleMenu(true));
+document.getElementById('menuClose').addEventListener('click', () => toggleMenu(false));
+menu.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
+
+// ---- Live Vilnius time + temperature ----
+const tick = () => { const t = new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/Vilnius',hour:'2-digit',minute:'2-digit'}); document.querySelectorAll('.clock').forEach(c => c.textContent = t); };
+tick(); setInterval(tick, 20000);
+fetch('https://api.open-meteo.com/v1/forecast?latitude=54.69&longitude=25.28&current=temperature_2m')
+  .then(r => r.json()).then(d => { document.querySelectorAll('.temp').forEach(t => t.textContent = ' · ' + Math.round(d.current.temperature_2m) + '°C'); })
+  .catch(() => {});
+
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -10% 0px'});
+  document.querySelectorAll('.rv').forEach(el => io.observe(el));
+} else document.querySelectorAll('.rv').forEach(el => el.classList.add('on'));
+</script>
+</body>
+</html>
