@@ -6,9 +6,7 @@
 <title>Medis Interiors — renovation in Vilnius</title>
 <meta name="description" content="Kitchen, bathroom and apartment renovation in Vilnius. Concept website by AV Studio.">
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 :root{--bg:#1b1a17;--card:#25231f;--fg:#efe9df;--muted:#a59d91;--accent:#d9893b;--line:rgba(239,233,223,.14)}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -77,14 +75,16 @@ footer{padding:40px 0;font-size:14px;color:var(--muted);display:flex;justify-con
 </style>
 </head>
 <body>
-<div class="demo">Concept website made by <a href="/">AV Studio</a>. Medis is a fictional business.</div>
+<aside class="demo" aria-label="About this demo">Concept website made by <a href="/">AV Studio</a>. Medis is a fictional business.</aside>
 <div class="wrap">
   <header>
     <a class="logo" href="#">MEDIS<span>.</span></a>
     <nav><a href="#services">Services</a><a href="#work">Projects</a><a href="#how">How we work</a></nav>
     <a class="btn" href="#quote">Get a quote</a>
   </header>
-
+</div>
+<main>
+<div class="wrap">
   <h1>Kitchens. Baths.<br><span>Whole homes.</span></h1>
   <div class="lead">
     <p>We renovate apartments in Vilnius on a fixed price and a fixed date. One team from the first sketch to the last socket.</p>
@@ -140,6 +140,9 @@ footer{padding:40px 0;font-size:14px;color:var(--muted);display:flex;justify-con
     <div><h2>Planning a renovation?</h2><p>Send a few photos of your space and get a rough price the same day.</p></div>
     <a class="btn" href="#">Send photos →</a>
   </div>
+</div>
+</main>
+<div class="wrap">
   <footer><span>© Medis Interiors, Vilnius</span><span>Concept by <a href="/">AV Studio</a></span></footer>
 </div>
 </body>

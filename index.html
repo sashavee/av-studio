@@ -10,15 +10,14 @@
 <meta property="og:image" content="https://www.avstudio.agency/assets/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="theme-color" content="#e9344a">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23e9344a'/%3E%3Ctext x='6' y='21' font-family='Arial' font-size='15' fill='%23fff'%3Eav%3C/text%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;700&family=Onest:wght@400;500&family=Playfair+Display:ital,wght@1,500&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#d62c42">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%23d62c42'/%3E%3Ctext x='6' y='21' font-family='Arial' font-size='15' fill='%23fff'%3Eav%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://www.avstudio.agency/">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
 :root{
-  --red:#e9344a; --red-soft:#f07a88; --pink:#f8ccd3;
-  --ink:#181d24; --beige:#ebe7e0; --paper:#f5f2ec; --grey:#f0f0f2; --line:#d9d9de; --muted:#6c7079; --white:#fff;
+  --red:#d62c42; --red-soft:#f07a88; --pink:#f8ccd3;
+  --ink:#181d24; --beige:#ebe7e0; --paper:#f5f2ec; --grey:#f0f0f2; --line:#d9d9de; --muted:#62666e; --white:#fff;
   --wide:Unbounded,"Arial Black",sans-serif;
   --sans:Onest,"Helvetica Neue",Arial,sans-serif;
   --serif:"Playfair Display",Georgia,serif;
@@ -27,13 +26,16 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
+[hidden]{display:none!important}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 body{background:var(--white);color:var(--ink);font:400 16px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 button,input{font:inherit;color:inherit;background:none;border:0}
 button{cursor:pointer}
 em{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:none;letter-spacing:0}
-:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.hero :focus-visible,.need :focus-visible,.menu :focus-visible,footer :focus-visible,.services :focus-visible{outline-color:#fff}
 
 /* every block is a rounded panel inset from the window edge */
 .panel{margin:var(--gap);border-radius:var(--r);position:relative;overflow:hidden}
@@ -51,11 +53,11 @@ em{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:non
 .top{display:flex;justify-content:space-between;align-items:center;padding-top:26px;gap:12px}
 .logo{font:400 30px/1 var(--sans);letter-spacing:-.02em}
 .top .right{display:flex;gap:10px;align-items:center}
-.pill.ghost{background:rgba(255,255,255,.25);color:#fff}
-.pill.ghost:hover{background:rgba(255,255,255,.4)}
-.langs{display:flex;background:rgba(255,255,255,.18);border-radius:999px;padding:4px;height:44px}
-.langs button{padding:0 12px;border-radius:999px;font-size:13px;color:rgba(255,255,255,.85);transition:background .2s,color .2s}
-.langs button:hover{color:#fff}
+.pill.ghost{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85)}
+.pill.ghost:hover{background:#fff;color:var(--red)}
+.langs{display:flex;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.85);border-radius:999px;padding:4px;height:44px}
+.langs button{padding:0 12px;border-radius:999px;font-size:13px;color:#fff;transition:background .2s,color .2s}
+.langs button:hover{background:rgba(255,255,255,.16)}
 .langs button[aria-pressed=true]{background:#fff;color:var(--red)}
 .burger{display:inline-block;width:16px;height:9px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor;position:relative}
 .burger::after{content:"";position:absolute;left:5px;right:0;top:2.5px;border-top:1.5px solid currentColor}
@@ -65,11 +67,11 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .hero-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,340px);gap:48px;align-items:end;padding-top:clamp(36px,7vh,80px);padding-bottom:clamp(28px,6vh,60px)}
 /* hero is as tall as its content; JS scales the headline to the column width, never taller than one screen (fitHero) */
 .hbox{min-width:0}
-.hero-main p{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:rgba(255,255,255,.92)}
+.hero-main p{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:#fff}
 
 /* menu overlay */
 .menu{position:fixed;inset:var(--gap);z-index:50;background:var(--ink);color:#fff;border-radius:var(--r);display:flex;flex-direction:column;padding:26px clamp(20px,2.8vw,40px);opacity:0;visibility:hidden;transform:scale(.98);transition:opacity .3s,visibility .3s,transform .3s var(--ease)}
-.menu.open{opacity:1;visibility:visible;transform:none}
+.menu.open{opacity:1;visibility:visible;transform:none;transition:opacity .3s,visibility 0s,transform .3s var(--ease)}
 .menu nav{margin:auto 0;display:flex;flex-direction:column;gap:4px}
 .menu nav a{font:700 clamp(40px,7.4vw,104px)/1.08 var(--wide);letter-spacing:-.04em;text-transform:uppercase;transition:color .2s,transform .3s var(--ease)}
 .menu nav a:hover{color:var(--red);transform:translateX(10px)}
@@ -82,9 +84,10 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .wave{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .wwrap{position:relative}
 .wlist{list-style:none;position:relative;z-index:1}
-.wlist a{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(18px,2vw,28px) clamp(20px,4.4vw,64px);color:#a6a9b0;transition:color .35s,background .35s}
+.wlist a{display:flex;justify-content:space-between;align-items:center;gap:24px;padding:clamp(18px,2vw,28px) clamp(20px,4.4vw,64px);color:#868a92;transition:color .35s,background .35s}
 .wlist .nm{font:400 clamp(30px,3.5vw,52px)/1.1 var(--sans);letter-spacing:-.025em}
-.wlist .cat{display:flex;align-items:center;gap:16px;font-size:clamp(15px,1.4vw,22px);white-space:nowrap}
+.wlist .cat{display:flex;align-items:center;gap:16px;font-size:clamp(15px,1.4vw,22px);white-space:nowrap;color:var(--muted)}
+.wlist a.act .cat{color:var(--ink)}
 .wlist .cat::after{content:"";width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.6;transition:background .35s}
 .wlist a.act{color:var(--ink);background:rgba(255,255,255,.62)}
 .wlist a.act .cat::after{background:var(--red);opacity:1}
@@ -108,7 +111,7 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .stack{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
 .svc{position:sticky;top:clamp(120px,calc(7vw + 84px),200px);background:#fff;color:var(--ink);border-radius:20px;min-height:400px;margin-top:70px;padding:clamp(24px,3vw,44px);display:grid;grid-template-columns:1.15fr 1fr;gap:24px;box-shadow:0 -10px 40px rgba(0,0,0,.25);transform:rotate(var(--tilt))}
 .svc:nth-child(1){--tilt:-2deg}.svc:nth-child(2){--tilt:1.6deg;background:#f4f4f6}.svc:nth-child(3){--tilt:-1deg;background:#e9e9ed}
-.svc .num{color:var(--red);font-size:13px}
+.svc .num{color:#b21f35;font-size:13px}
 .svc h3{font:500 clamp(30px,3.6vw,48px)/1.05 var(--sans);letter-spacing:-.03em;margin:10px 0 14px}
 .svc p{color:#4a4f58;max-width:520px}
 .svc .meta2{display:flex;align-items:baseline;gap:18px;margin:26px 0;flex-wrap:wrap}
@@ -150,7 +153,7 @@ details p{color:var(--muted);padding:0 50px 22px 0}
 .need{background:var(--red);color:#fff;padding:40px 0 44px}
 .need .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:24px}
 .need h2{font:500 clamp(40px,6vw,84px)/1 var(--sans);letter-spacing:-.03em}
-.need .count{font-size:14px;letter-spacing:.08em;opacity:.8;white-space:nowrap}
+.need .count{font-size:14px;letter-spacing:.08em;white-space:nowrap}
 .step{display:none}
 .step.show{display:block;animation:stepIn .45s var(--ease)}
 @keyframes stepIn{from{opacity:0;transform:translateY(14px)}}
@@ -161,14 +164,16 @@ details p{color:var(--muted);padding:0 50px 22px 0}
 .opt.go{background:#fff;color:var(--red)}
 .opt.go:hover{transform:translateX(4px)}
 .nav-row{margin-top:22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.back{font-size:16px;opacity:.85;text-decoration:underline;text-underline-offset:4px}
+.back{font-size:16px;text-decoration:underline;text-underline-offset:4px}
 .fields{display:grid;gap:18px;max-width:820px}
 .fields input{width:100%;border-bottom:2px solid rgba(255,255,255,.55);padding:10px 0;font:400 clamp(20px,2.4vw,32px)/1.2 var(--sans);color:#fff;transition:border-color .2s}
-.fields input::placeholder{color:rgba(255,255,255,.65)}
-.fields input:focus{outline:none;border-color:#fff}
+.fields label{display:block;font-size:15px}
+.fields input:focus{border-color:#fff}
 .reach{display:flex;gap:12px;flex-wrap:wrap}
 .reach .pill{height:56px;padding:0 28px;font-size:18px}
 .reach .pill:hover{background:var(--ink);color:#fff}
+.sendnote{margin-top:18px;font-size:14px;max-width:560px}
+.sendnote a,.fbot a.pp{text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- FOOTER ---------- */
 footer{background:var(--ink);color:#fff;padding:28px 0 26px}
@@ -181,6 +186,11 @@ footer .logo{font-size:30px}
 .fbot a:hover{color:#fff}
 
 /* scroll reveal (JS + motion allowed only) */
+/* reduced motion: no smooth scroll, no animated transitions */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+}
 @media (prefers-reduced-motion:no-preference){
   .js .rv{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s var(--ease)}
   .js .rv.on{opacity:1;transform:none}
@@ -237,12 +247,12 @@ footer .logo{font-size:30px}
     <a class="logo" href="#top" aria-label="AV Studio">av.studio</a>
     <div class="right">
       <div class="langs" role="group" aria-label="Language">
-        <button data-lang="lt" aria-pressed="false">LT</button>
-        <button data-lang="en" aria-pressed="true">EN</button>
-        <button data-lang="ru" aria-pressed="false">RU</button>
+        <button data-lang="lt" lang="lt" aria-pressed="false">LT</button>
+        <button data-lang="en" lang="en" aria-pressed="true">EN</button>
+        <button data-lang="ru" lang="ru" aria-pressed="false">RU</button>
       </div>
       <a class="pill ghost" href="#contact" data-i="touch">get in touch.</a>
-      <button class="pill white" id="menuBtn" aria-expanded="false" aria-controls="menu"><span data-i="menu">menu.</span><i class="burger"></i></button>
+      <button class="pill white" id="menuBtn" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-al="menu_l"><span data-i="menu">menu.</span><i class="burger"></i></button>
     </div>
   </div>
 
@@ -252,7 +262,7 @@ footer .logo{font-size:30px}
   </div>
 </header>
 
-<div class="menu" id="menu" aria-hidden="true">
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" data-al="menu_d" inert>
   <div class="top" style="padding:0">
     <span class="logo">av.studio</span>
     <button class="pill white" id="menuClose"><span data-i="close">close.</span></button>
@@ -402,7 +412,7 @@ footer .logo{font-size:30px}
 <section class="panel need" id="contact">
   <div class="in">
     <div class="step show" data-step="1">
-      <div class="hd"><h2 data-i="need">I need</h2><span class="count">1 / 3</span></div>
+      <div class="hd"><h2 tabindex="-1" data-i="need">I need</h2><span class="count">1 / 3</span></div>
       <div class="opts" id="opts">
         <button class="opt" aria-pressed="false" data-i="o1">a landing page</button>
         <button class="opt" aria-pressed="false" data-i="o2">a business website</button>
@@ -414,18 +424,19 @@ footer .logo{font-size:30px}
     <div class="step" data-step="2">
       <div class="hd"><h2 data-i="b2">About your business</h2><span class="count">2 / 3</span></div>
       <div class="fields">
-        <input id="biz" type="text" autocomplete="organization" data-p="ph1" placeholder="Business name and what you do">
-        <input id="link" type="text" inputmode="url" data-p="ph2" placeholder="Instagram or current site (optional)">
+        <div><label for="biz" data-i="l1">Business name and what you do</label><input id="biz" type="text" autocomplete="organization" maxlength="200"></div>
+        <div><label for="link" data-i="l2">Instagram or current site (optional)</label><input id="link" type="text" inputmode="url" autocomplete="url" maxlength="200"></div>
       </div>
       <div class="nav-row"><button class="opt go" data-to="3"><span data-i="next">next</span> →</button><button class="back" data-to="1" data-i="back">← back</button></div>
     </div>
     <div class="step" data-step="3">
-      <div class="hd"><h2 data-i="where">Where do we talk?</h2><span class="count">3 / 3</span></div>
+      <div class="hd"><h2 tabindex="-1" data-i="where">Where do we talk?</h2><span class="count">3 / 3</span></div>
       <div class="reach">
         <a class="pill white" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
         <a class="pill white" id="tg" href="#" target="_blank" rel="noopener">Telegram</a>
         <a class="pill white" id="em" href="mailto:hello@avstudio.agency">Email</a>
       </div>
+      <p class="sendnote"><span data-i="sendnote">The button opens your app with a ready message, and you decide whether to send it.</span> <a href="privacy/" data-i="privacy_l">Privacy policy</a></p>
       <div class="nav-row"><button class="back" data-to="2" data-i="back">← back</button></div>
     </div>
   </div>
@@ -439,10 +450,10 @@ footer .logo{font-size:30px}
     <div class="fgrid">
       <div><a href="#work" data-i="nav_work">Work</a><a href="#services" data-i="nav_services">Services</a><a href="#days" data-i="nav_process">Process</a><a href="#contact" data-i="f_contact_l">Contact</a></div>
       <div><small data-i="f_contact">Contact us</small><a href="mailto:hello@avstudio.agency">hello@avstudio.agency</a></div>
-      <div><small data-i="f_based">Based in</small><p><span data-i="f_city">Vilnius</span> <span class="clock">--:--</span><span class="temp"></span></p></div>
+      <div><small data-i="f_based">Based in</small><p><span data-i="f_city">Vilnius</span> <span class="clock">--:--</span></p></div>
     </div>
     <div class="fbot">
-      <span>© AV Studio 2026</span>
+      <span>© AV Studio 2026 · <a class="pp" href="privacy/" data-i="privacy_l">Privacy policy</a></span>
       <a href="#top"><span data-i="totop">Back to top</span> ↑</a>
     </div>
   </div>
@@ -481,7 +492,7 @@ const T = {
     q5:'Ar yra mėnesinių mokesčių?',a5:'Tik už domeną ir talpinimą, paprastai 1–5 € per mėnesį. Priežiūra pagal norą.',
     q6:'Nieko neišmanau apie technologijas.',a6:'Ir nereikia. Domeną, talpinimą, el. paštą, Google profilį sutvarkome patys.',
     need:'Man reikia',o1:'vieno puslapio svetainės',o2:'įmonės svetainės',o3:'atnaujinimo',o4:'dar nežinau',next:'toliau',back:'← atgal',
-    b2:'Apie jūsų verslą',ph1:'Pavadinimas ir kuo užsiimate',ph2:'Instagram arba dabartinė svetainė (jei yra)',where:'Kur patogiau bendrauti?',
+    b2:'Apie jūsų verslą',l1:'Pavadinimas ir kuo užsiimate',l2:'Instagram arba dabartinė svetainė (nebūtina)',sendnote:'Mygtukas atidarys programėlę su paruošta žinute. Siųsti ar ne, sprendžiate jūs.',privacy_l:'Privatumo politika',menu_l:'Atidaryti meniu',menu_d:'Meniu',where:'Kur patogiau bendrauti?',
     msg:'Sveiki! Man reikia: ',
     f_contact_l:'Kontaktai',f_contact:'Susisiekite',f_based:'Įsikūrę',f_city:'Vilniuje',totop:'Į viršų'
   },
@@ -509,26 +520,27 @@ const T = {
     q5:'Будут ежемесячные платежи?',a5:'Только за домен и хостинг, обычно €1–5 в месяц. Поддержка по желанию.',
     q6:'Я ничего не понимаю в технике.',a6:'И не нужно. Домен, хостинг, почту, профиль в Google настроим сами.',
     need:'Мне нужен',o1:'лендинг',o2:'сайт компании',o3:'редизайн',o4:'пока не знаю',next:'дальше',back:'← назад',
-    b2:'Пара слов о бизнесе',ph1:'Название и чем занимаетесь',ph2:'Instagram или старый сайт (если есть)',where:'Где удобнее общаться?',
+    b2:'Пара слов о бизнесе',l1:'Название и чем занимаетесь',l2:'Instagram или старый сайт (необязательно)',sendnote:'Кнопка откроет приложение с готовым сообщением. Отправлять его или нет, решаете вы.',privacy_l:'Политика конфиденциальности',menu_l:'Открыть меню',menu_d:'Меню',where:'Где удобнее общаться?',
     msg:'Привет! Мне нужен: ',
     f_contact_l:'Контакт',f_contact:'Связь',f_based:'Мы в',f_city:'Вильнюсе',totop:'Наверх'
   }
 };
 
 // English lives in the HTML; read it once so switching back works.
-const nodes = document.querySelectorAll('[data-i]'), phs = document.querySelectorAll('[data-p]');
+const nodes = document.querySelectorAll('[data-i]'), labels = document.querySelectorAll('[data-al]');
 T.en = {msg:'Hi! I need: '};
 nodes.forEach(n => { T.en[n.dataset.i] ??= n.innerHTML; });
-phs.forEach(n => { T.en[n.dataset.p] = n.placeholder; });
+labels.forEach(n => { T.en[n.dataset.al] = n.getAttribute('aria-label'); });
 
 let lang = 'en';
-function setLang(l){
+function setLang(l, remember){
   lang = T[l] ? l : 'en';
   nodes.forEach(n => { const v = T[lang][n.dataset.i]; if (v) n.innerHTML = v; });
-  phs.forEach(n => { n.placeholder = T[lang][n.dataset.p]; });
+  labels.forEach(n => n.setAttribute('aria-label', T[lang][n.dataset.al]));
   document.documentElement.lang = lang;
   document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
-  try { localStorage.setItem('lang', lang); } catch(e) {}
+  // remember only a language the visitor picked themselves (no storage on a plain visit)
+  if (remember) try { localStorage.setItem('lang', lang); } catch(e) {}
   updateLinks();
   fitHero();
 }
@@ -557,13 +569,16 @@ opts.forEach(o => o.addEventListener('click', () => { o.setAttribute('aria-press
 [biz, link].forEach(i => i.addEventListener('input', updateLinks));
 document.querySelectorAll('[data-to]').forEach(b => b.addEventListener('click', () => {
   document.querySelectorAll('.step').forEach(s => s.classList.toggle('show', s.dataset.step === b.dataset.to));
-  if (b.dataset.to === '2') biz.focus({preventScroll:true});
+  const step = document.querySelector('.step.show');
+  (b.dataset.to === '2' ? biz : step.querySelector('h2')).focus({preventScroll:true});
 }));
 function updateLinks(){
   const picked = opts.filter(o => o.getAttribute('aria-pressed') === 'true').map(o => o.textContent).join(', ');
   const text = encodeURIComponent([T[lang].msg + (picked || '…'), biz.value.trim(), link.value.trim()].filter(Boolean).join('\n'));
-  document.getElementById('wa').href = WA ? `https://wa.me/${WA}?text=${text}` : '#';
-  document.getElementById('tg').href = TG ? `https://t.me/${TG}` : '#';
+  const wa = document.getElementById('wa'), tg = document.getElementById('tg');
+  wa.hidden = !WA; tg.hidden = !TG;   // no dead buttons until the real contacts are filled in
+  if (WA) wa.href = `https://wa.me/${WA}?text=${text}`;
+  if (TG) tg.href = `https://t.me/${TG}`;
   document.getElementById('em').href = `mailto:${MAIL}?subject=AV%20Studio&body=${text}`;
 }
 
@@ -571,7 +586,7 @@ let saved = null;
 try { saved = localStorage.getItem('lang'); } catch(e) {}
 const nav = (navigator.language || 'en').slice(0,2);
 setLang(saved || (nav === 'lt' ? 'lt' : ['ru','uk','be'].includes(nav) ? 'ru' : 'en'));
-document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+document.querySelectorAll('[data-lang]').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang, true)));
 
 // ---- Work list: hovered row lights up, preview card glides to it ----
 const rows = [...document.querySelectorAll('#wlist a')], cards = [...document.querySelectorAll('#pv .c')], pv = document.getElementById('pv');
@@ -590,18 +605,21 @@ activate(0);
 
 // ---- Menu overlay ----
 const menu = document.getElementById('menu'), menuBtn = document.getElementById('menuBtn');
-const toggleMenu = open => { menu.classList.toggle('open', open); menu.setAttribute('aria-hidden', !open); menuBtn.setAttribute('aria-expanded', open); };
+// open: page behind becomes inert and focus goes into the menu; close: focus returns to the button
+const toggleMenu = open => {
+  if (open === menu.classList.contains('open')) return;
+  menu.classList.toggle('open', open); menu.inert = !open; menuBtn.setAttribute('aria-expanded', open);
+  document.querySelectorAll('header, main, footer').forEach(el => el.inert = open);
+  (open ? document.getElementById('menuClose') : menuBtn).focus();
+};
 menuBtn.addEventListener('click', () => toggleMenu(true));
 document.getElementById('menuClose').addEventListener('click', () => toggleMenu(false));
 menu.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
 addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
 
-// ---- Live Vilnius time + temperature ----
+// ---- Live Vilnius time ----
 const tick = () => { const t = new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/Vilnius',hour:'2-digit',minute:'2-digit'}); document.querySelectorAll('.clock').forEach(c => c.textContent = t); };
 tick(); setInterval(tick, 20000);
-fetch('https://api.open-meteo.com/v1/forecast?latitude=54.69&longitude=25.28&current=temperature_2m')
-  .then(r => r.json()).then(d => { document.querySelectorAll('.temp').forEach(t => t.textContent = ' · ' + Math.round(d.current.temperature_2m) + '°C'); })
-  .catch(() => {});
 
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -10% 0px'});

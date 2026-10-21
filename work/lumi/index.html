@@ -6,11 +6,9 @@
 <title>Lumi Skin Studio — Vilnius</title>
 <meta name="description" content="Gentle facials, peels and skin care in the heart of Vilnius. Concept website by AV Studio.">
 <meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts/fonts.css">
 <style>
-:root{--bg:#f6f0e8;--paper:#fffaf4;--ink:#2b2420;--muted:#7d7067;--accent:#b8875f;--line:rgba(43,36,32,.14)}
+:root{--bg:#f6f0e8;--paper:#fffaf4;--ink:#2b2420;--muted:#6e6259;--accent:#8a5f3a;--line:rgba(43,36,32,.14)}
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font:400 16px/1.6 Manrope,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
@@ -54,6 +52,7 @@ h2{font-size:clamp(38px,5vw,64px);margin-bottom:48px;max-width:720px}
 .gallery img{aspect-ratio:3/4;object-fit:cover;border-radius:12px;width:100%}
 .book{text-align:center;background:var(--ink);color:var(--paper)}
 .book h2{margin:0 auto 24px}
+.book em{color:#e0bf9c}
 .book p{color:#cdbfb3;margin-bottom:36px}
 .book .btn{background:var(--paper);color:var(--ink)}
 .book .btn:hover{background:var(--accent);color:var(--paper)}
@@ -71,14 +70,16 @@ footer{padding:40px 0;font-size:14px;color:var(--muted);display:flex;justify-con
 </style>
 </head>
 <body>
-<div class="demo">Concept website made by <a href="/">AV Studio</a>. Lumi is a fictional business.</div>
+<aside class="demo" aria-label="About this demo">Concept website made by <a href="/">AV Studio</a>. Lumi is a fictional business.</aside>
 <div class="wrap">
   <header>
     <a class="logo serif" href="#">Lumi</a>
     <nav><a href="#menu">Treatments</a><a href="#studio">Studio</a><a href="#book">Contact</a></nav>
     <a class="btn" href="#book">Book a visit</a>
   </header>
-
+</div>
+<main>
+<div class="wrap">
   <div class="hero">
     <div>
       <h1 class="serif">Skin that feels <em>like yours</em> again</h1>
@@ -129,11 +130,12 @@ footer{padding:40px 0;font-size:14px;color:var(--muted);display:flex;justify-con
 <section class="book" id="book" style="margin-top:96px">
   <div class="wrap">
     <h2 class="serif">Ready for a <em>quiet hour</em>?</h2>
-    <p>Pilies g. 1, Vilnius · Tue–Sat, 10:00–20:00</p>
+    <p>Old Town, Vilnius · Tue–Sat, 10:00–20:00</p>
     <a class="btn" href="#">Book online</a>
   </div>
 </section>
 
+</main>
 <div class="wrap"><footer><span>© Lumi Skin Studio</span><span>Concept by <a href="/">AV Studio</a></span></footer></div>
 </body>
 </html>
