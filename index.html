@@ -77,6 +77,31 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .menu nav a:hover{color:var(--red);transform:translateX(10px)}
 .menu .mfoot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#8a909a}
 
+/* ---------- WHY US (USP) ---------- */
+.usp{padding-top:clamp(56px,8vw,96px);padding-bottom:var(--gap)}
+.sh2{font:500 clamp(42px,6.4vw,100px)/.95 var(--sans);text-transform:uppercase;letter-spacing:-.035em;margin-bottom:40px}
+.sh2 em{color:var(--red)}
+.ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.u{background:var(--grey);border-radius:var(--r);padding:28px clamp(20px,2.4vw,32px) 32px;transition:transform .35s var(--ease),background .35s}
+.u:hover{transform:translateY(-6px)}
+.u b{display:block;font:700 clamp(56px,6.6vw,100px)/.9 var(--wide);letter-spacing:-.05em;color:var(--red)}
+.u h3{font:500 clamp(20px,1.8vw,24px)/1.15 var(--sans);letter-spacing:-.01em;margin:20px 0 8px}
+.u p{color:var(--muted)}
+.u.hot{background:var(--red);color:#fff}
+.u.hot b,.u.hot p{color:#fff}
+
+/* ---------- WHAT'S INCLUDED ---------- */
+.incl2{background:var(--ink);color:#fff;padding:56px 0 48px}
+.incl2 .sh2{color:#fff;margin-bottom:12px}
+.incl2 .sub{color:rgba(255,255,255,.75);font-size:18px;margin-bottom:40px}
+.igrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.16);border-radius:14px;overflow:hidden}
+.it{background:var(--ink);padding:26px 24px 28px}
+.it i{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--red)}
+.it i::after{content:"";width:12px;height:7px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-2px) rotate(-45deg)}
+.it h3{font:500 19px/1.25 var(--sans);margin:22px 0 8px}
+.it p{color:rgba(255,255,255,.75);font-size:15px}
+.foot2{margin-top:28px;color:rgba(255,255,255,.75);font-size:15px;max-width:760px}
+
 /* ---------- WORK ---------- */
 .work-head{padding:96px 0 0;position:relative}
 .big{font:500 clamp(36px,12.4vw,190px)/.9 var(--sans);text-transform:uppercase;letter-spacing:-.035em;text-align:center;white-space:nowrap}
@@ -207,6 +232,7 @@ footer .logo{font-size:30px}
   .svc svg{display:none}
   .faq .wrapf{grid-template-columns:1fr;gap:16px}
   .dgrid{grid-template-columns:1fr}
+  .ugrid,.igrid{grid-template-columns:1fr 1fr}
   .dgrid::before{display:none}
   .day h3{margin-top:24px}
 }
@@ -234,6 +260,7 @@ footer .logo{font-size:30px}
   .svc{position:relative;top:0;margin-top:20px;transform:none}
   .services .big{position:static}
   .days{padding-top:64px;padding-bottom:48px}
+  .ugrid,.igrid{grid-template-columns:1fr}
   .fgrid{grid-template-columns:1fr 1fr}
   .fgrid > div:last-child{grid-column:1/-1}
 }
@@ -278,6 +305,38 @@ footer .logo{font-size:30px}
 </div>
 
 <main>
+<!-- ============ WHY US ============ -->
+<section class="usp in" id="why">
+  <h2 class="sh2 rv" data-i="h_why">Why <em>us</em></h2>
+  <div class="ugrid">
+    <div class="u hot rv"><b>3</b><h3 data-i="u1">design drafts to choose from</h3><p data-i="u1d">Before building, we show three directions. You pick the one you like.</p></div>
+    <div class="u rv"><b>2</b><h3 data-i="u2">rounds of edits included</h3><p data-i="u2d">We polish both the design and the finished site until it feels right.</p></div>
+    <div class="u rv"><b>7</b><h3 data-i="u3">days to launch</h3><p data-i="u3d">From the brief to a live site in about a week.</p></div>
+    <div class="u rv"><b>€0</b><h3 data-i="u4">builder subscription</h3><p data-i="u4d">No Wix or Tilda fees. The site and domain are yours; domain and hosting cost about €1–5 a month.</p></div>
+    <div class="u rv"><b>3</b><h3 data-i="u5">languages included</h3><p data-i="u5d">Lithuanian, English and Russian at no extra cost. Your clients read in their own language.</p></div>
+    <div class="u rv"><b>EU</b><h3 data-i="u6">rules covered</h3><p data-i="u6d">Privacy policy, no needless cookies, accessible design. Nothing to fix later.</p></div>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED ============ -->
+<section class="panel incl2" id="included">
+  <div class="in">
+    <h2 class="sh2" data-i="h_incl">What's <em>included</em></h2>
+    <p class="sub" data-i="incl_sub">In every site, whatever the price.</p>
+    <div class="igrid">
+      <div class="it"><i></i><h3 data-i="w1">Mobile version</h3><p data-i="w1d">Most of your clients come from a phone, so we design for it first.</p></div>
+      <div class="it"><i></i><h3 data-i="w2">Loads in a second</h3><p data-i="w2d">No heavy builders: a light site that opens right away.</p></div>
+      <div class="it"><i></i><h3 data-i="w3">Basic SEO</h3><p data-i="w3d">Titles, descriptions, a sitemap and your Google Business profile.</p></div>
+      <div class="it"><i></i><h3 data-i="w4">Domain &amp; email</h3><p data-i="w4d">We connect your domain and help set up a mailbox on it.</p></div>
+      <div class="it"><i></i><h3 data-i="w5">Privacy &amp; cookies</h3><p data-i="w5d">A privacy policy written for your site, cookies only where they're needed.</p></div>
+      <div class="it"><i></i><h3 data-i="w6">Easy for everyone</h3><p data-i="w6d">Readable contrast and navigation that works from the keyboard.</p></div>
+      <div class="it"><i></i><h3 data-i="w7">WhatsApp &amp; messenger buttons</h3><p data-i="w7d">Clients write to you in one tap.</p></div>
+      <div class="it"><i></i><h3 data-i="w8">Help with texts</h3><p data-i="w8d">We write and polish the copy together with you.</p></div>
+    </div>
+    <p class="foot2" data-i="foot2">Photo and video shoots cost extra. Support after launch is €25 a month, only if you want it. You can pay in parts.</p>
+  </div>
+</section>
+
 <!-- ============ WORK ============ -->
 <div class="work-head" id="work">
   <h2 class="big rv" data-i="h_work">Our work</h2>
@@ -372,14 +431,6 @@ footer .logo{font-size:30px}
       </svg>
     </article>
   </div>
-  <div class="incl">
-    <h4 data-i="incl">Always included</h4>
-    <ul>
-      <li data-i="i1">Mobile version</li><li data-i="i2">Loads in a second</li><li data-i="i3">Basic SEO</li>
-      <li data-i="i4">Domain setup</li><li data-i="i5">2 rounds of edits</li><li data-i="i6">WhatsApp &amp; messenger buttons</li>
-    </ul>
-    <p data-i="note">Hosting and domain usually cost €1–5 a month. Support and small edits after launch €25/month, only if you want it.</p>
-  </div>
 </section>
 
 <!-- ============ ONE WEEK ============ -->
@@ -401,7 +452,8 @@ footer .logo{font-size:30px}
       <details><summary data-i="q2">How fast will it be ready?</summary><p data-i="a2">A landing page takes up to a week. A bigger site takes a week or more; we give you the exact date after the brief.</p></details>
       <details><summary data-i="q3">What do I need to prepare?</summary><p data-i="a3">Almost nothing: answer five short questions and send photos if you have them. We'll help with the texts.</p></details>
       <details><summary data-i="q4">What if I don't like the design?</summary><p data-i="a4">First you get three design drafts to choose from, and we adjust the one you pick. Two rounds of edits are included.</p></details>
-      <details><summary data-i="q5">Are there monthly fees?</summary><p data-i="a5">Only for the domain and hosting, usually €1–5 a month. Support is optional.</p></details>
+      <details><summary data-i="q5">Are there monthly fees?</summary><p data-i="a5">Only for the domain and hosting, usually €1–5 a month. Support is optional, €25 a month.</p></details>
+      <details><summary data-i="q7">Can I pay in parts?</summary><p data-i="a7">Yes: part before we start, the rest after launch.</p></details>
       <details><summary data-i="q6">I know nothing about tech.</summary><p data-i="a6">You don't have to. Domain, hosting, email, Google profile: we set it all up.</p></details>
     </div>
   </div>
@@ -478,18 +530,34 @@ const T = {
     p1:'Vieno puslapio svetainė',p1d:'Vienas puslapis, kuris parduoda: kas jūs, paslaugos, kainos, kontaktai ir didelis registracijos mygtukas. Puiku pradžiai.',p1t:'iki 7 dienų',
     p2:'Įmonės svetainė',p2d:'Keli puslapiai, darbų galerija, užklausos forma ir bazinis SEO, kad jus rastų Google.',p2t:'nuo 7 dienų',
     p3:'Atnaujinimas',p3d:'Sena svetainė, kurią gėda rodyti? Padarysime naują ir greitą tuo pačiu domenu, išlaikydami tai, kas veikia.',p3t:'iki 7 dienų',
-    incl:'Visada įskaičiuota',i1:'Mobili versija',i2:'Užsikrauna per sekundę',i3:'Bazinis SEO',i4:'Domeno prijungimas',i5:'2 pataisymų ratai',i6:'WhatsApp ir žinučių mygtukai',
-    note:'Talpinimas ir domenas paprastai kainuoja 1–5 € per mėnesį. Priežiūra ir smulkūs pakeitimai po paleidimo 25 €/mėn., tik jei norite.',
     h_days:'Paruošta per <em>savaitę</em>',d1:'1 diena',d2:'2–4 dienos',d3:'5–7 dienos',
     s1:'Trumpas brifas',s1d:'Penki paprasti klausimai žinutėmis. Dešimt minučių, jokių namų darbų.',
     s2:'3 dizaino variantai',s2d:'Parodome tris dizaino juodraščius. Jūs išsirenkate vieną, o mes jį patobuliname pagal jūsų pastabas.',
     s3:'Kūrimas ir paleidimas',s3d:'Sukuriame svetainę, atliekame paskutinius pataisymus, prijungiame domeną, ir ji veikia.',
+    h_why:'Kodėl <em>mes</em>',
+    u1:'dizaino variantai pasirinkti',u1d:'Prieš kurdami parodome tris kryptis. Jūs išsirenkate patinkančią.',
+    u2:'pataisymų ratai įskaičiuoti',u2d:'Tobuliname ir dizainą, ir gatavą svetainę, kol patiks.',
+    u3:'dienos iki paleidimo',u3d:'Nuo brifo iki veikiančios svetainės maždaug per savaitę.',
+    u4:'konstruktoriaus prenumerata',u4d:'Jokių Wix ar Tilda mokesčių. Svetainė ir domenas jūsų; domenas ir talpinimas kainuoja apie 1–5 € per mėnesį.',
+    u5:'kalbos įskaičiuotos',u5d:'Lietuvių, anglų ir rusų kalbos be papildomo mokesčio. Klientai skaito savo kalba.',
+    u6:'taisyklių laikomasi',u6d:'Privatumo politika, jokių nereikalingų slapukų, prieinamas dizainas. Vėliau nieko taisyti nereikės.',
+    h_incl:'Kas <em>įskaičiuota</em>',incl_sub:'Kiekvienoje svetainėje, nepriklausomai nuo kainos.',
+    w1:'Mobili versija',w1d:'Dauguma klientų ateis iš telefono, todėl nuo jo ir pradedame.',
+    w2:'Užsikrauna per sekundę',w2d:'Be sunkių konstruktorių: lengva svetainė atsidaro iškart.',
+    w3:'Bazinis SEO',w3d:'Pavadinimai, aprašymai, svetainės žemėlapis ir Google Business profilis.',
+    w4:'Domenas ir el. paštas',w4d:'Prijungiame domeną ir padedame susikurti pašto dėžutę.',
+    w5:'Privatumas ir slapukai',w5d:'Privatumo politika jūsų svetainei, slapukai tik ten, kur jų reikia.',
+    w6:'Patogu visiems',w6d:'Įskaitomas kontrastas ir naršymas klaviatūra.',
+    w7:'WhatsApp ir žinučių mygtukai',w7d:'Klientai jums parašo vienu paspaudimu.',
+    w8:'Pagalba su tekstais',w8d:'Tekstus rašome ir taisome kartu su jumis.',
+    foot2:'Foto ir vaizdo filmavimas už papildomą kainą. Priežiūra po paleidimo 25 € per mėnesį, jei norite. Galima mokėti dalimis.',
+    q7:'Ar galima mokėti dalimis?',a7:'Taip: dalį prieš pradedant, likutį po paleidimo.',
     h_faq:'DUK',
     q1:'Kiek kainuoja svetainė?',a1:'Nuo 200 € už vieno puslapio svetainę. Tikslią kainą pasakome po trumpo pokalbio, ir ji lieka fiksuota.',
     q2:'Kaip greitai ji bus paruošta?',a2:'Vieno puslapio svetainė per savaitę. Didesnė svetainė užtrunka savaitę ar ilgiau, tikslią datą pasakome po brifo.',
     q3:'Ką man reikia paruošti?',a3:'Beveik nieko: atsakyti į penkis trumpus klausimus ir atsiųsti nuotraukas, jei turite. Su tekstais padėsime.',
     q4:'O jei dizainas nepatiks?',a4:'Pirmiausia gaunate tris dizaino variantus, o pasirinktą iškart pataisome. Du pataisymų ratai įskaičiuoti.',
-    q5:'Ar yra mėnesinių mokesčių?',a5:'Tik už domeną ir talpinimą, paprastai 1–5 € per mėnesį. Priežiūra pagal norą.',
+    q5:'Ar yra mėnesinių mokesčių?',a5:'Tik už domeną ir talpinimą, paprastai 1–5 € per mėnesį. Priežiūra pagal norą, 25 € per mėnesį.',
     q6:'Nieko neišmanau apie technologijas.',a6:'Ir nereikia. Domeną, talpinimą, el. paštą, Google profilį sutvarkome patys.',
     need:'Man reikia',o1:'vieno puslapio svetainės',o2:'įmonės svetainės',o3:'atnaujinimo',o4:'dar nežinau',next:'toliau',back:'← atgal',
     b2:'Apie jūsų verslą',l1:'Pavadinimas ir kuo užsiimate',l2:'Instagram arba dabartinė svetainė (nebūtina)',sendnote:'Mygtukas atidarys programėlę su paruošta žinute. Siųsti ar ne, sprendžiate jūs.',privacy_l:'Privatumo politika',menu_l:'Atidaryti meniu',menu_d:'Meniu',where:'Kur patogiau bendrauti?',
@@ -506,18 +574,34 @@ const T = {
     p1:'Лендинг',p1d:'Одна страница, которая продаёт: кто вы, услуги, цены, контакты и большая кнопка записи. Идеально для старта.',p1t:'до 7 дней',
     p2:'Сайт компании',p2d:'Несколько страниц, галерея работ, форма заявки и базовое SEO, чтобы вас находили в Google.',p2t:'от 7 дней',
     p3:'Редизайн',p3d:'Старый сайт, который стыдно показывать? Сделаем новый и быстрый на том же домене, сохранив то, что работает.',p3t:'до 7 дней',
-    incl:'Всегда входит',i1:'Мобильная версия',i2:'Грузится за секунду',i3:'Базовое SEO',i4:'Подключение домена',i5:'2 круга правок',i6:'Кнопки WhatsApp и мессенджеров',
-    note:'Хостинг и домен обычно стоят €1–5 в месяц. Поддержка и мелкие правки после запуска €25/мес., только если нужно.',
     h_days:'Готово за <em>неделю</em>',d1:'День 1',d2:'Дни 2–4',d3:'Дни 5–7',
     s1:'Короткий бриф',s1d:'Пять простых вопросов в мессенджере. Десять минут, без домашки.',
     s2:'3 варианта дизайна',s2d:'Показываем три черновика дизайна. Вы выбираете один, и мы доводим его по вашим правкам.',
     s3:'Сборка и запуск',s3d:'Собираем сайт, вносим последние правки, подключаем домен, и он работает.',
+    h_why:'Почему <em>мы</em>',
+    u1:'варианта дизайна на выбор',u1d:'До сборки показываем три направления. Вы выбираете то, что нравится.',
+    u2:'круга правок в цене',u2d:'Доводим и дизайн, и готовый сайт, пока не понравится.',
+    u3:'дней до запуска',u3d:'От брифа до работающего сайта примерно за неделю.',
+    u4:'абонентки конструктора',u4d:'Никаких платежей Wix или Tilda. Сайт и домен ваши; домен и хостинг стоят около €1–5 в месяц.',
+    u5:'языка в стоимости',u5d:'Литовский, английский и русский без доплаты. Клиенты читают на своём языке.',
+    u6:'правила соблюдены',u6d:'Политика конфиденциальности, никаких лишних cookies, доступный дизайн. Ничего не придётся переделывать.',
+    h_incl:'Что <em>входит</em>',incl_sub:'В каждый сайт, за любую цену.',
+    w1:'Мобильная версия',w1d:'Большинство клиентов придёт с телефона, поэтому начинаем с него.',
+    w2:'Грузится за секунду',w2d:'Без тяжёлых конструкторов: лёгкий сайт открывается сразу.',
+    w3:'Базовое SEO',w3d:'Заголовки, описания, карта сайта и профиль Google Business.',
+    w4:'Домен и почта',w4d:'Подключаем домен и помогаем завести на нём почту.',
+    w5:'Конфиденциальность и cookies',w5d:'Политика конфиденциальности под ваш сайт, cookies только там, где нужны.',
+    w6:'Удобно всем',w6d:'Читаемый контраст и навигация с клавиатуры.',
+    w7:'Кнопки WhatsApp и мессенджеров',w7d:'Клиенты пишут вам в одно касание.',
+    w8:'Помощь с текстами',w8d:'Пишем и правим тексты вместе с вами.',
+    foot2:'Фото- и видеосъёмка за отдельную плату. Поддержка после запуска €25 в месяц, по желанию. Можно платить частями.',
+    q7:'Можно платить частями?',a7:'Да: часть до старта, остальное после запуска.',
     h_faq:'Вопросы',
     q1:'Сколько стоит сайт?',a1:'От €200 за лендинг. Точную цену называем после короткого разговора, и она фиксируется.',
     q2:'Как быстро будет готово?',a2:'Лендинг делаем до недели. Сайт побольше от недели, точный срок назовём после брифа.',
     q3:'Что мне нужно подготовить?',a3:'Почти ничего: ответить на пять коротких вопросов и прислать фото, если есть. С текстами поможем.',
     q4:'А если дизайн не понравится?',a4:'Сначала вы получаете три варианта дизайна на выбор, и мы сразу правим выбранный. Два круга правок входят в цену.',
-    q5:'Будут ежемесячные платежи?',a5:'Только за домен и хостинг, обычно €1–5 в месяц. Поддержка по желанию.',
+    q5:'Будут ежемесячные платежи?',a5:'Только за домен и хостинг, обычно €1–5 в месяц. Поддержка по желанию, €25 в месяц.',
     q6:'Я ничего не понимаю в технике.',a6:'И не нужно. Домен, хостинг, почту, профиль в Google настроим сами.',
     need:'Мне нужен',o1:'лендинг',o2:'сайт компании',o3:'редизайн',o4:'пока не знаю',next:'дальше',back:'← назад',
     b2:'Пара слов о бизнесе',l1:'Название и чем занимаетесь',l2:'Instagram или старый сайт (необязательно)',sendnote:'Кнопка откроет приложение с готовым сообщением. Отправлять его или нет, решаете вы.',privacy_l:'Политика конфиденциальности',menu_l:'Открыть меню',menu_d:'Меню',where:'Где удобнее общаться?',
