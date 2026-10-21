@@ -179,22 +179,25 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .incl p{color:rgba(255,255,255,.6);font-size:14px;margin-top:18px;max-width:680px}
 
 /* ---------- PROCESS: one week as a timeline ---------- */
-.days{min-height:calc(100svh - 2*var(--gap));display:flex;flex-direction:column;justify-content:center;padding-top:clamp(40px,8vh,96px);padding-bottom:clamp(32px,6vh,72px)}
-.days h2{font:500 clamp(40px,min(6.4vw,11vh),100px)/.95 var(--sans);text-transform:uppercase;letter-spacing:-.035em;margin-bottom:clamp(24px,6vh,64px)}
+.days{min-height:calc(100svh - 2*var(--gap));display:flex;flex-direction:column;padding-top:clamp(32px,6vh,80px);padding-bottom:clamp(24px,5vh,64px)}
+.days h2{font:500 clamp(40px,min(6.4vw,11vh),100px)/.95 var(--sans);text-transform:uppercase;letter-spacing:-.035em;margin-bottom:clamp(16px,3vh,36px)}
 .days h2 em{color:var(--red)}
-.tl{display:grid;grid-template-columns:1.6fr repeat(6,1fr);column-gap:6px;row-gap:clamp(10px,2vh,18px)}
-.tl .dn{grid-row:1;font-size:13px;color:var(--muted);border-left:1.5px solid var(--line);padding:0 0 4px 8px}
-.seg{grid-row:2;height:clamp(52px,10vh,88px);border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 clamp(16px,1.6vw,26px);
-  font:700 clamp(18px,min(2.2vw,4.2vh),38px)/1 var(--wide);letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;transform-origin:left center}
+/* rows: day numbers on top, free space, bars, steps, a little space at the bottom */
+.tl{flex:1;display:grid;grid-template-columns:1.6fr repeat(6,1fr);grid-template-rows:minmax(min-content,1fr) auto auto minmax(0,.55fr);column-gap:6px}
+/* each day is a calendar column: big pale number on top, dashed line down to the bottom */
+.tl .dn{grid-row:1/5;position:relative;z-index:0;border-left:1.5px dashed #d9d9df;padding:0 0 0 12px;font:700 clamp(32px,min(5.4vw,12vh),130px)/1 var(--wide);letter-spacing:-.04em;color:#e9e9ed}
+.tl .dn:nth-child(1){grid-column:1}.tl .dn:nth-child(2){grid-column:2}.tl .dn:nth-child(3){grid-column:3}.tl .dn:nth-child(4){grid-column:4}.tl .dn:nth-child(5){grid-column:5}.tl .dn:nth-child(6){grid-column:6}.tl .dn:nth-child(7){grid-column:7}
+.seg{grid-row:2;position:relative;z-index:1;height:clamp(56px,13vh,124px);border-radius:999px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:0 clamp(16px,1.6vw,26px);
+  font:700 clamp(18px,min(2.5vw,5.2vh),50px)/1 var(--wide);letter-spacing:-.04em;text-transform:uppercase;white-space:nowrap;transform-origin:left center}
 .seg.a{grid-column:1/2;background:var(--red);color:#fff}
 .seg.b{grid-column:2/5;background:var(--ink);color:#fff}
 .seg.c{grid-column:5/8;background:var(--pink);color:var(--ink)}
 .live{display:inline-flex;align-items:center;gap:8px;height:34px;padding:0 14px;border-radius:999px;background:#fff;color:var(--ink);font:500 clamp(13px,1.1vw,15px) var(--sans);letter-spacing:0;text-transform:none}
 .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
-.st{grid-row:3;padding-right:clamp(8px,1.4vw,20px)}
+.st{grid-row:3;position:relative;z-index:1;align-self:start;padding:clamp(14px,3.4vh,40px) clamp(8px,1.4vw,20px) 0 12px}
 .st.a{grid-column:1/2}.st.b{grid-column:2/5}.st.c{grid-column:5/8}
-.st h3{font:500 clamp(19px,min(1.8vw,3.2vh),28px)/1.15 var(--sans);letter-spacing:-.02em;margin-bottom:6px}
-.st p{color:var(--muted);font-size:clamp(14px,min(1.15vw,2.3vh),17px);line-height:1.45}
+.st h3{font:500 clamp(19px,min(2.1vw,4vh),36px)/1.15 var(--sans);letter-spacing:-.02em;margin-bottom:8px}
+.st p{color:var(--muted);font-size:clamp(14px,min(1.3vw,2.8vh),21px);line-height:1.45;max-width:480px}
 /* the bars grow one after another when the timeline comes into view */
 @media (prefers-reduced-motion:no-preference){
   .js .tl .seg{transform:scaleX(.04);opacity:.3}
@@ -276,9 +279,11 @@ footer .logo{font-size:30px}
   .svc svg{display:none}
   .faq .wrapf{grid-template-columns:1fr;gap:16px}
   /* timeline turns vertical: bar, then its step, three times */
-  .tl{grid-template-columns:1fr;row-gap:10px}
+  .days{justify-content:center}
+  .tl{flex:none;grid-template-columns:1fr;grid-template-rows:none;row-gap:10px}
   .tl .dn{display:none}
-  .seg,.st{grid-column:1/-1!important;grid-row:auto}
+  .seg,.st{grid-column:1/-1!important;grid-row:auto;margin-top:0}
+  .st{padding:0}
   .seg.a{order:1;width:42%}.st.a{order:2}.seg.b{order:3;width:72%}.st.b{order:4}.seg.c{order:5}.st.c{order:6}
   .st{margin-bottom:10px}
 }
@@ -424,7 +429,7 @@ footer .logo{font-size:30px}
     <div class="mf">
       <p data-i="m1">Every site starts with <u>a conversation about your business</u>: what you do, who comes to you and what matters to them. That's why it ends up <u>truly yours</u>, not like everyone else's.</p>
       <p data-i="m2">Then we show you <u>three design options</u>. You pick your favourite, and we fine-tune the details together. <u>In a week</u> the site is ready and live.</p>
-      <p data-i="m3">And it's <u>fully yours</u>: no monthly payments, just a small yearly fee for the site address. It speaks to your clients <u>in three languages</u> and works just as well on a phone as on a computer.</p>
+      <p data-i="m3">And it's <u>fully yours</u>: no monthly payments, just a small yearly fee for the site address. It comes <u>translated into three languages</u> and works just as well on a phone as on a computer.</p>
     </div>
     <div class="mf-steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
     <a class="badge" href="#contact" aria-label="Write to us" data-al="badge_l">
@@ -500,7 +505,7 @@ footer .logo{font-size:30px}
     <div class="seg a" style="--dl:0s"><span data-i="d1">Day 1</span></div>
     <div class="seg b" style="--dl:.3s"><span data-i="d2">Days 2–4</span></div>
     <div class="seg c" style="--dl:.6s"><span data-i="d3">Days 5–7</span><span class="live" data-i="live">Site is live</span></div>
-    <div class="st a"><h3 data-i="s1">Short brief</h3><p data-i="s1d">Five simple questions in a messenger. Ten minutes, no homework.</p></div>
+    <div class="st a"><h3 data-i="s1">In-depth brief</h3><p data-i="s1d">We dig into your business: your clients, competitors and what you want from the site. You just talk, we do the rest.</p></div>
     <div class="st b"><h3 data-i="s2">3 designs to choose from</h3><p data-i="s2d">We show three design drafts. You pick one, and we polish it with your edits.</p></div>
     <div class="st c"><h3 data-i="s3">Build &amp; launch</h3><p data-i="s3d">We build the site, make the final edits, connect your web address, and it goes live.</p></div>
   </div>
@@ -513,7 +518,7 @@ footer .logo{font-size:30px}
     <div>
       <details><summary data-i="q1">How much does a website cost?</summary><p data-i="a1">From €200 for a landing page. We give you the exact price after a short chat, and it stays fixed.</p></details>
       <details><summary data-i="q2">How fast will it be ready?</summary><p data-i="a2">A landing page takes up to a week. A bigger site takes a week or more; we give you the exact date after the brief.</p></details>
-      <details><summary data-i="q3">What do I need to prepare?</summary><p data-i="a3">Almost nothing: answer five short questions and send photos if you have them. We'll help with the texts.</p></details>
+      <details><summary data-i="q3">What do I need to prepare?</summary><p data-i="a3">Almost nothing: tell us about your business during the brief and send photos if you have them. We'll help with the texts.</p></details>
       <details><summary data-i="q4">What if I don't like the design?</summary><p data-i="a4">First you get three design drafts to choose from, and we adjust the one you pick. Two rounds of edits are included.</p></details>
       <details><summary data-i="q5">Are there monthly fees?</summary><p data-i="a5">Usually no. Hosting is free for most sites, so you only pay for the domain, about €10–20 a year. Support is optional, €25 a month.</p></details>
       <details><summary data-i="q8">What if I need a shop, online booking or an admin panel?</summary><p data-i="a8">We can build it. Such sites need paid hosting, so we price the development and the hosting separately and tell you both before we start.</p></details>
@@ -597,13 +602,13 @@ const T = {
     p2:'Įmonės svetainė',p2d:'Keli puslapiai, darbų galerija, užklausos forma ir bazinis SEO, kad jus rastų Google.',p2t:'nuo 7 dienų',
     p3:'Atnaujinimas',p3d:'Sena svetainė, kurią gėda rodyti? Padarysime naują ir greitą tuo pačiu domenu, išlaikydami tai, kas veikia.',p3t:'iki 7 dienų',
     h_days:'Paruošta per <em>savaitę</em>',d1:'1 diena',d2:'2–4 dienos',d3:'5–7 dienos',
-    s1:'Trumpas brifas',s1d:'Penki paprasti klausimai žinutėmis. Dešimt minučių, jokių namų darbų.',
+    s1:'Išsamus brifas',s1d:'Gerai įsigiliname į jūsų verslą: klientus, konkurentus ir ko tikitės iš svetainės. Jūs tik pasakojate, visa kita padarome mes.',
     s2:'3 dizaino variantai',s2d:'Parodome tris dizaino juodraščius. Jūs išsirenkate vieną, o mes jį patobuliname pagal jūsų pastabas.',
     s3:'Kūrimas ir paleidimas',s3d:'Sukuriame svetainę, atliekame paskutinius pataisymus, prijungiame adresą, ir ji veikia.',
     why_l:'Apie mus',badge_l:'Parašykite mums',badge:'Reikia svetainės? • Parašykite • ',
     m1:'Kiekvieną svetainę pradedame <u>nuo pokalbio apie jūsų verslą</u>: kuo užsiimate, kas pas jus ateina ir kas jiems svarbu. Todėl ji tampa <u>tikrai jūsų</u>, o ne tokia kaip visų.',
     m2:'Tada parodome <u>tris dizaino variantus</u>. Jūs išsirenkate mėgstamiausią, o detales patobuliname kartu. <u>Po savaitės</u> svetainė paruošta ir veikia.',
-    m3:'Ir ji <u>visiškai jūsų</u>: jokių mėnesinių mokesčių, tik nedidelis metinis mokestis už svetainės adresą. Ji kalba su klientais <u>trimis kalbomis</u> ir vienodai patogi telefone ir kompiuteryje.',
+    m3:'Ir ji <u>visiškai jūsų</u>: jokių mėnesinių mokesčių, tik nedidelis metinis mokestis už svetainės adresą. Svetainė iš karto <u>išversta į tris kalbas</u> ir vienodai patogi telefone ir kompiuteryje.',
     k_incl:'Kas įskaičiuota',h_incl:'Kiekviena svetainė <em>iki rakto</em>',incl_sub:'Nuo pirmo juodraščio iki veikiančios svetainės jūsų domene. Be paslėptų mokesčių.',
     c1:'Mobilu ir greita',c1d:'Dauguma klientų ateis iš telefono, todėl nuo jo ir pradedame. Svetainė lengva ir atsidaro per sekundę.',
     c2:'Matoma Google',c2d:'Pavadinimai, aprašymai, svetainės žemėlapis ir Google Business profilis. Analitiką įdiegsime paprašius.',
@@ -621,7 +626,7 @@ const T = {
     h_faq:'DUK',
     q1:'Kiek kainuoja svetainė?',a1:'Nuo 200 € už vieno puslapio svetainę. Tikslią kainą pasakome po trumpo pokalbio, ir ji lieka fiksuota.',
     q2:'Kaip greitai ji bus paruošta?',a2:'Vieno puslapio svetainė per savaitę. Didesnė svetainė užtrunka savaitę ar ilgiau, tikslią datą pasakome po brifo.',
-    q3:'Ką man reikia paruošti?',a3:'Beveik nieko: atsakyti į penkis trumpus klausimus ir atsiųsti nuotraukas, jei turite. Su tekstais padėsime.',
+    q3:'Ką man reikia paruošti?',a3:'Beveik nieko: papasakoti apie savo verslą per brifą ir atsiųsti nuotraukas, jei turite. Su tekstais padėsime.',
     q4:'O jei dizainas nepatiks?',a4:'Pirmiausia gaunate tris dizaino variantus, o pasirinktą iškart pataisome. Du pataisymų ratai įskaičiuoti.',
     q5:'Ar yra mėnesinių mokesčių?',a5:'Dažniausiai ne. Daugumai svetainių talpinimas nemokamas, todėl mokate tik už domeną, apie 10–20 € per metus. Priežiūra pagal norą, 25 € per mėnesį.',
     q8:'O jei reikia parduotuvės, registracijos internetu ar administravimo srities?',a8:'Sukursime. Tokioms svetainėms reikia mokamo talpinimo, todėl kūrimo ir talpinimo kainą skaičiuojame atskirai ir pasakome prieš pradedant.',
@@ -642,13 +647,13 @@ const T = {
     p2:'Сайт компании',p2d:'Несколько страниц, галерея работ, форма заявки и базовое SEO, чтобы вас находили в Google.',p2t:'от 7 дней',
     p3:'Редизайн',p3d:'Старый сайт, который стыдно показывать? Сделаем новый и быстрый на том же домене, сохранив то, что работает.',p3t:'до 7 дней',
     h_days:'Готово за <em>неделю</em>',d1:'День 1',d2:'Дни 2–4',d3:'Дни 5–7',
-    s1:'Короткий бриф',s1d:'Пять простых вопросов в мессенджере. Десять минут, без домашки.',
+    s1:'Глубокий бриф',s1d:'Подробно разбираемся в вашем деле: кто ваши клиенты, кто конкуренты и чего вы ждёте от сайта. Вы просто рассказываете, остальное за нами.',
     s2:'3 варианта дизайна',s2d:'Показываем три черновика дизайна. Вы выбираете один, и мы доводим его по вашим правкам.',
     s3:'Сборка и запуск',s3d:'Собираем сайт, вносим последние правки, подключаем адрес сайта, и он работает.',
     why_l:'О нас',badge_l:'Написать нам',badge:'Нужен сайт? • Напишите нам • ',
     m1:'Каждый сайт мы начинаем <u>с разговора о вашем деле</u>: чем вы занимаетесь, кто к вам приходит и что для них важно. Поэтому он получается <u>именно про вас</u>, а не как у всех.',
     m2:'Потом показываем <u>три варианта дизайна</u>. Вы выбираете любимый, и мы вместе доводим детали. <u>Через неделю</u> сайт готов и работает.',
-    m3:'И он <u>полностью ваш</u>: никаких ежемесячных платежей, только небольшая оплата адреса сайта раз в год. Он говорит с клиентами <u>на трёх языках</u> и одинаково удобен с телефона и компьютера.',
+    m3:'И он <u>полностью ваш</u>: никаких ежемесячных платежей, только небольшая оплата адреса сайта раз в год. Сайт сразу <u>переведён на три языка</u> и одинаково удобен с телефона и компьютера.',
     k_incl:'Что входит',h_incl:'Каждый сайт <em>под ключ</em>',incl_sub:'От первого черновика до работающего сайта на вашем домене. Без скрытых доплат.',
     c1:'Мобильно и быстро',c1d:'Большинство клиентов придёт с телефона, поэтому начинаем с него. Сайт лёгкий и открывается за секунду.',
     c2:'Видно в Google',c2d:'Заголовки, описания, карта сайта и профиль Google Business. Аналитику подключим по запросу.',
@@ -666,7 +671,7 @@ const T = {
     h_faq:'Вопросы',
     q1:'Сколько стоит сайт?',a1:'От €200 за лендинг. Точную цену называем после короткого разговора, и она фиксируется.',
     q2:'Как быстро будет готово?',a2:'Лендинг делаем до недели. Сайт побольше от недели, точный срок назовём после брифа.',
-    q3:'Что мне нужно подготовить?',a3:'Почти ничего: ответить на пять коротких вопросов и прислать фото, если есть. С текстами поможем.',
+    q3:'Что мне нужно подготовить?',a3:'Почти ничего: рассказать о своём деле на брифе и прислать фото, если есть. С текстами поможем.',
     q4:'А если дизайн не понравится?',a4:'Сначала вы получаете три варианта дизайна на выбор, и мы сразу правим выбранный. Два круга правок входят в цену.',
     q5:'Будут ежемесячные платежи?',a5:'Обычно нет. Для большинства сайтов хостинг бесплатный, и вы платите только за домен, около €10–20 в год. Поддержка по желанию, €25 в месяц.',
     q8:'А если нужен магазин, онлайн-запись или админка?',a8:'Сделаем. Таким сайтам нужен платный хостинг, поэтому разработку и хостинг считаем отдельно и называем цену до старта.',
