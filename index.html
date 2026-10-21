@@ -105,24 +105,51 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .badge:hover span{transform:rotate(-45deg) scale(1.08)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ---------- WHAT'S INCLUDED (à la carte cards) ---------- */
-.carte{min-height:calc(100svh - 2*var(--gap));display:flex;background:linear-gradient(180deg,#fff 0%,#fbe9ec 100%);border:1px solid #f1dfe2}
-.cin{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3.6vh,40px);padding-top:clamp(28px,6vh,64px);padding-bottom:clamp(28px,6vh,64px)}
-.chead{text-align:center;max-width:820px;margin:0 auto}
-.kick{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.ch2{font:500 clamp(34px,min(5.4vw,9vh),90px)/.98 var(--sans);letter-spacing:-.035em;margin:10px 0 14px}
+/* ---------- WHAT'S INCLUDED, option B: bento grid with line drawings ---------- */
+.carte{height:calc(100svh - 2*var(--gap));min-height:540px;display:flex;background:var(--grey)}
+.cin{flex:1;display:flex;flex-direction:column;gap:clamp(14px,3vh,32px);padding-top:clamp(24px,5vh,56px);padding-bottom:clamp(20px,4vh,44px)}
+.chead{display:flex;justify-content:space-between;align-items:flex-end;gap:16px 40px;flex-wrap:wrap}
+.kick{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ch2{font:500 clamp(34px,min(5.4vw,9vh),90px)/.98 var(--sans);letter-spacing:-.035em;margin-top:10px}
 .ch2 em{color:var(--red);white-space:nowrap}
-.cintro{color:var(--muted);font-size:clamp(15px,2.4vh,18px)}
-.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
-.card{position:relative;overflow:hidden;border-radius:var(--r);background:var(--ink);color:#fff;min-height:clamp(250px,44vh,420px);padding:clamp(18px,3vh,28px) clamp(18px,1.8vw,26px) clamp(48px,9vh,92px);display:flex;flex-direction:column;transition:transform .35s var(--ease)}
-.card::after{content:"";position:absolute;left:-15%;right:-15%;bottom:-62%;height:95%;background:radial-gradient(closest-side,var(--glow),transparent);opacity:.95;pointer-events:none;transition:transform .6s var(--ease)}
-.card:hover{transform:translateY(-6px)}
-.card:hover::after{transform:translateY(-10%)}
-.g1{--glow:#d62c42}.g2{--glow:#e86a7c}.g3{--glow:#f0784a}.g4{--glow:#8f5cf0}
-.card svg{width:40px;height:40px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
-.card h3{font:500 clamp(19px,min(1.7vw,3vh),24px)/1.15 var(--sans);letter-spacing:-.01em;margin-top:auto;padding-top:24px}
-.card p{position:relative;z-index:1;color:rgba(255,255,255,.85);font-size:clamp(14px,min(1.1vw,2.2vh),16px);line-height:1.45;margin-top:8px}
-.foot2{text-align:center;color:var(--muted);font-size:clamp(14px,2.1vh,15px)}
+.cintro{color:var(--muted);font-size:clamp(15px,2.3vh,18px);max-width:380px}
+.bento{flex:1;min-height:0;display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:var(--gap)}
+.t-a{grid-row:span 2}
+.tile{background:#fff;border:1px solid #e4e4e8;border-radius:var(--r);padding:clamp(14px,2.4vh,24px) clamp(16px,1.6vw,24px);display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden;transition:transform .35s var(--ease),box-shadow .35s}
+.tile:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(24,29,36,.08)}
+/* drawings fill whatever space the tile has left, never stretch it */
+.tile .ill{flex:1;min-height:40px;position:relative}
+.tile .ill svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.ill text{font-family:Onest,"Helvetica Neue",Arial,sans-serif}
+.tile .acc{transition:transform .5s var(--ease)}
+.tile:hover .acc{transform:translateY(-4px)}
+.tile h3{font:500 clamp(18px,min(1.6vw,2.8vh),24px)/1.15 var(--sans);letter-spacing:-.01em}
+.tile p{color:var(--muted);font-size:clamp(13px,min(1.05vw,2vh),15px);line-height:1.4;margin-top:4px}
+.tile.red{background:var(--red);border-color:var(--red);color:#fff}
+.tile.red p{color:#fff}
+.foot2{color:var(--muted);font-size:clamp(13px,2vh,15px)}
+
+/* ---------- WHAT'S INCLUDED, option C: pills piled on red ---------- */
+.pills{min-height:calc(100svh - 2*var(--gap));display:flex;background:var(--red);color:#fff}
+.pin{flex:1;display:flex;flex-direction:column;gap:clamp(14px,3vh,28px);padding-top:clamp(24px,5vh,56px);padding-bottom:clamp(20px,4vh,40px)}
+.pills .kick{color:#fff}
+.pills .ch2 em{color:var(--ink)}
+.pcap{max-width:400px;min-height:4.4em;font-size:clamp(15px,2.4vh,19px);line-height:1.45}
+.pcap b{display:block;font-weight:500;margin-bottom:2px}
+.pile{flex:1;display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-end;gap:clamp(6px,1.6vh,16px) 0;padding:0 1% clamp(8px,2vh,20px)}
+.pl{height:clamp(46px,11vh,112px);padding:0 1em;margin:0 -.06em;border-radius:999px;font:500 clamp(17px,min(3.3vw,5.8vh),58px)/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;
+  background:#fff;color:var(--ink);transform:translateY(var(--dy,0)) rotate(var(--r,0deg));transition:transform .45s var(--ease),box-shadow .3s;box-shadow:0 10px 24px rgba(80,0,10,.22)}
+.pl:nth-child(3n+2){background:var(--ink);color:#fff}
+.pl:nth-child(4n+3){background:var(--pink);color:var(--ink)}
+.pl:nth-child(5n){background:transparent;color:#fff;box-shadow:inset 0 0 0 2px #fff}
+.pl:hover,.pl[aria-pressed=true]{transform:translateY(calc(var(--dy,0px) - 12px)) rotate(0deg);z-index:2;box-shadow:0 18px 30px rgba(80,0,10,.32)}
+.pills .foot2{color:#fff}
+/* pills drop into the pile when the screen comes into view */
+@media (prefers-reduced-motion:no-preference){
+  .js .pile .pl{opacity:0;transform:translateY(-60vh) rotate(calc(var(--r,0deg) * 3))}
+  .js .pile.on .pl{opacity:1;transform:translateY(var(--dy,0)) rotate(var(--r,0deg));transition:transform .9s cubic-bezier(.25,1.4,.4,1),opacity .3s;transition-delay:calc(var(--i) * 70ms)}
+  .js .pile.on .pl:hover,.js .pile.on .pl[aria-pressed=true]{transform:translateY(calc(var(--dy,0px) - 12px)) rotate(0deg);transition-delay:0s}
+}
 
 /* ---------- WORK ---------- */
 .work-head{padding:96px 0 0;position:relative}
@@ -255,8 +282,8 @@ footer .logo{font-size:30px}
   .svc svg{display:none}
   .faq .wrapf{grid-template-columns:1fr;gap:16px}
   .dgrid{grid-template-columns:1fr}
-  .cards{grid-template-columns:1fr 1fr}
-  .card{min-height:clamp(200px,26vh,300px)}
+  .bento{grid-template-columns:1fr 1fr;grid-template-rows:1.15fr 1fr 1fr}
+  .t-a{grid-row:auto;grid-column:span 2}
   .dgrid::before{display:none}
   .day h3{margin-top:24px}
 }
@@ -287,9 +314,13 @@ footer .logo{font-size:30px}
   .mf{width:78%}
   .mf-steps{right:12px}
   .badge{width:84px}
-  /* phones: cards swipe sideways so the block stays one screen tall */
-  .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;margin:0 -4px}
-  .card{scroll-snap-align:start;min-height:300px}
+  .bento{gap:8px}
+  .tile{padding:12px;gap:6px}
+  .tile h3{font-size:15px}
+  .tile p{display:none}
+  .pl{font-size:clamp(14px,2.1vh,17px);height:clamp(36px,5.6vh,48px)}
+  .pcap{min-height:3.2em;font-size:14px}
+  .pin{gap:12px}
   .fgrid{grid-template-columns:1fr 1fr}
   .fgrid > div:last-child{grid-column:1/-1}
 }
@@ -389,21 +420,81 @@ footer .logo{font-size:30px}
   </div>
 </section>
 
-<!-- ============ WHAT'S INCLUDED ============ -->
+<!-- ============ WHAT'S INCLUDED: option B (bento) ============ -->
 <section class="panel carte" id="included">
   <div class="in cin">
     <div class="chead">
-      <span class="kick" data-i="k_incl">What's included</span>
-      <h2 class="ch2 rv" data-i="h_incl">Every site, <em>turnkey</em></h2>
+      <div><span class="kick" data-i="k_incl">What's included</span><h2 class="ch2 rv" data-i="h_incl">Every site, <em>turnkey</em></h2></div>
       <p class="cintro" data-i="incl_sub">From the first draft to a live site on your domain. No hidden extras.</p>
     </div>
-    <div class="cards">
-      <article class="card g1 rv"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="12" y="4" width="16" height="32" rx="3"/><path d="M18 31h4M21 11l-3 6h4l-3 6"/></svg><h3 data-i="c1">Mobile and fast</h3><p data-i="c1d">Most of your clients come from a phone, so we start there. The site is light and opens in a second.</p></article>
-      <article class="card g2 rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="17" r="10"/><path d="M24.5 24.5L34 34M13 19l3-3 3 3 4-5"/></svg><h3 data-i="c2">Found on Google</h3><p data-i="c2d">Titles, descriptions, a sitemap and your Google Business profile. Analytics on request.</p></article>
-      <article class="card g3 rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14"/><path d="M6 20h28M20 6c5 5 5 23 0 28M20 6c-5 5-5 23 0 28"/></svg><h3 data-i="c3">Domain, email, messengers</h3><p data-i="c3d">We connect your domain, set up a free mailbox if you want one, and add WhatsApp and messenger buttons.</p></article>
-      <article class="card g4 rv"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l13 5v10c0 9-6 15-13 17C13 34 7 28 7 19V9z"/><path d="M14 20l4 4 8-8"/></svg><h3 data-i="c4">Texts and EU rules</h3><p data-i="c4d">We write the copy with you. A privacy policy, cookies only where needed, easy for everyone.</p></article>
+    <div class="bento">
+      <article class="tile red t-a rv">
+        <div class="ill"><svg viewBox="0 0 240 200" fill="none" stroke="#fff" stroke-width="1.6" aria-hidden="true">
+          <rect x="62" y="10" width="96" height="180" rx="14" fill="rgba(255,255,255,.08)"/>
+          <rect x="76" y="30" width="68" height="40" rx="3" fill="rgba(255,255,255,.28)" stroke="none"/>
+          <path d="M76 84h52M76 94h36" stroke-linecap="round"/>
+          <rect x="76" y="108" width="32" height="28" rx="3" fill="rgba(255,255,255,.2)" stroke="none"/><rect x="112" y="108" width="32" height="28" rx="3" fill="rgba(255,255,255,.2)" stroke="none"/>
+          <rect x="88" y="150" width="44" height="14" rx="7" fill="#fff" stroke="none"/><path d="M100 180h20" stroke-linecap="round"/>
+          <g class="acc"><rect x="150" y="40" width="64" height="30" rx="15" fill="#fff" stroke="none"/><path d="M168 46l-6 10h7l-5 9" stroke="#d62c42" stroke-width="2.2" stroke-linejoin="round"/><text x="180" y="60" font-size="13" fill="#181d24" stroke="none">1 s</text></g>
+        </svg></div>
+        <div class="tx"><h3 data-i="c1">Mobile and fast</h3><p data-i="c1d">Most of your clients come from a phone, so we start there. The site is light and opens in a second.</p></div>
+      </article>
+      <article class="tile rv">
+        <div class="ill"><svg viewBox="0 0 240 130" fill="none" stroke="#b9b9c0" stroke-width="1.4" aria-hidden="true">
+          <rect x="8" y="6" width="224" height="26" rx="13" fill="#fff"/><circle cx="24" cy="19" r="6"/><path d="M28.5 23.5l4 4" stroke-linecap="round"/><path d="M42 19h80" stroke="#e4e4e8" stroke-width="5" stroke-linecap="round"/>
+          <g class="acc"><rect x="8" y="42" width="224" height="38" rx="8" fill="#fff" stroke="#d62c42"/><circle cx="26" cy="61" r="9" fill="#d62c42" stroke="none"/><path d="M42 54h96" stroke="#181d24" stroke-width="3.2" stroke-linecap="round"/><path d="M42 67h150" stroke="#d9d9de" stroke-width="2.4" stroke-linecap="round"/></g>
+          <rect x="8" y="88" width="224" height="16" rx="5" fill="#f2f2f4" stroke="none"/><rect x="8" y="110" width="224" height="16" rx="5" fill="#f2f2f4" stroke="none"/>
+        </svg></div>
+        <div class="tx"><h3 data-i="c2">Found on Google</h3><p data-i="c2d">Titles, descriptions, a sitemap and your Google Business profile. Analytics on request.</p></div>
+      </article>
+      <article class="tile rv">
+        <div class="ill"><svg viewBox="0 0 240 130" fill="none" stroke="#9a9aa2" stroke-width="1.4" aria-hidden="true">
+          <rect x="8" y="6" width="168" height="30" rx="15" fill="#fff" stroke="#b9b9c0"/><circle cx="25" cy="21" r="7"/><path d="M18 21h14M25 14c3 3 3 11 0 14M25 14c-3 3-3 11 0 14"/><text x="40" y="25.5" font-size="12" fill="#181d24" stroke="none">yourbusiness.lt</text>
+          <g class="acc"><rect x="34" y="48" width="198" height="30" rx="15" fill="#fff" stroke="#b9b9c0"/><rect x="47" y="57" width="16" height="12" rx="2"/><path d="M47 58l8 6 8-6"/><text x="70" y="67.5" font-size="12" fill="#181d24" stroke="none">hello@yourbusiness.lt</text><circle cx="220" cy="63" r="4" fill="#d62c42" stroke="none"/></g>
+          <rect x="8" y="90" width="128" height="30" rx="15" fill="#181d24" stroke="none"/><path d="M23 98h15a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3h-9l-5 4v-4h-1a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3z" stroke="#fff"/><text x="49" y="109.5" font-size="12" fill="#fff" stroke="none">WhatsApp</text>
+        </svg></div>
+        <div class="tx"><h3 data-i="c3">Domain, email, messengers</h3><p data-i="c3d">We connect your domain, set up a free mailbox if you want one, and add WhatsApp and messenger buttons.</p></div>
+      </article>
+      <article class="tile rv">
+        <div class="ill"><svg viewBox="0 0 240 130" fill="none" stroke="#b9b9c0" stroke-width="1.4" aria-hidden="true">
+          <rect x="62" y="4" width="96" height="122" rx="6" fill="#fff"/><text x="76" y="22" font-size="9" fill="#62666e" stroke="none" letter-spacing="1">GDPR</text>
+          <path d="M76 34h58M76 46h68M76 58h46M76 74h68M76 86h60M76 98h38" stroke="#d9d9de" stroke-width="3" stroke-linecap="round"/>
+          <g class="acc"><path d="M168 54l24 9v19c0 17-11 26-24 30-13-4-24-13-24-30V63z" fill="#d62c42" stroke="none"/><path d="M157 83l8 8 14-15" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></g>
+        </svg></div>
+        <div class="tx"><h3 data-i="c4">EU rules</h3><p data-i="c4d">A privacy policy, cookies only where needed, easy for everyone.</p></div>
+      </article>
+      <article class="tile rv">
+        <div class="ill"><svg viewBox="0 0 240 130" fill="none" stroke="#b9b9c0" stroke-width="1.4" aria-hidden="true">
+          <rect x="40" y="6" width="130" height="118" rx="6" fill="#fff"/><path d="M56 28h72" stroke="#181d24" stroke-width="5" stroke-linecap="round"/>
+          <path d="M56 46h96M56 58h84M56 92h96M56 104h60" stroke="#d9d9de" stroke-width="3" stroke-linecap="round"/><path d="M56 72h70" stroke="#181d24" stroke-width="3" stroke-linecap="round"/>
+          <path d="M56 80c8-5 12 3 20 0s12-5 20-1 12 4 20 0" stroke="#d62c42" stroke-width="2.4" stroke-linecap="round"/>
+          <g class="acc" transform="rotate(32 196 66)"><rect x="188" y="22" width="16" height="72" rx="3" fill="#f2f2f4" stroke="#9a9aa2"/><path d="M188 94l8 16 8-16z" fill="#fff" stroke="#9a9aa2"/><path d="M194 106l2 4 2-4z" fill="#181d24" stroke="none"/></g>
+        </svg></div>
+        <div class="tx"><h3 data-i="c5">Texts</h3><p data-i="c5d">We write and polish the copy with you. Photo and video cost extra.</p></div>
+      </article>
     </div>
-    <p class="foot2" data-i="foot2">Photo and video shoots cost extra. Support after launch is €25 a month. You can pay in parts.</p>
+    <p class="foot2" data-i="foot2">Support after launch is €25 a month, if you want it. You can pay in parts.</p>
+  </div>
+</section>
+
+<!-- ============ WHAT'S INCLUDED: option C (pills on red), for comparison ============ -->
+<section class="panel pills" id="included-c">
+  <div class="in pin">
+    <div class="chead">
+      <div><span class="kick" data-i="k_incl">What's included</span><h2 class="ch2" data-i="h_incl">Every site, <em>turnkey</em></h2></div>
+      <p class="pcap" id="pcap" aria-live="polite"><span data-i="hint">Tap any pill to see the details.</span></p>
+    </div>
+    <div class="pile" id="pile">
+      <button class="pl" style="--i:0;--r:-6deg;--dy:8px" aria-pressed="false" data-d="pd1" data-i="pl1">Mobile version</button>
+      <button class="pl" style="--i:1;--r:4deg" aria-pressed="false" data-d="pd2" data-i="pl2">Loads in a second</button>
+      <button class="pl" style="--i:2;--r:-3deg;--dy:-6px" aria-pressed="false" data-d="pd3" data-i="pl3">Found on Google</button>
+      <button class="pl" style="--i:3;--r:7deg;--dy:4px" aria-pressed="false" data-d="pd4" data-i="pl4">Domain &amp; email</button>
+      <button class="pl" style="--i:4;--r:-8deg;--dy:10px" aria-pressed="false" data-d="pd5" data-i="pl5">Messenger buttons</button>
+      <button class="pl" style="--i:5;--r:3deg;--dy:-4px" aria-pressed="false" data-d="pd6" data-i="pl6">EU rules</button>
+      <button class="pl" style="--i:6;--r:-4deg;--dy:6px" aria-pressed="false" data-d="pd7" data-i="pl7">Copy written with you</button>
+      <button class="pl" style="--i:7;--r:6deg" aria-pressed="false" data-d="pd8" data-i="pl8">Analytics on request</button>
+    </div>
+    <p class="foot2" data-i="foot2">Support after launch is €25 a month, if you want it. You can pay in parts.</p>
   </div>
 </section>
 
@@ -576,8 +667,12 @@ const T = {
     c1:'Mobilu ir greita',c1d:'Dauguma klientų ateis iš telefono, todėl nuo jo ir pradedame. Svetainė lengva ir atsidaro per sekundę.',
     c2:'Matoma Google',c2d:'Pavadinimai, aprašymai, svetainės žemėlapis ir Google Business profilis. Analitiką įdiegsime paprašius.',
     c3:'Domenas, paštas, žinutės',c3d:'Prijungiame domeną, jei norite, sukuriame nemokamą pašto dėžutę ir pridedame WhatsApp bei žinučių mygtukus.',
-    c4:'Tekstai ir ES taisyklės',c4d:'Tekstus rašome kartu su jumis. Privatumo politika, slapukai tik ten, kur reikia, patogu visiems.',
-    foot2:'Foto ir vaizdo filmavimas už papildomą kainą. Priežiūra po paleidimo 25 € per mėnesį. Galima mokėti dalimis.',
+    c4:'ES taisyklės',c4d:'Privatumo politika, slapukai tik ten, kur reikia, patogu visiems.',
+    c5:'Tekstai',c5d:'Tekstus rašome ir taisome kartu su jumis. Foto ir vaizdo įrašai už papildomą kainą.',
+    foot2:'Priežiūra po paleidimo 25 € per mėnesį, jei norite. Galima mokėti dalimis.',
+    hint:'Paspauskite bet kurį punktą ir sužinokite daugiau.',
+    pl1:'Mobili versija',pl2:'Užsikrauna per sekundę',pl3:'Matoma Google',pl4:'Domenas ir paštas',pl5:'Žinučių mygtukai',pl6:'ES taisyklės',pl7:'Tekstai kartu su jumis',pl8:'Analitika paprašius',
+    pd1:'Dauguma klientų ateis iš telefono, todėl nuo jo ir pradedame.',pd2:'Be sunkių konstruktorių: lengva svetainė atsidaro iškart.',pd3:'Pavadinimai, aprašymai, svetainės žemėlapis ir Google Business profilis.',pd4:'Prijungiame domeną ir, jei reikia, sukuriame nemokamą pašto dėžutę jame.',pd5:'WhatsApp ir žinučių mygtukai: klientai jums parašo vienu paspaudimu.',pd6:'Privatumo politika, slapukai tik ten, kur reikia, patogu visiems.',pd7:'Tekstus rašome ir taisome kartu su jumis. Foto ir vaizdo įrašai už papildomą kainą.',pd8:'Statistika be slapukų, kad nereikėtų sutikimo juostos.',
     q9:'Neturiu tekstų ir nuotraukų. Ką daryti?',a9:'Tekstus parašysime kartu su jumis, tai įskaičiuota. Foto ir vaizdo filmavimą, jei reikia, organizuojame už papildomą kainą arba parenkame tinkamas nemokamas nuotraukas.',
     q10:'Ar galite įdiegti analitiką?',a10:'Taip, paprašius. Dažniausiai diegiame statistiką be slapukų, kad nereikėtų sutikimo juostos. Galima ir Google Analytics, tada pridedame sutikimo juostą.',
     q7:'Ar galima mokėti dalimis?',a7:'Taip: dalį prieš pradedant, likutį po paleidimo.',
@@ -616,8 +711,12 @@ const T = {
     c1:'Мобильно и быстро',c1d:'Большинство клиентов придёт с телефона, поэтому начинаем с него. Сайт лёгкий и открывается за секунду.',
     c2:'Видно в Google',c2d:'Заголовки, описания, карта сайта и профиль Google Business. Аналитику подключим по запросу.',
     c3:'Домен, почта, мессенджеры',c3d:'Подключаем домен, по желанию заводим бесплатную почту и ставим кнопки WhatsApp и мессенджеров.',
-    c4:'Тексты и правила ЕС',c4d:'Пишем тексты вместе с вами. Политика конфиденциальности, cookies только где нужны, удобно всем.',
-    foot2:'Фото- и видеосъёмка за отдельную плату. Поддержка после запуска €25 в месяц. Можно платить частями.',
+    c4:'Правила ЕС',c4d:'Политика конфиденциальности, cookies только где нужны, удобно всем.',
+    c5:'Тексты',c5d:'Пишем и правим тексты вместе с вами. Фото и видео за отдельную плату.',
+    foot2:'Поддержка после запуска €25 в месяц, по желанию. Можно платить частями.',
+    hint:'Нажмите на любую пилюлю, чтобы узнать подробности.',
+    pl1:'Мобильная версия',pl2:'Грузится за секунду',pl3:'Видно в Google',pl4:'Домен и почта',pl5:'Кнопки мессенджеров',pl6:'Правила ЕС',pl7:'Тексты вместе с вами',pl8:'Аналитика по запросу',
+    pd1:'Большинство клиентов придёт с телефона, поэтому начинаем с него.',pd2:'Без тяжёлых конструкторов: лёгкий сайт открывается сразу.',pd3:'Заголовки, описания, карта сайта и профиль Google Business.',pd4:'Подключаем домен и, если нужно, заводим на нём бесплатную почту.',pd5:'Кнопки WhatsApp и мессенджеров: клиенты пишут вам в одно касание.',pd6:'Политика конфиденциальности, cookies только где нужны, удобно всем.',pd7:'Пишем и правим тексты вместе с вами. Фото и видео за отдельную плату.',pd8:'Статистика без cookies, чтобы не нужен был баннер согласия.',
     q9:'У меня нет текстов и фото. Что делать?',a9:'Тексты напишем вместе с вами, это входит в цену. Фото- и видеосъёмку организуем за отдельную плату, если она нужна, или подберём подходящие бесплатные фото.',
     q10:'Можно подключить аналитику?',a10:'Да, по запросу. Обычно ставим статистику без cookies, чтобы не нужен был баннер согласия. Google Analytics тоже можно, тогда добавим баннер.',
     q7:'Можно платить частями?',a7:'Да: часть до старта, остальное после запуска.',
@@ -638,7 +737,7 @@ const T = {
 
 // English lives in the HTML; read it once so switching back works.
 const nodes = document.querySelectorAll('[data-i]'), labels = document.querySelectorAll('[data-al]');
-T.en = {msg:'Hi! I need: '};
+T.en = {msg:'Hi! I need: ', pd1:'Most of your clients come from a phone, so we start there.', pd2:'No heavy builders: a light site that opens right away.', pd3:'Titles, descriptions, a sitemap and your Google Business profile.', pd4:'We connect your domain and, if you need one, set up a free mailbox on it.', pd5:'WhatsApp and messenger buttons: clients write to you in one tap.', pd6:'A privacy policy, cookies only where needed, easy for everyone.', pd7:'We write and polish the copy with you. Photo and video cost extra.', pd8:'Cookie-free statistics, so no consent banner is needed.'};
 nodes.forEach(n => { T.en[n.dataset.i] ??= n.innerHTML; });
 labels.forEach(n => { T.en[n.dataset.al] = n.getAttribute('aria-label'); });
 
@@ -654,6 +753,7 @@ function setLang(l, remember){
   updateLinks();
   fitHero();
   if (typeof mfSplit === 'function') mfSplit();
+  if (window.pillsReady) { const on = pls.find(x => x.getAttribute('aria-pressed') === 'true'); if (on) showPill(on); }
 }
 
 // Size the headline so its fixed lines fill the free space next to the text:
@@ -725,6 +825,21 @@ function mfUpdate(){
 }
 let mfRaf; addEventListener('scroll', () => { cancelAnimationFrame(mfRaf); mfRaf = requestAnimationFrame(mfUpdate); }, {passive:true});
 addEventListener('resize', mfUpdate);
+
+// ---- Option C pills: tap / hover shows the explanation in the caption ----
+const pcap = document.getElementById('pcap'), pls = [...document.querySelectorAll('#pile .pl')];
+function showPill(b){
+  pls.forEach(x => x.setAttribute('aria-pressed', x === b));
+  pcap.innerHTML = '<b></b><span></span>';
+  pcap.querySelector('b').textContent = b.textContent;
+  pcap.querySelector('span').textContent = T[lang][b.dataset.d];
+}
+pls.forEach(b => { b.addEventListener('click', () => showPill(b)); b.addEventListener('mouseenter', () => showPill(b)); b.addEventListener('focus', () => showPill(b)); });
+if ('IntersectionObserver' in window) {
+  const pio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); pio.disconnect(); } }), {threshold:.35});
+  pio.observe(document.getElementById('pile'));
+} else document.getElementById('pile').classList.add('on');
+window.pillsReady = true;
 
 let saved = null;
 try { saved = localStorage.getItem('lang'); } catch(e) {}
