@@ -77,31 +77,52 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .menu nav a:hover{color:var(--red);transform:translateX(10px)}
 .menu .mfoot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;letter-spacing:.04em;text-transform:uppercase;color:#8a909a}
 
-/* ---------- WHY US (USP) ---------- */
-/* sizes follow the screen height too, so each block fits one laptop screen */
-.usp{padding-top:clamp(28px,6vh,80px);padding-bottom:var(--gap)}
-.sh2{font:500 clamp(34px,min(6.4vw,10vh),100px)/.95 var(--sans);text-transform:uppercase;letter-spacing:-.035em;margin-bottom:clamp(16px,3.4vh,40px)}
-.sh2 em{color:var(--red)}
-.ugrid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
-.u{background:var(--grey);border-radius:var(--r);padding:clamp(16px,3vh,28px) clamp(18px,2.2vw,30px) clamp(18px,3.2vh,30px);transition:transform .35s var(--ease),background .35s}
-.u:hover{transform:translateY(-6px)}
-.u b{display:block;font:700 clamp(38px,min(6vw,8.5vh),96px)/.9 var(--wide);letter-spacing:-.05em;color:var(--red)}
-.u h3{font:500 clamp(17px,min(1.7vw,2.9vh),24px)/1.15 var(--sans);letter-spacing:-.01em;margin:clamp(10px,2vh,20px) 0 6px}
-.u p{color:var(--muted);font-size:clamp(14px,min(1.15vw,2.2vh),16px);line-height:1.45}
-.u.hot{background:var(--red);color:#fff}
-.u.hot b,.u.hot p{color:#fff}
+/* ---------- MANIFESTO (why us): text lights up word by word while scrolling ---------- */
+.manifest{position:relative;margin:var(--gap) 0}
+.manifest.anim{height:260svh}
+.mf-stick{position:relative;margin:0 var(--gap);min-height:calc(100svh - 2*var(--gap));border-radius:var(--r);overflow:hidden;color:#fff;display:grid;place-items:center;padding:72px 0;
+  background:radial-gradient(55% 45% at 50% 58%,rgba(214,44,66,.32),transparent 70%),var(--ink)}
+.manifest.anim .mf-stick{position:sticky;top:var(--gap);height:calc(100svh - 2*var(--gap));min-height:0;padding:0}
+.mf{width:min(1040px,86%);display:grid;gap:28px}
+.mf p{font:500 clamp(24px,min(4.1vw,7.4vh),64px)/1.2 var(--sans);letter-spacing:-.02em;text-align:center}
+.manifest.anim .mf p{grid-area:1/1;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .5s var(--ease)}
+.manifest.anim .mf p.cur{opacity:1;transform:none}
+.manifest.anim .w{opacity:.24;transition:opacity .3s}
+.manifest.anim .w.lit{opacity:1}
+/* hand-drawn red underline under key words */
+.mf u{text-decoration:none;padding-bottom:.12em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 8' preserveAspectRatio='none'%3E%3Cpath d='M1 5c6-4 9 2 15 0s9-4 15-1 9 3 15 0 8-3 13 0' fill='none' stroke='%23e9344a' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E") left bottom/100% .22em no-repeat}
+.manifest.anim .mf u{background-size:0 .22em;transition:background-size .7s var(--ease)}
+.manifest.anim .mf u.lit{background-size:100% .22em}
+.mf-steps{position:absolute;right:clamp(16px,2.6vw,36px);top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.mf-steps i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .3s,transform .3s}
+.mf-steps i.on{background:#fff;transform:scale(1.5)}
+.manifest:not(.anim) .mf-steps{display:none}
+/* rotating round badge (Morez-style) */
+.badge{position:absolute;left:clamp(14px,2.6vw,36px);bottom:clamp(14px,3vh,32px);width:clamp(92px,9vw,124px);aspect-ratio:1;display:grid;place-items:center}
+.badge svg{position:absolute;inset:0;width:100%;height:100%;animation:spin 18s linear infinite}
+.badge text{font:500 10.5px var(--sans);letter-spacing:.14em;fill:#fff;text-transform:uppercase}
+.badge span{width:42%;aspect-ratio:1;border-radius:50%;background:var(--red);display:grid;place-items:center;font-size:20px;transition:transform .3s var(--ease)}
+.badge:hover span{transform:rotate(-45deg) scale(1.08)}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ---------- WHAT'S INCLUDED ---------- */
-.incl2{background:var(--ink);color:#fff;padding:clamp(28px,6vh,56px) 0 clamp(24px,5vh,48px)}
-.incl2 .sh2{color:#fff;margin-bottom:clamp(6px,1.4vh,12px)}
-.incl2 .sub{color:rgba(255,255,255,.75);font-size:clamp(15px,2.4vh,18px);margin-bottom:clamp(16px,3.6vh,40px)}
-.igrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.16);border-radius:14px;overflow:hidden}
-.it{background:var(--ink);padding:clamp(16px,3vh,26px) clamp(16px,1.8vw,24px)}
-.it h3{display:flex;align-items:center;gap:12px;font:500 clamp(16px,min(1.4vw,2.6vh),19px)/1.2 var(--sans);margin-bottom:8px}
-.it i{flex:none;display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--red)}
-.it i::after{content:"";width:10px;height:6px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-1px) rotate(-45deg)}
-.it p{color:rgba(255,255,255,.75);font-size:clamp(14px,min(1.1vw,2.1vh),15px);line-height:1.45}
-.foot2{margin-top:clamp(14px,3vh,28px);color:rgba(255,255,255,.75);font-size:clamp(14px,2.1vh,15px);max-width:760px}
+/* ---------- WHAT'S INCLUDED (à la carte cards) ---------- */
+.carte{min-height:calc(100svh - 2*var(--gap));display:flex;background:linear-gradient(180deg,#fff 0%,#fbe9ec 100%);border:1px solid #f1dfe2}
+.cin{flex:1;display:flex;flex-direction:column;justify-content:center;gap:clamp(18px,3.6vh,40px);padding-top:clamp(28px,6vh,64px);padding-bottom:clamp(28px,6vh,64px)}
+.chead{text-align:center;max-width:820px;margin:0 auto}
+.kick{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.ch2{font:500 clamp(34px,min(5.4vw,9vh),90px)/.98 var(--sans);letter-spacing:-.035em;margin:10px 0 14px}
+.ch2 em{color:var(--red);white-space:nowrap}
+.cintro{color:var(--muted);font-size:clamp(15px,2.4vh,18px)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.card{position:relative;overflow:hidden;border-radius:var(--r);background:var(--ink);color:#fff;min-height:clamp(250px,44vh,420px);padding:clamp(18px,3vh,28px) clamp(18px,1.8vw,26px) clamp(48px,9vh,92px);display:flex;flex-direction:column;transition:transform .35s var(--ease)}
+.card::after{content:"";position:absolute;left:-15%;right:-15%;bottom:-62%;height:95%;background:radial-gradient(closest-side,var(--glow),transparent);opacity:.95;pointer-events:none;transition:transform .6s var(--ease)}
+.card:hover{transform:translateY(-6px)}
+.card:hover::after{transform:translateY(-10%)}
+.g1{--glow:#d62c42}.g2{--glow:#e86a7c}.g3{--glow:#f0784a}.g4{--glow:#8f5cf0}
+.card svg{width:40px;height:40px;stroke:#fff;fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font:500 clamp(19px,min(1.7vw,3vh),24px)/1.15 var(--sans);letter-spacing:-.01em;margin-top:auto;padding-top:24px}
+.card p{position:relative;z-index:1;color:rgba(255,255,255,.85);font-size:clamp(14px,min(1.1vw,2.2vh),16px);line-height:1.45;margin-top:8px}
+.foot2{text-align:center;color:var(--muted);font-size:clamp(14px,2.1vh,15px)}
 
 /* ---------- WORK ---------- */
 .work-head{padding:96px 0 0;position:relative}
@@ -215,6 +236,7 @@ footer .logo{font-size:30px}
 /* reduced motion: no smooth scroll, no animated transitions */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
+  .badge svg{animation:none}
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
 }
 @media (prefers-reduced-motion:no-preference){
@@ -233,7 +255,8 @@ footer .logo{font-size:30px}
   .svc svg{display:none}
   .faq .wrapf{grid-template-columns:1fr;gap:16px}
   .dgrid{grid-template-columns:1fr}
-  .ugrid,.igrid{grid-template-columns:1fr 1fr}
+  .cards{grid-template-columns:1fr 1fr}
+  .card{min-height:clamp(200px,26vh,300px)}
   .dgrid::before{display:none}
   .day h3{margin-top:24px}
 }
@@ -261,21 +284,12 @@ footer .logo{font-size:30px}
   .svc{position:relative;top:0;margin-top:20px;transform:none}
   .services .big{position:static}
   .days{padding-top:64px;padding-bottom:48px}
-  .ugrid,.igrid{grid-template-columns:1fr 1fr}
-  .usp{padding-top:28px}
-  .sh2{margin-bottom:14px}
-  .ugrid{gap:8px}
-  .u{padding:14px 12px}
-  .u b{font-size:32px}
-  .u h3{font-size:14.5px;margin:8px 0 4px}
-  .u p{font-size:13px;line-height:1.38}
-  /* on phones the checklist shows titles only; the titles say enough */
-  .it p{display:none}
-  .it{padding:14px 12px}
-  .it h3{align-items:flex-start;gap:8px;font-size:14.5px;margin:0}
-  .it i{width:22px;height:22px}
-  .incl2 .sub{margin-bottom:16px}
-  .foot2{font-size:13px}
+  .mf{width:78%}
+  .mf-steps{right:12px}
+  .badge{width:84px}
+  /* phones: cards swipe sideways so the block stays one screen tall */
+  .cards{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:80%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:4px;margin:0 -4px}
+  .card{scroll-snap-align:start;min-height:300px}
   .fgrid{grid-template-columns:1fr 1fr}
   .fgrid > div:last-child{grid-column:1/-1}
 }
@@ -359,35 +373,37 @@ footer .logo{font-size:30px}
   <a class="more" href="#contact"><span data-i="more">I want one too</span> ↗</a>
 </section>
 
-<!-- ============ WHY US ============ -->
-<section class="usp in" id="why">
-  <h2 class="sh2 rv" data-i="h_why">Why <em>us</em></h2>
-  <div class="ugrid">
-    <div class="u hot rv"><b>3</b><h3 data-i="u1">design drafts to choose from</h3><p data-i="u1d">Before building, we show three directions. You pick the one you like.</p></div>
-    <div class="u rv"><b>2</b><h3 data-i="u2">rounds of edits included</h3><p data-i="u2d">We polish both the design and the finished site until it feels right.</p></div>
-    <div class="u rv"><b>7</b><h3 data-i="u3">days to launch</h3><p data-i="u3d">From the brief to a live site in about a week.</p></div>
-    <div class="u rv"><b>€0</b><h3 data-i="u4">builder subscription</h3><p data-i="u4d">No Wix or Tilda fees. The site and domain are yours. Hosting is free; you only pay for the domain, about €10–20 a year.</p></div>
-    <div class="u rv"><b>3</b><h3 data-i="u5">languages included</h3><p data-i="u5d">Lithuanian, English and Russian at no extra cost. Your clients read in their own language.</p></div>
-    <div class="u rv"><b>EU</b><h3 data-i="u6">rules covered</h3><p data-i="u6d">Privacy policy, no needless cookies, accessible design. Nothing to fix later.</p></div>
+<!-- ============ WHY US: manifesto ============ -->
+<section class="manifest" id="why" aria-label="Why us" data-al="why_l">
+  <div class="mf-stick">
+    <div class="mf">
+      <p data-i="m1">We don't stamp out template sites. First we show <u>three design drafts</u>, you pick one, and we polish it in <u>two rounds of edits</u>.</p>
+      <p data-i="m2">In <u>a week</u> your site is live. And it's yours: <u>no subscription</u>, free hosting, and <u>three languages</u> already in the price.</p>
+      <p data-i="m3">All by <u>EU rules</u>: a privacy policy, no needless cookies, easy for everyone. All that's left for you is taking requests.</p>
+    </div>
+    <div class="mf-steps" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+    <a class="badge" href="#contact" aria-label="Write to us" data-al="badge_l">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><defs><path id="bc" d="M60 60m-47 0a47 47 0 1 1 94 0a47 47 0 1 1-94 0"/></defs><text><textPath href="#bc" textLength="292" lengthAdjust="spacing" data-i="badge">Need a website? • Write to us • </textPath></text></svg>
+      <span aria-hidden="true">→</span>
+    </a>
   </div>
 </section>
 
 <!-- ============ WHAT'S INCLUDED ============ -->
-<section class="panel incl2" id="included">
-  <div class="in">
-    <h2 class="sh2" data-i="h_incl">What's <em>included</em></h2>
-    <p class="sub" data-i="incl_sub">In every site, whatever the price.</p>
-    <div class="igrid">
-      <div class="it"><h3><i aria-hidden="true"></i><span data-i="w1">Mobile version</span></h3><p data-i="w1d">Most of your clients come from a phone, so we design for it first.</p></div>
-      <div class="it"><h3><i aria-hidden="true"></i><span data-i="w2">Loads in a second</span></h3><p data-i="w2d">No heavy builders: a light site that opens right away.</p></div>
-      <div class="it"><h3><i aria-hidden="true"></i><span data-i="w3">Basic SEO</span></h3><p data-i="w3d">Titles, descriptions, a sitemap and your Google Business profile.</p></div>
-      <div class="it"><h3><i aria-hidden="true"></i><span data-i="w4">Domain &amp; email</span></h3><p data-i="w4d">We connect your domain and, if you need one, set up a free mailbox on it.</p></div>
-      <div class="it"><h3><i aria-hidden="true"></i><span data-i="w5">Privacy &amp; cookies</span></h3><p data-i="w5d">A privacy policy written for your site, cookies only where they're needed.</p></div>
-      <div class="it"><h3><i aria-hidden="true"></i><span data-i="w6">Easy for everyone</span></h3><p data-i="w6d">Readable contrast and navigation that works from the keyboard.</p></div>
-      <div class="it"><h3><i aria-hidden="true"></i><span data-i="w7">WhatsApp &amp; messenger buttons</span></h3><p data-i="w7d">Clients write to you in one tap.</p></div>
-      <div class="it"><h3><i aria-hidden="true"></i><span data-i="w8">Help with texts</span></h3><p data-i="w8d">We write and polish the copy together with you.</p></div>
+<section class="panel carte" id="included">
+  <div class="in cin">
+    <div class="chead">
+      <span class="kick" data-i="k_incl">What's included</span>
+      <h2 class="ch2 rv" data-i="h_incl">Every site, <em>turnkey</em></h2>
+      <p class="cintro" data-i="incl_sub">From the first draft to a live site on your domain. No hidden extras.</p>
     </div>
-    <p class="foot2" data-i="foot2">Photo and video shoots cost extra. Support after launch is €25 a month, only if you want it. You can pay in parts.</p>
+    <div class="cards">
+      <article class="card g1 rv"><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="12" y="4" width="16" height="32" rx="3"/><path d="M18 31h4M21 11l-3 6h4l-3 6"/></svg><h3 data-i="c1">Mobile and fast</h3><p data-i="c1d">Most of your clients come from a phone, so we start there. The site is light and opens in a second.</p></article>
+      <article class="card g2 rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="17" cy="17" r="10"/><path d="M24.5 24.5L34 34M13 19l3-3 3 3 4-5"/></svg><h3 data-i="c2">Found on Google</h3><p data-i="c2d">Titles, descriptions, a sitemap and your Google Business profile. Analytics on request.</p></article>
+      <article class="card g3 rv"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="14"/><path d="M6 20h28M20 6c5 5 5 23 0 28M20 6c-5 5-5 23 0 28"/></svg><h3 data-i="c3">Domain, email, messengers</h3><p data-i="c3d">We connect your domain, set up a free mailbox if you want one, and add WhatsApp and messenger buttons.</p></article>
+      <article class="card g4 rv"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 4l13 5v10c0 9-6 15-13 17C13 34 7 28 7 19V9z"/><path d="M14 20l4 4 8-8"/></svg><h3 data-i="c4">Texts and EU rules</h3><p data-i="c4d">We write the copy with you. A privacy policy, cookies only where needed, easy for everyone.</p></article>
+    </div>
+    <p class="foot2" data-i="foot2">Photo and video shoots cost extra. Support after launch is €25 a month. You can pay in parts.</p>
   </div>
 </section>
 
@@ -469,6 +485,8 @@ footer .logo{font-size:30px}
       <details><summary data-i="q4">What if I don't like the design?</summary><p data-i="a4">First you get three design drafts to choose from, and we adjust the one you pick. Two rounds of edits are included.</p></details>
       <details><summary data-i="q5">Are there monthly fees?</summary><p data-i="a5">Usually no. Hosting is free for most sites, so you only pay for the domain, about €10–20 a year. Support is optional, €25 a month.</p></details>
       <details><summary data-i="q8">What if I need a shop, online booking or an admin panel?</summary><p data-i="a8">We can build it. Such sites need paid hosting, so we price the development and the hosting separately and tell you both before we start.</p></details>
+      <details><summary data-i="q9">I have no texts or photos. What now?</summary><p data-i="a9">We'll write the texts with you, that's included. Photo and video shoots cost extra if you need them, or we pick suitable free stock photos.</p></details>
+      <details><summary data-i="q10">Can you add analytics?</summary><p data-i="a10">Yes, on request. We usually set up cookie-free statistics, so no consent banner is needed. Google Analytics works too; then we add a consent banner.</p></details>
       <details><summary data-i="q7">Can I pay in parts?</summary><p data-i="a7">Yes: part before we start, the rest after launch.</p></details>
       <details><summary data-i="q6">I know nothing about tech.</summary><p data-i="a6">You don't have to. Domain, hosting, email, Google profile: we set it all up.</p></details>
     </div>
@@ -550,23 +568,18 @@ const T = {
     s1:'Trumpas brifas',s1d:'Penki paprasti klausimai žinutėmis. Dešimt minučių, jokių namų darbų.',
     s2:'3 dizaino variantai',s2d:'Parodome tris dizaino juodraščius. Jūs išsirenkate vieną, o mes jį patobuliname pagal jūsų pastabas.',
     s3:'Kūrimas ir paleidimas',s3d:'Sukuriame svetainę, atliekame paskutinius pataisymus, prijungiame domeną, ir ji veikia.',
-    h_why:'Kodėl <em>mes</em>',
-    u1:'dizaino variantai pasirinkti',u1d:'Prieš kurdami parodome tris kryptis. Jūs išsirenkate patinkančią.',
-    u2:'pataisymų ratai įskaičiuoti',u2d:'Tobuliname ir dizainą, ir gatavą svetainę, kol patiks.',
-    u3:'dienos iki paleidimo',u3d:'Nuo brifo iki veikiančios svetainės maždaug per savaitę.',
-    u4:'konstruktoriaus prenumerata',u4d:'Jokių Wix ar Tilda mokesčių. Svetainė ir domenas jūsų. Talpinimas nemokamas, mokate tik už domeną, apie 10–20 € per metus.',
-    u5:'kalbos įskaičiuotos',u5d:'Lietuvių, anglų ir rusų kalbos be papildomo mokesčio. Klientai skaito savo kalba.',
-    u6:'taisyklių laikomasi',u6d:'Privatumo politika, jokių nereikalingų slapukų, prieinamas dizainas. Vėliau nieko taisyti nereikės.',
-    h_incl:'Kas <em>įskaičiuota</em>',incl_sub:'Kiekvienoje svetainėje, nepriklausomai nuo kainos.',
-    w1:'Mobili versija',w1d:'Dauguma klientų ateis iš telefono, todėl nuo jo ir pradedame.',
-    w2:'Užsikrauna per sekundę',w2d:'Be sunkių konstruktorių: lengva svetainė atsidaro iškart.',
-    w3:'Bazinis SEO',w3d:'Pavadinimai, aprašymai, svetainės žemėlapis ir Google Business profilis.',
-    w4:'Domenas ir el. paštas',w4d:'Prijungiame domeną ir, jei reikia, sukuriame nemokamą pašto dėžutę jame.',
-    w5:'Privatumas ir slapukai',w5d:'Privatumo politika jūsų svetainei, slapukai tik ten, kur jų reikia.',
-    w6:'Patogu visiems',w6d:'Įskaitomas kontrastas ir naršymas klaviatūra.',
-    w7:'WhatsApp ir žinučių mygtukai',w7d:'Klientai jums parašo vienu paspaudimu.',
-    w8:'Pagalba su tekstais',w8d:'Tekstus rašome ir taisome kartu su jumis.',
-    foot2:'Foto ir vaizdo filmavimas už papildomą kainą. Priežiūra po paleidimo 25 € per mėnesį, jei norite. Galima mokėti dalimis.',
+    why_l:'Kodėl mes',badge_l:'Parašykite mums',badge:'Reikia svetainės? • Parašykite • ',
+    m1:'Mes nekuriame svetainių pagal šabloną. Pirmiausia parodome <u>tris dizaino variantus</u>, jūs išsirenkate vieną, o mes jį patobuliname per <u>du pataisymų ratus</u>.',
+    m2:'Po <u>savaitės</u> svetainė veikia. Ir ji jūsų: <u>jokios prenumeratos</u>, nemokamas talpinimas, o <u>trys kalbos</u> jau įskaičiuotos į kainą.',
+    m3:'Viskas pagal <u>ES taisykles</u>: privatumo politika, jokių nereikalingų slapukų, patogu visiems. Jums lieka tik priimti užklausas.',
+    k_incl:'Kas įskaičiuota',h_incl:'Kiekviena svetainė <em>iki rakto</em>',incl_sub:'Nuo pirmo juodraščio iki veikiančios svetainės jūsų domene. Be paslėptų mokesčių.',
+    c1:'Mobilu ir greita',c1d:'Dauguma klientų ateis iš telefono, todėl nuo jo ir pradedame. Svetainė lengva ir atsidaro per sekundę.',
+    c2:'Matoma Google',c2d:'Pavadinimai, aprašymai, svetainės žemėlapis ir Google Business profilis. Analitiką įdiegsime paprašius.',
+    c3:'Domenas, paštas, žinutės',c3d:'Prijungiame domeną, jei norite, sukuriame nemokamą pašto dėžutę ir pridedame WhatsApp bei žinučių mygtukus.',
+    c4:'Tekstai ir ES taisyklės',c4d:'Tekstus rašome kartu su jumis. Privatumo politika, slapukai tik ten, kur reikia, patogu visiems.',
+    foot2:'Foto ir vaizdo filmavimas už papildomą kainą. Priežiūra po paleidimo 25 € per mėnesį. Galima mokėti dalimis.',
+    q9:'Neturiu tekstų ir nuotraukų. Ką daryti?',a9:'Tekstus parašysime kartu su jumis, tai įskaičiuota. Foto ir vaizdo filmavimą, jei reikia, organizuojame už papildomą kainą arba parenkame tinkamas nemokamas nuotraukas.',
+    q10:'Ar galite įdiegti analitiką?',a10:'Taip, paprašius. Dažniausiai diegiame statistiką be slapukų, kad nereikėtų sutikimo juostos. Galima ir Google Analytics, tada pridedame sutikimo juostą.',
     q7:'Ar galima mokėti dalimis?',a7:'Taip: dalį prieš pradedant, likutį po paleidimo.',
     h_faq:'DUK',
     q1:'Kiek kainuoja svetainė?',a1:'Nuo 200 € už vieno puslapio svetainę. Tikslią kainą pasakome po trumpo pokalbio, ir ji lieka fiksuota.',
@@ -595,23 +608,18 @@ const T = {
     s1:'Короткий бриф',s1d:'Пять простых вопросов в мессенджере. Десять минут, без домашки.',
     s2:'3 варианта дизайна',s2d:'Показываем три черновика дизайна. Вы выбираете один, и мы доводим его по вашим правкам.',
     s3:'Сборка и запуск',s3d:'Собираем сайт, вносим последние правки, подключаем домен, и он работает.',
-    h_why:'Почему <em>мы</em>',
-    u1:'варианта дизайна на выбор',u1d:'До сборки показываем три направления. Вы выбираете то, что нравится.',
-    u2:'круга правок в цене',u2d:'Доводим и дизайн, и готовый сайт, пока не понравится.',
-    u3:'дней до запуска',u3d:'От брифа до работающего сайта примерно за неделю.',
-    u4:'абонентки конструктора',u4d:'Никаких платежей Wix или Tilda. Сайт и домен ваши. Хостинг бесплатный, платите только за домен, около €10–20 в год.',
-    u5:'языка в стоимости',u5d:'Литовский, английский и русский без доплаты. Клиенты читают на своём языке.',
-    u6:'правила соблюдены',u6d:'Политика конфиденциальности, никаких лишних cookies, доступный дизайн. Ничего не придётся переделывать.',
-    h_incl:'Что <em>входит</em>',incl_sub:'В каждый сайт, за любую цену.',
-    w1:'Мобильная версия',w1d:'Большинство клиентов придёт с телефона, поэтому начинаем с него.',
-    w2:'Грузится за секунду',w2d:'Без тяжёлых конструкторов: лёгкий сайт открывается сразу.',
-    w3:'Базовое SEO',w3d:'Заголовки, описания, карта сайта и профиль Google Business.',
-    w4:'Домен и почта',w4d:'Подключаем домен и, если нужно, заводим на нём бесплатную почту.',
-    w5:'Конфиденциальность и cookies',w5d:'Политика конфиденциальности под ваш сайт, cookies только там, где нужны.',
-    w6:'Удобно всем',w6d:'Читаемый контраст и навигация с клавиатуры.',
-    w7:'Кнопки WhatsApp и мессенджеров',w7d:'Клиенты пишут вам в одно касание.',
-    w8:'Помощь с текстами',w8d:'Пишем и правим тексты вместе с вами.',
-    foot2:'Фото- и видеосъёмка за отдельную плату. Поддержка после запуска €25 в месяц, по желанию. Можно платить частями.',
+    why_l:'Почему мы',badge_l:'Написать нам',badge:'Нужен сайт? • Напишите нам • ',
+    m1:'Мы не штампуем сайты по шаблону. Сначала показываем <u>три варианта дизайна</u>, вы выбираете один, и мы доводим его за <u>два круга правок</u>.',
+    m2:'Через <u>неделю</u> сайт работает. И он ваш: <u>никакой абонентки</u>, хостинг бесплатный, а <u>три языка</u> уже в цене.',
+    m3:'Всё по <u>правилам ЕС</u>: политика конфиденциальности, никаких лишних cookies, удобно каждому. Вам останется только принимать заявки.',
+    k_incl:'Что входит',h_incl:'Каждый сайт <em>под ключ</em>',incl_sub:'От первого черновика до работающего сайта на вашем домене. Без скрытых доплат.',
+    c1:'Мобильно и быстро',c1d:'Большинство клиентов придёт с телефона, поэтому начинаем с него. Сайт лёгкий и открывается за секунду.',
+    c2:'Видно в Google',c2d:'Заголовки, описания, карта сайта и профиль Google Business. Аналитику подключим по запросу.',
+    c3:'Домен, почта, мессенджеры',c3d:'Подключаем домен, по желанию заводим бесплатную почту и ставим кнопки WhatsApp и мессенджеров.',
+    c4:'Тексты и правила ЕС',c4d:'Пишем тексты вместе с вами. Политика конфиденциальности, cookies только где нужны, удобно всем.',
+    foot2:'Фото- и видеосъёмка за отдельную плату. Поддержка после запуска €25 в месяц. Можно платить частями.',
+    q9:'У меня нет текстов и фото. Что делать?',a9:'Тексты напишем вместе с вами, это входит в цену. Фото- и видеосъёмку организуем за отдельную плату, если она нужна, или подберём подходящие бесплатные фото.',
+    q10:'Можно подключить аналитику?',a10:'Да, по запросу. Обычно ставим статистику без cookies, чтобы не нужен был баннер согласия. Google Analytics тоже можно, тогда добавим баннер.',
     q7:'Можно платить частями?',a7:'Да: часть до старта, остальное после запуска.',
     h_faq:'Вопросы',
     q1:'Сколько стоит сайт?',a1:'От €200 за лендинг. Точную цену называем после короткого разговора, и она фиксируется.',
@@ -645,6 +653,7 @@ function setLang(l, remember){
   if (remember) try { localStorage.setItem('lang', lang); } catch(e) {}
   updateLinks();
   fitHero();
+  if (typeof mfSplit === 'function') mfSplit();
 }
 
 // Size the headline so its fixed lines fill the free space next to the text:
@@ -683,6 +692,39 @@ function updateLinks(){
   if (TG) tg.href = `https://t.me/${TG}`;
   document.getElementById('em').href = `mailto:${MAIL}?subject=AV%20Studio&body=${text}`;
 }
+
+// ---- Manifesto: paragraphs swap and words light up as you scroll (Ignite-style) ----
+const mfSec = document.getElementById('why'), mfPs = [...mfSec.querySelectorAll('.mf p')], mfDots = [...mfSec.querySelectorAll('.mf-steps i')];
+const mfOn = matchMedia('(prefers-reduced-motion: no-preference)').matches;
+if (mfOn) mfSec.classList.add('anim');
+function mfSplit(){
+  // wrap every word in a span (keeps the <u> highlights) so they can light up one by one
+  const wrap = node => [...node.childNodes].forEach(n => {
+    if (n.nodeType === 3) {
+      const frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(t => { if (!t) return; if (/^\s+$/.test(t)) frag.append(t); else { const w = document.createElement('span'); w.className = 'w'; w.textContent = t; frag.append(w); } });
+      n.replaceWith(frag);
+    } else if (n.nodeType === 1 && !n.classList.contains('w')) wrap(n);
+  });
+  mfPs.forEach(wrap);
+  mfUpdate();
+}
+function mfUpdate(){
+  if (!mfOn) return;
+  const total = mfSec.offsetHeight - innerHeight;
+  const prog = Math.min(1, Math.max(0, -mfSec.getBoundingClientRect().top / total));
+  const x = prog * mfPs.length, k = Math.min(mfPs.length - 1, Math.floor(x));
+  mfPs.forEach((p, i) => {
+    p.classList.toggle('cur', i === k);
+    const ws = [...p.querySelectorAll('.w')];
+    const lit = i < k ? ws.length : i > k ? 0 : Math.round(Math.min(1, (x - k) * 1.4) * ws.length);
+    ws.forEach((w, j) => w.classList.toggle('lit', j < lit));
+    p.querySelectorAll('u').forEach(u => u.classList.toggle('lit', [...u.querySelectorAll('.w')].every(w => w.classList.contains('lit'))));
+  });
+  mfDots.forEach((d, i) => d.classList.toggle('on', i === k));
+}
+let mfRaf; addEventListener('scroll', () => { cancelAnimationFrame(mfRaf); mfRaf = requestAnimationFrame(mfUpdate); }, {passive:true});
+addEventListener('resize', mfUpdate);
 
 let saved = null;
 try { saved = localStorage.getItem('lang'); } catch(e) {}
