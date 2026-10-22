@@ -6,7 +6,7 @@
 <title>AV Studio — websites for small business, Vilnius</title>
 <meta name="description" content="A small web studio from Vilnius. Fast, affordable, beautiful websites for small businesses in a week. From €200.">
 <meta property="og:title" content="AV Studio — we build damn good websites">
-<meta property="og:description" content="Fast. Affordable. Beautiful. Websites for small business in a week, from €200.">
+<meta property="og:description" content="Get more clients. Affordable. Fast. Websites for small business in a week, from €200.">
 <meta property="og:image" content="https://www.avstudio.agency/assets/og.jpg">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -35,7 +35,7 @@ button,input{font:inherit;color:inherit;background:none;border:0}
 button{cursor:pointer}
 em{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:none;letter-spacing:0}
 :focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.hero :focus-visible,.need :focus-visible,.menu :focus-visible,footer :focus-visible,.services :focus-visible{outline-color:#fff}
+.hero :focus-visible,.need :focus-visible,.menu :focus-visible,footer :focus-visible{outline-color:#fff}
 
 /* every block is a rounded panel inset from the window edge */
 .panel{margin:var(--gap);border-radius:var(--r);position:relative;overflow:hidden}
@@ -160,12 +160,12 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .more:hover{color:var(--red)}
 
 /* ---------- SERVICES ---------- */
-.services{background:var(--ink);color:#fff;padding:56px 0 80px;overflow:visible}
-.services .big{color:#fff;font-size:clamp(46px,7vw,110px);position:sticky;top:30px}
+.services{background:var(--grey);color:var(--ink);padding:56px 0 80px;overflow:visible}
+.services .big{color:var(--ink);font-size:clamp(46px,7vw,110px);position:sticky;top:30px}
 .stack{max-width:1180px;margin:0 auto;padding:0 clamp(16px,3vw,40px)}
-.svc-note{max-width:1180px;margin:clamp(56px,10vh,110px) auto 0;padding:0 clamp(16px,3vw,40px);color:rgba(255,255,255,.8);font-size:clamp(15px,1.3vw,18px)}
-.svc{position:sticky;top:clamp(120px,calc(7vw + 84px),200px);background:#fff;color:var(--ink);border-radius:20px;min-height:400px;margin-top:70px;padding:clamp(24px,3vw,44px);display:grid;grid-template-columns:1.15fr 1fr;gap:24px;box-shadow:0 -10px 40px rgba(0,0,0,.25);transform:rotate(var(--tilt))}
-.svc:nth-child(1){--tilt:-2deg}.svc:nth-child(2){--tilt:1.6deg;background:#f4f4f6}.svc:nth-child(3){--tilt:-1deg;background:#e9e9ed}
+.svc-note{max-width:1180px;margin:clamp(56px,10vh,110px) auto 0;padding:0 clamp(16px,3vw,40px);color:var(--muted);font-size:clamp(15px,1.3vw,18px)}
+.svc{position:sticky;top:clamp(120px,calc(7vw + 84px),200px);background:#fff;color:var(--ink);border-radius:20px;min-height:400px;margin-top:70px;padding:clamp(24px,3vw,44px);display:grid;grid-template-columns:1.15fr 1fr;gap:24px;border:1px solid #e2e2e7;box-shadow:0 -8px 30px rgba(24,29,36,.10);transform:rotate(var(--tilt))}
+.svc:nth-child(1){--tilt:-2deg}.svc:nth-child(2){--tilt:1.6deg}.svc:nth-child(3){--tilt:-1deg}
 .svc .num{color:#b21f35;font-size:13px}
 .svc h3{font:500 clamp(30px,3.6vw,48px)/1.05 var(--sans);letter-spacing:-.03em;margin:10px 0 14px}
 .svc p{color:#4a4f58;max-width:520px}
@@ -174,11 +174,6 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .svc .price small{font:400 15px var(--sans);letter-spacing:0;color:var(--muted);margin-right:6px}
 .svc .time{font-size:14px;color:var(--muted)}
 .svc svg{width:100%;height:100%;max-height:330px;align-self:center}
-.incl{max-width:1180px;margin:110px auto 0;padding:0 clamp(16px,3vw,40px)}
-.incl h4{font-weight:400;font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:16px}
-.incl ul{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
-.incl li{border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:10px 18px;font-size:15px}
-.incl p{color:rgba(255,255,255,.6);font-size:14px;margin-top:18px;max-width:680px}
 
 /* ---------- PROCESS: one week as a timeline ---------- */
 .days{min-height:calc(100svh - 2*var(--gap));display:flex;flex-direction:column;padding-top:clamp(32px,6vh,80px);padding-bottom:clamp(24px,5vh,64px)}
@@ -207,9 +202,13 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 }
 
 /* ---------- FAQ ---------- */
-.faq{background:var(--grey);padding:64px 0 72px}
-.faq .wrapf{display:grid;grid-template-columns:1fr 1.5fr;gap:40px}
-.faq h2{font:500 clamp(42px,6vw,90px)/.95 var(--sans);text-transform:uppercase;letter-spacing:-.035em}
+.faq{background:var(--grey);min-height:calc(100svh - 2*var(--gap));display:flex;align-items:center;padding:clamp(28px,6vh,64px) 0}
+.faqin{width:100%}
+.faq h2{font:500 clamp(40px,min(6.4vw,11vh),100px)/.95 var(--sans);text-transform:uppercase;letter-spacing:-.035em;margin-bottom:clamp(16px,4vh,48px)}
+/* two independent columns: opening a question on the left doesn't move the right one */
+.fcols{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(24px,4vw,72px);align-items:start}
+.faq summary{padding:clamp(14px,2.6vh,24px) 0;font-size:clamp(16px,min(1.6vw,2.9vh),22px)}
+.faq details p{padding-right:44px}
 details{border-bottom:1px solid var(--line)}
 summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font:400 clamp(18px,1.8vw,22px)/1.3 var(--sans)}
 summary::-webkit-details-marker{display:none}
@@ -217,32 +216,41 @@ summary::after{content:"";flex:none;width:30px;height:30px;border-radius:50%;bac
 details[open] summary::after{transform:rotate(45deg);background-color:var(--red)}
 details p{color:var(--muted);padding:0 50px 22px 0}
 
-/* ---------- BRIEF (I need) ---------- */
-/* brief fills the screen like the other blocks; content sits in the middle */
+/* ---------- BRIEF: a plain form on one screen ---------- */
 .need{background:var(--red);color:#fff;padding:clamp(28px,6vh,64px) 0;min-height:calc(100svh - 2*var(--gap));display:flex;align-items:center}
 .need > .in{width:100%}
-.need .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(20px,4.5vh,48px)}
-.need h2{font:500 clamp(40px,min(7.4vw,14vh),130px)/1 var(--sans);letter-spacing:-.03em}
-.need .count{font-size:14px;letter-spacing:.08em;white-space:nowrap}
-.step{display:none}
-.step.show{display:block;animation:stepIn .45s var(--ease)}
-@keyframes stepIn{from{opacity:0;transform:translateY(14px)}}
-.opts{display:flex;flex-wrap:wrap;gap:14px}
-.opt{height:clamp(52px,min(6.4vw,10vh),100px);padding:0 clamp(22px,2.6vw,40px);border:2px solid #fff;border-radius:999px;font:500 clamp(20px,min(3vw,5vh),48px)/1 var(--sans);color:#fff;transition:background .2s,color .2s,transform .2s var(--ease)}
-.opt:hover{background:rgba(255,255,255,.15)}
-.opt[aria-pressed=true]{background:#fff;color:var(--red)}
-.opt.go{background:#fff;color:var(--red)}
-.opt.go:hover{transform:translateX(4px)}
-.nav-row{margin-top:clamp(18px,3.6vh,36px);display:flex;gap:18px;align-items:center;flex-wrap:wrap}
-.back{font-size:16px;text-decoration:underline;text-underline-offset:4px}
-.fields{display:grid;gap:18px;max-width:820px}
-.fields input{width:100%;border-bottom:2px solid rgba(255,255,255,.55);padding:10px 0;font:400 clamp(20px,min(2.8vw,4.6vh),44px)/1.2 var(--sans);color:#fff;transition:border-color .2s}
-.fields label{display:block;font-size:15px}
-.fields input:focus{border-color:#fff}
-.reach{display:flex;gap:12px;flex-wrap:wrap}
-.reach .pill{height:clamp(56px,9vh,90px);padding:0 clamp(28px,2.6vw,44px);font-size:clamp(18px,min(2.2vw,3.6vh),32px)}
-.reach .pill:hover{background:var(--ink);color:#fff}
-.sendnote{margin-top:18px;font-size:14px;max-width:560px}
+.bwrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,560px);gap:clamp(24px,5vw,80px);align-items:center}
+.bintro h2{font:500 clamp(40px,min(6vw,11vh),108px)/1 var(--sans);letter-spacing:-.03em;margin:10px 0 clamp(14px,3vh,28px)}
+.bintro h2 em{color:var(--ink)}
+.bintro .kick{color:#fff}
+.bintro p{font-size:clamp(16px,min(1.4vw,2.6vh),20px);line-height:1.5;max-width:520px}
+.direct{margin-top:clamp(16px,3.4vh,32px);font-size:clamp(15px,1.2vw,17px)}
+.direct a{display:inline-block;margin-right:18px;text-decoration:underline;text-underline-offset:4px;font-weight:500}
+/* the form card */
+.bcard{background:#fff;color:var(--ink);border-radius:var(--r);padding:clamp(20px,3.4vh,34px) clamp(20px,2.4vw,34px);display:grid;gap:clamp(14px,2.8vh,26px);box-shadow:0 24px 50px rgba(80,0,10,.25)}
+.bcard :focus-visible{outline-color:var(--ink)}
+.bq{display:block;font-weight:500;font-size:clamp(15px,min(1.3vw,2.4vh),18px);margin-bottom:10px}
+.bq i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:50%;background:var(--red);color:#fff;font-size:13px;margin-right:8px;vertical-align:1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;border:0}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;height:clamp(38px,6vh,46px);padding:0 16px;border-radius:999px;border:1.5px solid #cfcfd6;font-size:clamp(14px,min(1.2vw,2.2vh),16px);transition:background .2s,border-color .2s,color .2s}
+.chip:hover span{border-color:var(--ink)}
+.chip input:checked + span{background:var(--red);border-color:var(--red);color:#fff}
+.chip input:focus-visible + span{outline:3px solid var(--ink);outline-offset:2px}
+.fl{display:block;font-size:13px;color:var(--muted);margin:0 0 6px}
+.fl + input{margin-bottom:10px}
+.bcard input[type=text]{width:100%;height:clamp(42px,6.4vh,50px);border:1.5px solid #cfcfd6;border-radius:12px;padding:0 14px;background:#f7f7f9;font-size:16px;color:var(--ink);transition:border-color .2s,background .2s}
+.bcard input[type=text]:focus{outline:none;border-color:var(--ink);background:#fff}
+.sendrow{display:flex;gap:10px;flex-wrap:wrap}
+.sbtn{display:inline-flex;align-items:center;gap:10px;height:clamp(46px,7vh,56px);padding:0 22px;border-radius:999px;font-size:16px;font-weight:500;transition:transform .2s var(--ease),background .2s,color .2s}
+.sbtn:hover{transform:translateY(-2px)}
+.sbtn svg{width:20px;height:20px;flex:none}
+.sbtn.wa{background:var(--ink);color:#fff}
+.sbtn.wa:hover{background:var(--red)}
+.sbtn.em{box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink)}
+.sbtn.em:hover{background:var(--ink);color:#fff}
+.sendnote{font-size:13px;color:var(--muted);margin-top:10px}
 .sendnote a,.fbot a.pp{text-decoration:underline;text-underline-offset:3px}
 
 /* ---------- FOOTER ---------- */
@@ -270,6 +278,7 @@ footer .logo{font-size:30px}
 /* narrower screens: text goes under the headline */
 @media (max-width:860px){
   .hero-cta{display:inline-flex}
+  .bwrap{grid-template-columns:1fr}
   .bin{grid-template-columns:1fr}
   .pcap{margin-top:0}
 }
@@ -282,7 +291,7 @@ footer .logo{font-size:30px}
 @media (max-width:960px){
   .svc{grid-template-columns:1fr;min-height:0}
   .svc svg{display:none}
-  .faq .wrapf{grid-template-columns:1fr;gap:16px}
+  .fcols{grid-template-columns:1fr}
   /* timeline turns vertical: bar, then its step, three times */
   .days{justify-content:center}
   .tl{flex:none;grid-template-columns:1fr;grid-template-rows:none;row-gap:10px}
@@ -322,10 +331,35 @@ footer .logo{font-size:30px}
   .pile{gap:6px 0}
   .seg{height:46px}
   .pcap{min-height:3.2em;font-size:14px}
+  .faq summary{padding:12px 0;font-size:15px}
+  /* phones: the card explains itself, contacts are in the footer */
+  .bintro p{display:none}
+  .bintro h2{margin-bottom:0;font-size:38px}
+  .bwrap{gap:16px}
+  .bcard{padding:16px;gap:14px}
+  .chip span{height:36px;padding:0 13px;font-size:14px}
+  .bcard input[type=text]{height:42px}
+  .fl + input{margin-bottom:8px}
+  .sbtn{height:46px;padding:0 16px;font-size:15px}
+  .sendnote{font-size:12px}
   .seg.a{width:52%}.seg.b{width:80%}
   .live{height:28px;padding:0 10px}
   .fgrid{grid-template-columns:1fr 1fr}
   .fgrid > div:last-child{grid-column:1/-1}
+}
+/* short phones: squeeze the form so it still fits one screen */
+@media (max-width:640px) and (max-height:780px){
+  .need{padding:14px 0}
+  .bintro .kick{display:none}
+  .bintro h2{font-size:30px;margin-top:0}
+  .bcard{gap:10px;padding:14px}
+  .bq{margin-bottom:6px;font-size:15px}
+  .chips{gap:6px}
+  .chip span{height:32px;padding:0 11px;font-size:13.5px}
+  .fl{margin-bottom:4px;font-size:12px}
+  .bcard input[type=text]{height:38px}
+  .sbtn{height:42px;padding:0 13px;font-size:14px}
+  .sendnote{margin-top:6px}
 }
 </style>
 </head>
@@ -373,7 +407,7 @@ footer .logo{font-size:30px}
   <div class="in bin">
     <div class="bleft">
       <span class="kick" data-i="k_ben">Why us</span>
-      <h2 class="bh2" id="bh2" data-i="h_ben">Fast.<br>Affordable.<br><em>Beautiful.</em></h2>
+      <h2 class="bh2" id="bh2" data-i="h_ben"><em>Get more<br>clients.</em><br>Affordable.<br>Fast.</h2>
       <p class="pcap" id="pcap" aria-live="polite"><span data-i="hint">Tap any pill to see the details.</span></p>
     </div>
     <div class="pile" id="pile">
@@ -518,19 +552,21 @@ footer .logo{font-size:30px}
 
 <!-- ============ FAQ ============ -->
 <section class="panel faq" id="faq">
-  <div class="in wrapf">
+  <div class="in faqin">
     <h2 data-i="h_faq">FAQ</h2>
-    <div>
-      <details><summary data-i="q1">How much does a website cost?</summary><p data-i="a1">From €200 for a landing page. We give you the exact price after a short chat, and it stays fixed.</p></details>
-      <details><summary data-i="q2">How fast will it be ready?</summary><p data-i="a2">A landing page takes up to a week. A bigger site takes a week or more; we give you the exact date after the brief.</p></details>
-      <details><summary data-i="q3">What do I need to prepare?</summary><p data-i="a3">Almost nothing: tell us about your business during the brief and send photos if you have them. We'll help with the texts.</p></details>
-      <details><summary data-i="q4">What if I don't like the design?</summary><p data-i="a4">First you get three design drafts to choose from, and we adjust the one you pick. Two rounds of edits are included.</p></details>
-      <details><summary data-i="q5">Are there monthly fees?</summary><p data-i="a5">Usually no. Hosting is free for most sites, so you only pay for the domain, about €10–20 a year. Support is optional, €25 a month.</p></details>
-      <details><summary data-i="q8">What if I need a shop, online booking or an admin panel?</summary><p data-i="a8">We can build it. Such sites need paid hosting, so we price the development and the hosting separately and tell you both before we start.</p></details>
-      <details><summary data-i="q9">I have no texts or photos. What now?</summary><p data-i="a9">We'll write the texts with you, that's included. Photo and video shoots cost extra if you need them, or we pick suitable free stock photos.</p></details>
-      <details><summary data-i="q10">Can you add analytics?</summary><p data-i="a10">Yes, on request. We usually set up cookie-free statistics, so no consent banner is needed. Google Analytics works too; then we add a consent banner.</p></details>
-      <details><summary data-i="q7">Can I pay in parts?</summary><p data-i="a7">Yes: part before we start, the rest after launch.</p></details>
-      <details><summary data-i="q6">I know nothing about tech.</summary><p data-i="a6">You don't have to. Domain, hosting, email, Google profile: we set it all up.</p></details>
+    <div class="fcols">
+      <div class="fcol">
+        <details><summary data-i="q3">What do I need to prepare?</summary><p data-i="a3">Almost nothing: tell us about your business during the brief and send photos if you have them. We'll help with the texts.</p></details>
+        <details><summary data-i="q4">What if I don't like the design?</summary><p data-i="a4">First you get three design drafts to choose from, and we adjust the one you pick. Two rounds of edits are included.</p></details>
+        <details><summary data-i="q5">Are there monthly fees?</summary><p data-i="a5">Usually no. Hosting is free for most sites, so you only pay for the domain, about €10–20 a year. Support is optional, €25 a month.</p></details>
+        <details><summary data-i="q8">What if I need a shop, online booking or an admin panel?</summary><p data-i="a8">We can build it. Such sites need paid hosting, so we price the development and the hosting separately and tell you both before we start.</p></details>
+      </div>
+      <div class="fcol">
+        <details><summary data-i="q9">I have no texts or photos. What now?</summary><p data-i="a9">We'll write the texts with you, that's included. Photo and video shoots cost extra if you need them, or we pick suitable free stock photos.</p></details>
+        <details><summary data-i="q10">Can you add analytics?</summary><p data-i="a10">Yes, on request. We usually set up cookie-free statistics, so no consent banner is needed. Google Analytics works too; then we add a consent banner.</p></details>
+        <details><summary data-i="q7">Can I pay in parts?</summary><p data-i="a7">Yes: part before we start, the rest after launch.</p></details>
+        <details><summary data-i="q6">I know nothing about tech.</summary><p data-i="a6">You don't have to. Domain, hosting, email, Google profile: we set it all up.</p></details>
+      </div>
     </div>
   </div>
 </section>
@@ -538,34 +574,35 @@ footer .logo{font-size:30px}
 <!-- ============ BRIEF ============ -->
 <!-- Contacts: WhatsApp number lives in WA (script below). -->
 <section class="panel need" id="contact">
-  <div class="in">
-    <div class="step show" data-step="1">
-      <div class="hd"><h2 tabindex="-1" data-i="need">I need</h2><span class="count">1 / 3</span></div>
-      <div class="opts" id="opts">
-        <button class="opt" aria-pressed="false" data-i="o1">a landing page</button>
-        <button class="opt" aria-pressed="false" data-i="o2">a business website</button>
-        <button class="opt" aria-pressed="false" data-i="o3">a redesign</button>
-        <button class="opt" aria-pressed="false" data-i="o4">not sure yet</button>
-      </div>
-      <div class="nav-row"><button class="opt go" data-to="2"><span data-i="next">next</span> →</button></div>
+  <div class="in bwrap">
+    <div class="bintro">
+      <span class="kick" data-i="k_brief">Request</span>
+      <h2 data-i="h_brief">Let's talk about <em>your site</em></h2>
+      <p data-i="brief_p">Fill in a couple of fields and choose where to send them. WhatsApp or your email opens with a ready message, you just press Send.</p>
+      <p class="direct"><span data-i="direct">Or write to us directly:</span><br><a href="https://wa.me/37068894563" target="_blank" rel="noopener">WhatsApp +370 688 94563</a><a href="mailto:hello@avstudio.agency">hello@avstudio.agency</a></p>
     </div>
-    <div class="step" data-step="2">
-      <div class="hd"><h2 data-i="b2">About your business</h2><span class="count">2 / 3</span></div>
-      <div class="fields">
-        <div><label for="biz" data-i="l1">Business name and what you do</label><input id="biz" type="text" autocomplete="organization" maxlength="200"></div>
-        <div><label for="link" data-i="l2">Instagram or current site (optional)</label><input id="link" type="text" inputmode="url" autocomplete="url" maxlength="200"></div>
+    <form class="bcard" id="brief" onsubmit="return false">
+      <fieldset class="chips" id="opts">
+        <legend class="bq"><i>1</i><span data-i="f1">What do you need?</span></legend>
+        <label class="chip"><input type="radio" name="need"><span data-i="o1">a landing page</span></label>
+        <label class="chip"><input type="radio" name="need"><span data-i="o2">a business website</span></label>
+        <label class="chip"><input type="radio" name="need"><span data-i="o3">a redesign</span></label>
+        <label class="chip"><input type="radio" name="need"><span data-i="o4">not sure yet</span></label>
+      </fieldset>
+      <div>
+        <span class="bq" id="q2l"><i>2</i><span data-i="f2">About your business</span></span>
+        <label class="fl" for="biz" data-i="l1">Business name and what you do</label><input id="biz" type="text" autocomplete="organization" maxlength="200">
+        <label class="fl" for="link" data-i="l2">Instagram or current site (optional)</label><input id="link" type="text" inputmode="url" autocomplete="url" maxlength="200">
       </div>
-      <div class="nav-row"><button class="opt go" data-to="3"><span data-i="next">next</span> →</button><button class="back" data-to="1" data-i="back">← back</button></div>
-    </div>
-    <div class="step" data-step="3">
-      <div class="hd"><h2 tabindex="-1" data-i="where">Where do we talk?</h2><span class="count">3 / 3</span></div>
-      <div class="reach">
-        <a class="pill white" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="pill white" id="em" href="mailto:hello@avstudio.agency">Email</a>
+      <div>
+        <span class="bq"><i>3</i><span data-i="f3">Where should we send it?</span></span>
+        <div class="sendrow">
+          <a class="sbtn wa" id="wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8z" stroke-linejoin="round"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 1.8.7-.4 1.7c-3.6.3-7.2-3.3-6.9-6.9l1.7-.4.7 1.8z" fill="currentColor" stroke="none"/></svg><span data-i="send_wa">Send via WhatsApp</span></a>
+          <a class="sbtn em" id="em" href="mailto:hello@avstudio.agency"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><span data-i="send_em">By email</span></a>
+        </div>
+        <p class="sendnote"><span data-i="sendnote">The button opens your app with a ready message, and you decide whether to send it.</span> <a href="privacy/" data-i="privacy_l">Privacy policy</a></p>
       </div>
-      <p class="sendnote"><span data-i="sendnote">The button opens your app with a ready message, and you decide whether to send it.</span> <a href="privacy/" data-i="privacy_l">Privacy policy</a></p>
-      <div class="nav-row"><button class="back" data-to="2" data-i="back">← back</button></div>
-    </div>
+    </form>
   </div>
 </section>
 </main>
@@ -625,15 +662,15 @@ const T = {
     q9:'Neturiu tekstų ir nuotraukų. Ką daryti?',a9:'Tekstus parašysime kartu su jumis, tai įskaičiuota. Foto ir vaizdo filmavimą, jei reikia, organizuojame už papildomą kainą arba parenkame tinkamas nemokamas nuotraukas.',
     q10:'Ar galite įdiegti analitiką?',a10:'Taip, paprašius. Dažniausiai diegiame statistiką be slapukų, kad nereikėtų sutikimo juostos. Galima ir Google Analytics, tada pridedame sutikimo juostą.',
     q7:'Ar galima mokėti dalimis?',a7:'Taip: dalį prieš pradedant, likutį po paleidimo.',
-    k_ben:'Kodėl mes',h_ben:'Greitai.<br>Nebrangiai.<br><em>Gražiai.</em>',live:'Svetainė veikia',
+    k_ben:'Kodėl mes',h_ben:'<em>Daugiau<br>klientų.</em><br>Nebrangiai.<br>Greitai.',live:'Svetainė veikia',
     h_faq:'DUK',
-    q1:'Kiek kainuoja svetainė?',a1:'Nuo 200 € už vieno puslapio svetainę. Tikslią kainą pasakome po trumpo pokalbio, ir ji lieka fiksuota.',
-    q2:'Kaip greitai ji bus paruošta?',a2:'Vieno puslapio svetainė per savaitę. Didesnė svetainė užtrunka savaitę ar ilgiau, tikslią datą pasakome po brifo.',
     q3:'Ką man reikia paruošti?',a3:'Beveik nieko: papasakoti apie savo verslą per brifą ir atsiųsti nuotraukas, jei turite. Su tekstais padėsime.',
     q4:'O jei dizainas nepatiks?',a4:'Pirmiausia gaunate tris dizaino variantus, o pasirinktą iškart pataisome. Du pataisymų ratai įskaičiuoti.',
     q5:'Ar yra mėnesinių mokesčių?',a5:'Dažniausiai ne. Daugumai svetainių talpinimas nemokamas, todėl mokate tik už domeną, apie 10–20 € per metus. Priežiūra pagal norą, 25 € per mėnesį.',
     q8:'O jei reikia parduotuvės, registracijos internetu ar administravimo srities?',a8:'Sukursime. Tokioms svetainėms reikia mokamo talpinimo, todėl kūrimo ir talpinimo kainą skaičiuojame atskirai ir pasakome prieš pradedant.',
     q6:'Nieko neišmanau apie technologijas.',a6:'Ir nereikia. Domeną, talpinimą, el. paštą, Google profilį sutvarkome patys.',
+    k_brief:'Užklausa',h_brief:'Aptarkime <em>jūsų svetainę</em>',brief_p:'Užpildykite porą laukų ir pasirinkite, kur siųsti. Atsidarys WhatsApp arba el. paštas su paruošta žinute, jums liks tik paspausti „Siųsti“.',direct:'Arba parašykite mums patys:',
+    f1:'Ko reikia?',f2:'Apie jūsų verslą',f3:'Kur siųsti?',send_wa:'Siųsti per WhatsApp',send_em:'El. paštu',
     need:'Man reikia',o1:'vieno puslapio svetainės',o2:'įmonės svetainės',o3:'atnaujinimo',o4:'dar nežinau',next:'toliau',back:'← atgal',
     b2:'Apie jūsų verslą',l1:'Pavadinimas ir kuo užsiimate',l2:'Instagram arba dabartinė svetainė (nebūtina)',sendnote:'Mygtukas atidarys programėlę su paruošta žinute. Siųsti ar ne, sprendžiate jūs.',privacy_l:'Privatumo politika',menu_l:'Atidaryti meniu',menu_d:'Meniu',where:'Kur patogiau bendrauti?',
     msg:'Sveiki! Man reikia: ',
@@ -670,15 +707,15 @@ const T = {
     q9:'У меня нет текстов и фото. Что делать?',a9:'Тексты напишем вместе с вами, это входит в цену. Фото- и видеосъёмку организуем за отдельную плату, если она нужна, или подберём подходящие бесплатные фото.',
     q10:'Можно подключить аналитику?',a10:'Да, по запросу. Обычно ставим статистику без cookies, чтобы не нужен был баннер согласия. Google Analytics тоже можно, тогда добавим баннер.',
     q7:'Можно платить частями?',a7:'Да: часть до старта, остальное после запуска.',
-    k_ben:'Почему мы',h_ben:'Быстро.<br>Недорого.<br><em>Красиво.</em>',live:'Сайт работает',
+    k_ben:'Почему мы',h_ben:'<em>Больше<br>клиентов.</em><br>Недорого.<br>Быстро.',live:'Сайт работает',
     h_faq:'Вопросы',
-    q1:'Сколько стоит сайт?',a1:'От €200 за лендинг. Точную цену называем после короткого разговора, и она фиксируется.',
-    q2:'Как быстро будет готово?',a2:'Лендинг делаем до недели. Сайт побольше от недели, точный срок назовём после брифа.',
     q3:'Что мне нужно подготовить?',a3:'Почти ничего: рассказать о своём деле на брифе и прислать фото, если есть. С текстами поможем.',
     q4:'А если дизайн не понравится?',a4:'Сначала вы получаете три варианта дизайна на выбор, и мы сразу правим выбранный. Два круга правок входят в цену.',
     q5:'Будут ежемесячные платежи?',a5:'Обычно нет. Для большинства сайтов хостинг бесплатный, и вы платите только за домен, около €10–20 в год. Поддержка по желанию, €25 в месяц.',
     q8:'А если нужен магазин, онлайн-запись или админка?',a8:'Сделаем. Таким сайтам нужен платный хостинг, поэтому разработку и хостинг считаем отдельно и называем цену до старта.',
     q6:'Я ничего не понимаю в технике.',a6:'И не нужно. Домен, хостинг, почту, профиль в Google настроим сами.',
+    k_brief:'Заявка',h_brief:'Обсудим <em>ваш сайт</em>?',brief_p:'Заполните пару полей и выберите, куда отправить. Откроется WhatsApp или почта с готовым сообщением, вам останется только нажать «Отправить».',direct:'Или напишите нам сами:',
+    f1:'Что нужно?',f2:'О вашем деле',f3:'Куда отправить?',send_wa:'Отправить в WhatsApp',send_em:'На почту',
     need:'Мне нужен',o1:'лендинг',o2:'сайт компании',o3:'редизайн',o4:'пока не знаю',next:'дальше',back:'← назад',
     b2:'Пара слов о бизнесе',l1:'Название и чем занимаетесь',l2:'Instagram или старый сайт (необязательно)',sendnote:'Кнопка откроет приложение с готовым сообщением. Отправлять его или нет, решаете вы.',privacy_l:'Политика конфиденциальности',menu_l:'Открыть меню',menu_d:'Меню',where:'Где удобнее общаться?',
     msg:'Привет! Мне нужен: ',
@@ -725,18 +762,12 @@ function fitHero(){
 let fitRaf; addEventListener('resize', () => { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitHero); });
 document.fonts && document.fonts.ready.then(fitHero);
 
-// ---- Brief: 3 tiny steps, answers go into the first message ----
-const opts = [...document.querySelectorAll('#opts .opt')];
+// ---- Brief form: the answers become a ready message for WhatsApp or email ----
+const opts = [...document.querySelectorAll('#opts input')];
 const biz = document.getElementById('biz'), link = document.getElementById('link');
-opts.forEach(o => o.addEventListener('click', () => { o.setAttribute('aria-pressed', o.getAttribute('aria-pressed') !== 'true'); updateLinks(); }));
-[biz, link].forEach(i => i.addEventListener('input', updateLinks));
-document.querySelectorAll('[data-to]').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('.step').forEach(s => s.classList.toggle('show', s.dataset.step === b.dataset.to));
-  const step = document.querySelector('.step.show');
-  (b.dataset.to === '2' ? biz : step.querySelector('h2')).focus({preventScroll:true});
-}));
+[...opts, biz, link].forEach(i => i.addEventListener('input', updateLinks));
 function updateLinks(){
-  const picked = opts.filter(o => o.getAttribute('aria-pressed') === 'true').map(o => o.textContent).join(', ');
+  const picked = opts.filter(o => o.checked).map(o => o.nextElementSibling.textContent).join(', ');
   const text = encodeURIComponent([T[lang].msg + (picked || '…'), biz.value.trim(), link.value.trim()].filter(Boolean).join('\n'));
   const wa = document.getElementById('wa');
   wa.hidden = !WA;   // no dead button until the real number is filled in
