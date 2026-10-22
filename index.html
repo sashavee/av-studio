@@ -531,7 +531,7 @@ footer .logo{font-size:30px}
 </section>
 
 <!-- ============ BRIEF ============ -->
-<!-- TODO: real contacts. Put the WhatsApp number in WA and the Telegram username in TG (script below). -->
+<!-- TODO: real contacts. Put the WhatsApp number in WA (script below). -->
 <section class="panel need" id="contact">
   <div class="in">
     <div class="step show" data-step="1">
@@ -556,7 +556,6 @@ footer .logo{font-size:30px}
       <div class="hd"><h2 tabindex="-1" data-i="where">Where do we talk?</h2><span class="count">3 / 3</span></div>
       <div class="reach">
         <a class="pill white" id="wa" href="#" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="pill white" id="tg" href="#" target="_blank" rel="noopener">Telegram</a>
         <a class="pill white" id="em" href="mailto:hello@avstudio.agency">Email</a>
       </div>
       <p class="sendnote"><span data-i="sendnote">The button opens your app with a ready message, and you decide whether to send it.</span> <a href="privacy/" data-i="privacy_l">Privacy policy</a></p>
@@ -587,7 +586,6 @@ document.documentElement.classList.add('js');
 
 // Contacts: fill these in once the real ones exist.
 const WA = '';          // e.g. '37060000000'
-const TG = '';          // e.g. 'avstudio'
 const MAIL = 'hello@avstudio.agency';
 
 const T = {
@@ -735,10 +733,9 @@ document.querySelectorAll('[data-to]').forEach(b => b.addEventListener('click', 
 function updateLinks(){
   const picked = opts.filter(o => o.getAttribute('aria-pressed') === 'true').map(o => o.textContent).join(', ');
   const text = encodeURIComponent([T[lang].msg + (picked || '…'), biz.value.trim(), link.value.trim()].filter(Boolean).join('\n'));
-  const wa = document.getElementById('wa'), tg = document.getElementById('tg');
-  wa.hidden = !WA; tg.hidden = !TG;   // no dead buttons until the real contacts are filled in
+  const wa = document.getElementById('wa');
+  wa.hidden = !WA;   // no dead button until the real number is filled in
   if (WA) wa.href = `https://wa.me/${WA}?text=${text}`;
-  if (TG) tg.href = `https://t.me/${TG}`;
   document.getElementById('em').href = `mailto:${MAIL}?subject=AV%20Studio&body=${text}`;
 }
 
