@@ -49,7 +49,8 @@ em{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:non
 .pill.dark:hover{background:var(--red)}
 
 /* ---------- HERO (Awake-style red panel) ---------- */
-.hero{background:var(--red);color:#fff;display:flex;flex-direction:column}
+/* hero always fills the screen; the headline block sits in the middle of the free space */
+.hero{background:var(--red);color:#fff;display:flex;flex-direction:column;min-height:calc(100svh - 2*var(--gap))}
 .top{display:flex;justify-content:space-between;align-items:center;padding-top:26px;gap:12px}
 .logo{font:400 30px/1 var(--sans);letter-spacing:-.02em}
 .top .right{display:flex;gap:10px;align-items:center}
@@ -64,10 +65,11 @@ em{font-family:var(--serif);font-style:italic;font-weight:500;text-transform:non
 
 h1{font:700 clamp(36px,min(6.4vw,9vh),130px)/.95 var(--wide);letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap;width:max-content}
 h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06em}
-.hero-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,340px);gap:48px;align-items:end;padding-top:clamp(36px,7vh,80px);padding-bottom:clamp(28px,6vh,60px)}
+.hero-main{margin:auto 0;display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,340px);gap:48px;align-items:end;padding-top:clamp(36px,7vh,80px);padding-bottom:clamp(28px,6vh,60px)}
 /* hero is as tall as its content; JS scales the headline to the column width, never taller than one screen (fitHero) */
 .hbox{min-width:0}
 .hero-main p{font-size:clamp(16px,1.3vw,19px);line-height:1.5;color:#fff}
+.hero-cta{display:none;margin-top:20px;height:54px;padding:0 26px;font-size:17px}
 
 /* menu overlay */
 .menu{position:fixed;inset:var(--gap);z-index:50;background:var(--ink);color:#fff;border-radius:var(--r);display:flex;flex-direction:column;padding:26px clamp(20px,2.8vw,40px);opacity:0;visibility:hidden;transform:scale(.98);transition:opacity .3s,visibility .3s,transform .3s var(--ease)}
@@ -216,27 +218,29 @@ details[open] summary::after{transform:rotate(45deg);background-color:var(--red)
 details p{color:var(--muted);padding:0 50px 22px 0}
 
 /* ---------- BRIEF (I need) ---------- */
-.need{background:var(--red);color:#fff;padding:40px 0 44px}
-.need .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:24px}
-.need h2{font:500 clamp(40px,6vw,84px)/1 var(--sans);letter-spacing:-.03em}
+/* brief fills the screen like the other blocks; content sits in the middle */
+.need{background:var(--red);color:#fff;padding:clamp(28px,6vh,64px) 0;min-height:calc(100svh - 2*var(--gap));display:flex;align-items:center}
+.need > .in{width:100%}
+.need .hd{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:clamp(20px,4.5vh,48px)}
+.need h2{font:500 clamp(40px,min(7.4vw,14vh),130px)/1 var(--sans);letter-spacing:-.03em}
 .need .count{font-size:14px;letter-spacing:.08em;white-space:nowrap}
 .step{display:none}
 .step.show{display:block;animation:stepIn .45s var(--ease)}
 @keyframes stepIn{from{opacity:0;transform:translateY(14px)}}
 .opts{display:flex;flex-wrap:wrap;gap:14px}
-.opt{height:clamp(52px,6vw,70px);padding:0 clamp(22px,2.6vw,34px);border:2px solid #fff;border-radius:999px;font:500 clamp(20px,2.6vw,36px)/1 var(--sans);color:#fff;transition:background .2s,color .2s,transform .2s var(--ease)}
+.opt{height:clamp(52px,min(6.4vw,10vh),100px);padding:0 clamp(22px,2.6vw,40px);border:2px solid #fff;border-radius:999px;font:500 clamp(20px,min(3vw,5vh),48px)/1 var(--sans);color:#fff;transition:background .2s,color .2s,transform .2s var(--ease)}
 .opt:hover{background:rgba(255,255,255,.15)}
 .opt[aria-pressed=true]{background:#fff;color:var(--red)}
 .opt.go{background:#fff;color:var(--red)}
 .opt.go:hover{transform:translateX(4px)}
-.nav-row{margin-top:22px;display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+.nav-row{margin-top:clamp(18px,3.6vh,36px);display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .back{font-size:16px;text-decoration:underline;text-underline-offset:4px}
 .fields{display:grid;gap:18px;max-width:820px}
-.fields input{width:100%;border-bottom:2px solid rgba(255,255,255,.55);padding:10px 0;font:400 clamp(20px,2.4vw,32px)/1.2 var(--sans);color:#fff;transition:border-color .2s}
+.fields input{width:100%;border-bottom:2px solid rgba(255,255,255,.55);padding:10px 0;font:400 clamp(20px,min(2.8vw,4.6vh),44px)/1.2 var(--sans);color:#fff;transition:border-color .2s}
 .fields label{display:block;font-size:15px}
 .fields input:focus{border-color:#fff}
 .reach{display:flex;gap:12px;flex-wrap:wrap}
-.reach .pill{height:56px;padding:0 28px;font-size:18px}
+.reach .pill{height:clamp(56px,9vh,90px);padding:0 clamp(28px,2.6vw,44px);font-size:clamp(18px,min(2.2vw,3.6vh),32px)}
 .reach .pill:hover{background:var(--ink);color:#fff}
 .sendnote{margin-top:18px;font-size:14px;max-width:560px}
 .sendnote a,.fbot a.pp{text-decoration:underline;text-underline-offset:3px}
@@ -265,6 +269,7 @@ footer .logo{font-size:30px}
 
 /* narrower screens: text goes under the headline */
 @media (max-width:860px){
+  .hero-cta{display:inline-flex}
   .bin{grid-template-columns:1fr}
   .pcap{margin-top:0}
 }
@@ -343,7 +348,7 @@ footer .logo{font-size:30px}
 
   <div class="in hero-main">
     <div class="hbox"><h1 data-i="h1">We build<br><em>damn good</em><br>websites.</h1></div>
-    <p data-i="hero_p">We make websites for small businesses in a week: fast, beautiful and affordable.</p>
+    <div class="htxt"><p data-i="hero_p">We make websites for small businesses in a week: fast, beautiful and affordable.</p><a class="pill white hero-cta" href="#contact" data-i="hcta">Discuss your project →</a></div>
   </div>
 </header>
 
@@ -592,7 +597,7 @@ const T = {
   lt:{
     nav_work:'Darbai',nav_services:'Paslaugos',nav_process:'Procesas',nav_faq:'DUK',touch:'parašyti.',menu:'meniu.',close:'uždaryti.',
     h1:'Kuriame<br><em>velniškai</em><br>geras<br>svetaines.',city:'Vilnius',
-    hero_p:'Kuriame svetaines smulkiam verslui per savaitę: greitai, gražiai ir nebrangiai.',
+    hero_p:'Kuriame svetaines smulkiam verslui per savaitę: greitai, gražiai ir nebrangiai.',hcta:'Aptarti projektą →',
     h_work:'Mūsų darbai',case1:'Fotografės portfolio',case4:'Kriptovaliutų paslauga',case2:'Grožio studija · koncepcija',case3:'Renovacija · koncepcija',
     next_t:'Jūsų verslas?',next_k:'Kitas',next_card:'Čia bus<br><em>jūsų svetainė</em>',more:'Noriu tokios pat',
     h_services:'Paslaugos',from:'nuo',discuss:'aptarti',
@@ -637,7 +642,7 @@ const T = {
   ru:{
     nav_work:'Работы',nav_services:'Услуги',nav_process:'Процесс',nav_faq:'Вопросы',touch:'написать.',menu:'меню.',close:'закрыть.',
     h1:'Мы делаем<br><em>чертовски</em><br>хорошие<br>сайты.',city:'Вильнюс',
-    hero_p:'Делаем сайты для малого бизнеса за неделю: быстро, красиво и недорого.',
+    hero_p:'Делаем сайты для малого бизнеса за неделю: быстро, красиво и недорого.',hcta:'Обсудить проект →',
     h_work:'Наши работы',case1:'Портфолио фотографа',case4:'Крипто-сервис',case2:'Салон красоты · концепт',case3:'Ремонт квартир · концепт',
     next_t:'Ваш бизнес?',next_k:'Следующий',next_card:'Здесь будет<br><em>ваш сайт</em>',more:'Хочу так же',
     h_services:'Услуги',from:'от',discuss:'обсудить',
@@ -713,7 +718,7 @@ function fitHero(){
   // height left on one screen after the panel gaps, top bar, paddings (and the text, when it sits below)
   const gap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 16;
   let freeH = innerHeight - 2 * gap - document.querySelector('.top').offsetHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
-  if (stacked) freeH -= main.querySelector('p').offsetHeight + parseFloat(cs.rowGap);
+  if (stacked) freeH -= main.querySelector('.htxt').offsetHeight + parseFloat(cs.rowGap);
   const byH = freeH * 0.97 / h1.offsetHeight;
   h1.style.fontSize = Math.max(34, Math.min(100 * Math.min(byW, byH), 170)) + 'px';
 }
