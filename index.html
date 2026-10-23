@@ -107,8 +107,8 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .badge:hover span{transform:rotate(-45deg) scale(1.08)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ---------- Screens snap like a magnet: scrolling settles with the next screen fully in view (tall screens scroll freely inside) ---------- */
-html{scroll-snap-type:y mandatory}
+/* ---------- Screens snap like a magnet on desktop: scrolling settles with the next screen fully in view (tall screens scroll freely inside). Off on phones and touch screens ---------- */
+@media (min-width:641px) and (hover:hover) and (pointer:fine){html{scroll-snap-type:y mandatory}}
 .snap{scroll-snap-align:start;scroll-margin-top:var(--gap)}
 .snap-end{scroll-snap-align:end;scroll-margin-bottom:var(--gap)}
 /* ---------- BENEFITS: big promise + a pile of pills on a dotted sheet ---------- */
