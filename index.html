@@ -114,18 +114,26 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .kick{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .bh2{font:700 clamp(34px,10vh,112px)/.95 var(--wide);letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap;width:max-content}
 .bh2 em{color:var(--red);font-size:1.06em;letter-spacing:-.02em}
-/* the cards stretch to fill spare height, but never force the screen taller */
-.bgrid{display:grid;grid-template-columns:1fr 1fr;align-content:stretch;gap:clamp(8px,1.4vh,14px)}
-.bc{display:flex;flex-direction:column;justify-content:center;background:#fff;border:1px solid #e4e4e8;border-radius:16px;padding:clamp(10px,1.8vh,22px) clamp(14px,1.4vw,22px);transition:rotate .35s var(--ease),transform .3s var(--ease),border-color .3s,box-shadow .3s}
-/* herringbone: the two columns lean opposite ways, the right one sits a bit lower */
-.bc{rotate:-1.6deg;box-shadow:0 8px 18px rgba(24,29,36,.06)}
-.bc:nth-child(even){rotate:1.6deg;translate:0 clamp(10px,2.4vh,24px)}
-.bc:hover{rotate:0deg;border-color:var(--ink);box-shadow:0 14px 28px rgba(24,29,36,.12)}
-.bl{align-self:flex-start;display:inline-flex;align-items:center;height:clamp(28px,4.6vh,42px);padding:0 14px;border-radius:999px;font:500 clamp(14px,min(1.3vw,2.6vh),20px)/1 var(--sans);letter-spacing:-.01em;background:var(--red);color:#fff}
-.bc:nth-child(4n+2) .bl{background:var(--ink)}
-.bc:nth-child(4n+3) .bl{background:var(--pink);color:var(--ink)}
-.bc:nth-child(4n) .bl{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
-.bc p{margin-top:clamp(5px,1vh,12px);color:var(--muted);font-size:clamp(12.5px,min(1.1vw,2.05vh),17px);line-height:1.38}
+.pcap{max-width:420px;min-height:4.4em;margin-top:auto;font-size:clamp(15px,2.4vh,19px);line-height:1.45;background:#fff;box-shadow:0 0 0 8px #fff}
+.pcap b{display:block;font-weight:500;margin-bottom:2px}
+/* pills as a fir tree: pairs of branches hang off a dashed trunk, left ones tilt one way, right ones the other */
+.pile{position:relative;display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(10px,1.2vw,18px);row-gap:clamp(12px,3.4vh,34px);align-content:center;padding:clamp(10px,2.4vh,28px) 0}
+.pile::before{content:"";position:absolute;left:50%;top:0;bottom:0;border-left:2px dashed #cfcfd6}
+.pl{position:relative;height:clamp(40px,9.2vh,88px);padding:0 1em;border-radius:999px;font:500 clamp(14px,min(2.15vw,4.7vh),36px)/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;
+  background:var(--grey);color:var(--ink);box-shadow:0 10px 22px rgba(24,29,36,.12);transition:rotate .45s var(--ease),scale .3s var(--ease),box-shadow .3s}
+.pl:nth-child(odd){justify-self:end;rotate:-7deg;transform-origin:right center}
+.pl:nth-child(even){justify-self:start;rotate:7deg;transform-origin:left center}
+.pl:nth-child(4n+1){background:var(--red);color:#fff}
+.pl:nth-child(4n+2){background:var(--ink);color:#fff}
+.pl:nth-child(4n+3){background:var(--pink);color:var(--ink)}
+.pl:nth-child(4n){background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink),0 10px 22px rgba(24,29,36,.08)}
+.pl:hover,.pl[aria-pressed=true]{rotate:0deg;scale:1.06;z-index:2;box-shadow:0 18px 30px rgba(24,29,36,.18)}
+/* branches slide in from the sides when the screen comes into view */
+@media (prefers-reduced-motion:no-preference){
+  .js .pile .pl{opacity:0;translate:-48px 0}
+  .js .pile .pl:nth-child(even){translate:48px 0}
+  .js .pile.on .pl{opacity:1;translate:none;transition:rotate .45s var(--ease),scale .3s var(--ease),box-shadow .3s,translate .8s var(--ease) calc(var(--i) * 80ms),opacity .5s calc(var(--i) * 80ms)}
+}
 
 /* ---------- WORK ---------- */
 .work-head{padding:96px 0 0;position:relative}
@@ -281,7 +289,7 @@ footer .logo{font-size:30px}
   .hero-cta{display:inline-flex}
   .bwrap{grid-template-columns:1fr}
   .bin{grid-template-columns:1fr;align-content:center;align-items:start;gap:24px}
-  .bgrid{align-content:start}
+  .pcap{margin-top:0}
 }
 @media (max-width:1100px){
   .hero-main{grid-template-columns:1fr;gap:28px}
@@ -327,13 +335,9 @@ footer .logo{font-size:30px}
   .mf{width:78%}
   .mf-steps{right:12px}
   .badge{width:84px}
-  /* phones: heading and cards sit together in the middle; the cards swipe sideways in one row */
-  .bgrid{grid-auto-rows:auto}
-  .bgrid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:78%;overflow-x:auto;scroll-snap-type:x mandatory;margin:0 -20px;padding:4px 20px 8px;scroll-padding:0 20px}
-  .bc{scroll-snap-align:start}
-  .bc:nth-child(even){translate:none}
-  .bgrid{padding-top:12px;padding-bottom:16px}
-  .bc p{font-size:14px}
+  .pl{font-size:clamp(12px,1.85vh,15px);height:clamp(34px,5.4vh,46px);padding:0 .75em}
+  .pile{row-gap:clamp(10px,2.4vh,20px);column-gap:6px}
+  .pcap{min-height:3.2em;font-size:14px}
   .seg{height:46px}
   .faq summary{padding:12px 0;font-size:15px}
   /* phones: the card explains itself, contacts are in the footer */
@@ -412,16 +416,17 @@ footer .logo{font-size:30px}
     <div class="bleft">
       <span class="kick" data-i="k_ben">Why us</span>
       <h2 class="bh2" id="bh2" data-i="h_ben">Fast.<br>Affordable.<br><em>Beautiful.</em></h2>
+      <p class="pcap" id="pcap" aria-live="polite"><span data-i="hint">Tap any pill to see the details.</span></p>
     </div>
-    <div class="bgrid">
-      <article class="bc rv"><span class="bl" data-i="pl1">Fast</span><p data-i="pd1">7 days, not 3 months. Live next week, and requests start coming next week.</p></article>
-      <article class="bc rv"><span class="bl" data-i="pl2">Pays off</span><p data-i="pd2">Price starts from €200. One new client covers the whole site.</p></article>
-      <article class="bc rv"><span class="bl" data-i="pl3">Fully yours</span><p data-i="pd3">No subscription. Pay once, and the site belongs to you.</p></article>
-      <article class="bc rv"><span class="bl" data-i="pl4">3 languages</span><p data-i="pd4">LT, EN and RU included. Every client in Vilnius understands you.</p></article>
-      <article class="bc rv"><span class="bl" data-i="pl5">Effortless</span><p data-i="pd5">One chat is all we need. We do all the rest: put the idea together, build and launch.</p></article>
-      <article class="bc rv"><span class="bl" data-i="pl6">Choose from 3 designs</span><p data-i="pd6">We provide you three designs to choose from. Keep the one you like, and we bring it to perfection with you.</p></article>
-      <article class="bc rv"><span class="bl" data-i="pl7">Mobile-ready</span><p data-i="pd7">Mobile version included, free. Looks perfect on any phone, where most of your clients find you.</p></article>
-      <article class="bc rv"><span class="bl" data-i="pl8">Flawless</span><p data-i="pd8">Loads within seconds and works flawlessly on any device. Clients never wait, so they never leave.</p></article>
+    <div class="pile" id="pile">
+      <button class="pl" style="--i:0" aria-pressed="false" data-d="pd1" data-i="pl1">Fast</button>
+      <button class="pl" style="--i:1" aria-pressed="false" data-d="pd2" data-i="pl2">Pays off</button>
+      <button class="pl" style="--i:2" aria-pressed="false" data-d="pd3" data-i="pl3">Fully yours</button>
+      <button class="pl" style="--i:3" aria-pressed="false" data-d="pd4" data-i="pl4">3 languages</button>
+      <button class="pl" style="--i:4" aria-pressed="false" data-d="pd5" data-i="pl5">Effortless</button>
+      <button class="pl" style="--i:5" aria-pressed="false" data-d="pd6" data-i="pl6">Choose from 3 designs</button>
+      <button class="pl" style="--i:6" aria-pressed="false" data-d="pd7" data-i="pl7">Mobile-ready</button>
+      <button class="pl" style="--i:7" aria-pressed="false" data-d="pd8" data-i="pl8">Flawless</button>
     </div>
   </div>
 </section>
@@ -670,6 +675,7 @@ const T = {
     q9:'Neturiu tekstų ir nuotraukų. Ką daryti?',a9:'Tekstus parašysime kartu su jumis, tai įskaičiuota. Foto ir vaizdo filmavimą, jei reikia, organizuojame už papildomą kainą arba parenkame tinkamas nemokamas nuotraukas.',
     q10:'Ar galite įdiegti analitiką?',a10:'Taip, paprašius. Dažniausiai diegiame statistiką be slapukų, kad nereikėtų sutikimo juostos. Galima ir Google Analytics, tada pridedame sutikimo juostą.',
     q7:'Ar galima mokėti dalimis?',a7:'Taip: dalį prieš pradedant, likutį po paleidimo.',
+    hint:'Paspauskite bet kurį punktą ir sužinokite daugiau.',
     k_ben:'Kodėl mes',h_ben:'Greitai.<br>Nebrangiai.<br><em>Gražiai.</em>',live:'Svetainė veikia',
     h_faq:'DUK',
     q3:'Ką man reikia paruošti?',a3:'Beveik nieko: papasakoti apie savo verslą per brifą ir atsiųsti nuotraukas, jei turite. Su tekstais padėsime.',
@@ -714,6 +720,7 @@ const T = {
     q9:'У меня нет текстов и фото. Что делать?',a9:'Тексты напишем вместе с вами, это входит в цену. Фото- и видеосъёмку организуем за отдельную плату, если она нужна, или подберём подходящие бесплатные фото.',
     q10:'Можно подключить аналитику?',a10:'Да, по запросу. Обычно ставим статистику без cookies, чтобы не нужен был баннер согласия. Google Analytics тоже можно, тогда добавим баннер.',
     q7:'Можно платить частями?',a7:'Да: часть до старта, остальное после запуска.',
+    hint:'Нажмите на любую пилюлю, чтобы узнать подробности.',
     k_ben:'Почему мы',h_ben:'Быстро.<br>Недорого.<br><em>Красиво.</em>',live:'Сайт работает',
     h_faq:'Вопросы',
     q3:'Что мне нужно подготовить?',a3:'Почти ничего: рассказать о своём деле на брифе и прислать фото, если есть. С текстами поможем.',
@@ -748,7 +755,7 @@ function setLang(l, remember){
   updateLinks();
   fitHero();
   if (typeof mfSplit === 'function') mfSplit();
-  if (window.benReady) fitBen();
+  if (window.benReady) { fitBen(); const on = pls.find(x => x.getAttribute('aria-pressed') === 'true'); if (on) showPill(on); }
 }
 
 // Size the headline so its fixed lines fill the free space next to the text:
@@ -831,6 +838,19 @@ function mfUpdate(){
 let mfRaf; addEventListener('scroll', () => { cancelAnimationFrame(mfRaf); mfRaf = requestAnimationFrame(mfUpdate); }, {passive:true});
 addEventListener('resize', mfUpdate);
 
+// ---- Benefit pills: tap / hover shows the explanation on the left ----
+const pcap = document.getElementById('pcap'), pls = [...document.querySelectorAll('#pile .pl')];
+function showPill(b){
+  pls.forEach(x => x.setAttribute('aria-pressed', x === b));
+  pcap.innerHTML = '<b></b><span></span>';
+  pcap.querySelector('b').textContent = b.textContent;
+  pcap.querySelector('span').textContent = T[lang][b.dataset.d];
+}
+pls.forEach(b => { b.addEventListener('click', () => showPill(b)); b.addEventListener('mouseenter', () => showPill(b)); b.addEventListener('focus', () => showPill(b)); });
+if ('IntersectionObserver' in window) {
+  const pio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); pio.disconnect(); } }), {threshold:.35});
+  pio.observe(document.getElementById('pile'));
+} else document.getElementById('pile').classList.add('on');
 // benefits headline: as big as the left column allows, never taller than ~1/2 screen
 const bh2 = document.getElementById('bh2');
 function fitBen(){
