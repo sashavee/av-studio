@@ -107,11 +107,10 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .badge:hover span{transform:rotate(-45deg) scale(1.08)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ---------- Screens stack: each one sticks and the next slides over it (JS sets top so tall screens stick only once scrolled through) ---------- */
-main{display:contents}
-.stk{position:sticky;top:var(--gap)}
-.stk[tabindex="-1"]:focus,[id][tabindex="-1"]:focus{outline:none}
-.wgroup,.days{background:var(--white)}
+/* ---------- Screens snap like a magnet: scrolling settles with the next screen fully in view (tall screens scroll freely inside) ---------- */
+html{scroll-snap-type:y mandatory}
+.snap{scroll-snap-align:start;scroll-margin-top:var(--gap)}
+.snap-end{scroll-snap-align:end;scroll-margin-bottom:var(--gap)}
 /* ---------- BENEFITS: big promise + a pile of pills on a dotted sheet ---------- */
 .ben{min-height:calc(100svh - 2*var(--gap));display:flex;border:1px solid #ececf0;background:#fff radial-gradient(#d6d6dc 1.1px,transparent 1.4px) 0 0/22px 22px}
 .bin{flex:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(20px,3vw,48px);padding-top:clamp(24px,5vh,56px);padding-bottom:clamp(20px,4vh,44px)}
@@ -384,7 +383,7 @@ footer .logo{font-size:30px}
 <body>
 
 <!-- ============ HERO ============ -->
-<header class="panel hero stk" id="top">
+<header class="panel hero snap" id="top">
   <div class="in top">
     <a class="logo" href="#top" aria-label="AV Studio">av.studio</a>
     <div class="right">
@@ -421,7 +420,7 @@ footer .logo{font-size:30px}
 
 <main>
 <!-- ============ BENEFITS ============ -->
-<section class="panel ben stk" id="benefits">
+<section class="panel ben snap" id="benefits">
   <div class="in bin">
     <div class="bleft">
       <span class="kick" data-i="k_ben">Why us</span>
@@ -442,7 +441,7 @@ footer .logo{font-size:30px}
 </section>
 
 <!-- ============ WORK ============ -->
-<div class="wgroup stk">
+<div class="wgroup snap">
 <div class="work-head" id="work">
   <h2 class="big rv" data-i="h_work">Our work</h2>
 </div>
@@ -483,7 +482,7 @@ footer .logo{font-size:30px}
 </div>
 
 <!-- ============ WHY US: manifesto ============ -->
-<section class="manifest stk" id="why" aria-label="About us" data-al="why_l">
+<section class="manifest snap" id="why" aria-label="About us" data-al="why_l">
   <div class="mf-stick">
     <div class="mf">
       <p data-i="m1">Every site starts with <u>a conversation about your business</u>: what you do, who comes to you and what matters to them. That's why it ends up <u>truly yours</u>, not like everyone else's.</p>
@@ -499,7 +498,7 @@ footer .logo{font-size:30px}
 </section>
 
 <!-- ============ SERVICES ============ -->
-<section class="panel services stk" id="services">
+<section class="panel services snap" id="services">
   <h2 class="big" data-i="h_services">Services</h2>
   <div class="stack">
     <article class="svc">
@@ -557,7 +556,7 @@ footer .logo{font-size:30px}
 </section>
 
 <!-- ============ ONE WEEK ============ -->
-<section class="days in stk" id="days">
+<section class="days in snap" id="days">
   <h2 class="rv" data-i="h_days">Ready in <em>a week</em></h2>
   <div class="tl" id="tl">
     <span class="dn" aria-hidden="true">1</span><span class="dn" aria-hidden="true">2</span><span class="dn" aria-hidden="true">3</span><span class="dn" aria-hidden="true">4</span><span class="dn" aria-hidden="true">5</span><span class="dn" aria-hidden="true">6</span><span class="dn" aria-hidden="true">7</span>
@@ -571,7 +570,7 @@ footer .logo{font-size:30px}
 </section>
 
 <!-- ============ FAQ ============ -->
-<section class="panel faq stk" id="faq">
+<section class="panel faq snap" id="faq">
   <div class="in faqin">
     <h2 data-i="h_faq">FAQ</h2>
     <div class="fcols">
@@ -592,7 +591,7 @@ footer .logo{font-size:30px}
 </section>
 
 <!-- ============ BRIEF ============ -->
-<section class="panel need stk" id="contact">
+<section class="panel need snap" id="contact">
   <div class="in bwrap">
     <div class="bintro">
       <span class="kick" data-i="k_brief">Request</span>
@@ -636,7 +635,7 @@ footer .logo{font-size:30px}
 </main>
 
 <!-- ============ FOOTER ============ -->
-<footer class="panel">
+<footer class="panel snap-end">
   <div class="in">
     <div class="logo">av.studio</div>
     <div class="fgrid">
@@ -783,30 +782,6 @@ function fitHero(){
 }
 let fitRaf; addEventListener('resize', () => { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitHero); });
 document.fonts && document.fonts.ready.then(fitHero);
-
-// ---- Screens stack: a screen sticks once its bottom is in view, so tall ones are read in full first ----
-const stks = [...document.querySelectorAll('.stk')];
-function stickTops(){
-  const g = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 16;
-  stks.forEach(s => { s.style.top = Math.min(g, innerHeight - s.offsetHeight - g) + 'px'; });
-}
-const stkRo = new ResizeObserver(stickTops); stks.forEach(s => stkRo.observe(s));
-addEventListener('resize', stickTops);
-// a stuck screen reports its stuck position, so in-page links scroll to where the screen sits in the flow
-document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="#"]');
-  const t = a && a.getAttribute('href').length > 1 && document.getElementById(a.getAttribute('href').slice(1));
-  if (!t) return;
-  e.preventDefault();
-  const host = t.closest('.stk');
-  if (host) host.style.position = 'static';   // static, not relative: relative would still apply the sticky top as an offset
-  const y = t.getBoundingClientRect().top + scrollY - (t === host ? parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--gap')) || 16 : 0);
-  if (host) host.style.position = '';
-  scrollTo({ top: Math.max(0, y), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
-  history.pushState(null, '', a.getAttribute('href'));
-  if (!t.hasAttribute('tabindex') && !t.matches('a,button,input,summary')) t.setAttribute('tabindex', '-1');
-  t.focus({ preventScroll: true });
-});
 
 // ---- Brief form: the answers go to /api/brief, which emails them to us ----
 const brief = document.getElementById('brief'), sendBtn = document.getElementById('send'), sent = document.getElementById('sent');
