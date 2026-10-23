@@ -116,19 +116,21 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .bh2 em{color:var(--red);font-size:1.06em;letter-spacing:-.02em}
 .pcap{max-width:400px;min-height:4.4em;font-size:clamp(15px,2.4vh,19px);line-height:1.45;margin-top:auto;background:#fff;box-shadow:0 0 0 8px #fff}
 .pcap b{display:block;font-weight:500;margin-bottom:2px}
-.pile{display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-end;gap:clamp(6px,1.6vh,16px) 0;padding:0 1% clamp(4px,1vh,12px)}
+.pile{display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:clamp(6px,1.6vh,16px) 0;padding:0 1% clamp(4px,1vh,12px)}
 .pl{height:clamp(44px,9.4vh,96px);padding:0 1em;margin:0 -.06em;border-radius:999px;font:500 clamp(16px,min(2.5vw,5vh),48px)/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;
   background:var(--grey);color:var(--ink);transform:translateY(var(--dy,0)) rotate(var(--r,0deg));transition:transform .45s var(--ease),box-shadow .3s;box-shadow:0 10px 22px rgba(24,29,36,.12)}
 .pl:nth-child(4n+1){background:var(--red);color:#fff}
 .pl:nth-child(4n+2){background:var(--ink);color:#fff}
 .pl:nth-child(4n+3){background:var(--pink);color:var(--ink)}
 .pl:nth-child(4n){background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink),0 10px 22px rgba(24,29,36,.08)}
-.pl:hover,.pl[aria-pressed=true]{transform:translateY(calc(var(--dy,0px) - 12px)) rotate(0deg);z-index:2;box-shadow:0 18px 30px rgba(24,29,36,.18)}
+.pl:hover,.pl[aria-pressed=true]{transform:translateY(calc(var(--dy,0px) - .55em)) rotate(0deg) scale(1.06);z-index:2;box-shadow:0 18px 30px rgba(24,29,36,.18)}
 /* pills drop into the pile when the screen comes into view */
 @media (prefers-reduced-motion:no-preference){
   .js .pile .pl{opacity:0;transform:translateY(-60vh) rotate(calc(var(--r,0deg) * 3))}
   .js .pile.on .pl{opacity:1;transform:translateY(var(--dy,0)) rotate(var(--r,0deg));transition:transform .9s cubic-bezier(.25,1.4,.4,1),opacity .3s;transition-delay:calc(var(--i) * 70ms)}
-  .js .pile.on .pl:hover,.js .pile.on .pl[aria-pressed=true]{transform:translateY(calc(var(--dy,0px) - 12px)) rotate(0deg);transition-delay:0s}
+  .js .pile.on .pl:hover,.js .pile.on .pl[aria-pressed=true]{transform:translateY(calc(var(--dy,0px) - .55em)) rotate(0deg) scale(1.06);transition-delay:0s}
+  /* after the drop, every pill reacts at once (no leftover stagger) */
+  .js .pile.on.landed .pl{transition:transform .45s cubic-bezier(.3,1.4,.5,1),box-shadow .3s,opacity .3s;transition-delay:0s}
 }
 
 /* ---------- WORK ---------- */
@@ -417,14 +419,14 @@ footer .logo{font-size:30px}
       <p class="pcap" id="pcap" aria-live="polite"><span data-i="hint">Tap any pill to see the details.</span></p>
     </div>
     <div class="pile" id="pile">
-      <button class="pl" style="--i:0;--r:-6deg;--dy:8px" aria-pressed="false" data-d="pd1" data-i="pl1">Fast</button>
-      <button class="pl" style="--i:1;--r:4deg" aria-pressed="false" data-d="pd2" data-i="pl2">Pays off</button>
-      <button class="pl" style="--i:2;--r:-3deg;--dy:-6px" aria-pressed="false" data-d="pd3" data-i="pl3">Fully yours</button>
-      <button class="pl" style="--i:3;--r:7deg;--dy:4px" aria-pressed="false" data-d="pd4" data-i="pl4">3 languages</button>
-      <button class="pl" style="--i:4;--r:-8deg;--dy:10px" aria-pressed="false" data-d="pd5" data-i="pl5">Effortless</button>
-      <button class="pl" style="--i:5;--r:3deg;--dy:-4px" aria-pressed="false" data-d="pd6" data-i="pl6">Choose from 3 designs</button>
-      <button class="pl" style="--i:6;--r:-4deg;--dy:6px" aria-pressed="false" data-d="pd7" data-i="pl7">Mobile-ready</button>
-      <button class="pl" style="--i:7;--r:6deg" aria-pressed="false" data-d="pd8" data-i="pl8">Flawless</button>
+      <button class="pl" style="--i:0;--r:-4deg;--dy:4px" aria-pressed="false" data-d="pd1" data-i="pl1">Fast</button>
+      <button class="pl" style="--i:1;--r:4deg;--dy:0px" aria-pressed="false" data-d="pd2" data-i="pl2">Pays off</button>
+      <button class="pl" style="--i:2;--r:-4deg;--dy:4px" aria-pressed="false" data-d="pd3" data-i="pl3">Fully yours</button>
+      <button class="pl" style="--i:3;--r:4deg;--dy:0px" aria-pressed="false" data-d="pd4" data-i="pl4">3 languages</button>
+      <button class="pl" style="--i:4;--r:-4deg;--dy:4px" aria-pressed="false" data-d="pd5" data-i="pl5">Effortless</button>
+      <button class="pl" style="--i:5;--r:4deg;--dy:0px" aria-pressed="false" data-d="pd6" data-i="pl6">Choose from 3 designs</button>
+      <button class="pl" style="--i:6;--r:-4deg;--dy:4px" aria-pressed="false" data-d="pd7" data-i="pl7">Mobile-ready</button>
+      <button class="pl" style="--i:7;--r:4deg;--dy:0px" aria-pressed="false" data-d="pd8" data-i="pl8">Flawless</button>
     </div>
   </div>
 </section>
@@ -862,9 +864,9 @@ if ('IntersectionObserver' in window) {
   tio.observe(document.getElementById('tl'));
 } else document.getElementById('tl').classList.add('on');
 if ('IntersectionObserver' in window) {
-  const pio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); pio.disconnect(); } }), {threshold:.35});
+  const pio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); setTimeout(() => e.target.classList.add('landed'), 1500); pio.disconnect(); } }), {threshold:.35});
   pio.observe(document.getElementById('pile'));
-} else document.getElementById('pile').classList.add('on');
+} else document.getElementById('pile').classList.add('on', 'landed');
 window.pillsReady = true;
 
 let saved = null;
