@@ -107,33 +107,28 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .badge:hover span{transform:rotate(-45deg) scale(1.08)}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ---------- BENEFITS: big promise + 8 tidy cards on a dotted sheet ---------- */
+/* ---------- BENEFITS: big promise + a pile of pills on a dotted sheet ---------- */
 .ben{min-height:calc(100svh - 2*var(--gap));display:flex;border:1px solid #ececf0;background:#fff radial-gradient(#d6d6dc 1.1px,transparent 1.4px) 0 0/22px 22px}
-.bin{flex:1;display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(20px,3vw,48px);align-items:stretch;padding-top:clamp(24px,5vh,56px);padding-bottom:clamp(20px,4vh,44px)}
-.bleft{display:flex;flex-direction:column;justify-content:center;gap:clamp(12px,2.6vh,26px);min-width:0}
+.bin{flex:1;display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(20px,3vw,48px);padding-top:clamp(24px,5vh,56px);padding-bottom:clamp(20px,4vh,44px)}
+.bleft{display:flex;flex-direction:column;gap:clamp(12px,2.6vh,26px);min-width:0}
 .kick{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .bh2{font:700 clamp(34px,10vh,112px)/.95 var(--wide);letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap;width:max-content}
 .bh2 em{color:var(--red);font-size:1.06em;letter-spacing:-.02em}
-.pcap{max-width:420px;min-height:4.4em;margin-top:auto;font-size:clamp(15px,2.4vh,19px);line-height:1.45;background:#fff;box-shadow:0 0 0 8px #fff}
+.pcap{max-width:400px;min-height:4.4em;font-size:clamp(15px,2.4vh,19px);line-height:1.45;margin-top:auto;background:#fff;box-shadow:0 0 0 8px #fff}
 .pcap b{display:block;font-weight:500;margin-bottom:2px}
-/* pills in a loose column: one per line, a gentle zigzag with alternating tilt.
-   Font size is set by JS (fitPile) so the column fills the screen height without overflowing. */
-.pile{position:relative;align-self:center;width:100%;display:flex;flex-direction:column;align-items:center;font-size:24px}
-.pl{position:relative;height:2.3em;padding:0 1em;margin-top:-.18em;border-radius:999px;font:500 1em/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;
-  background:var(--grey);color:var(--ink);rotate:var(--r,0deg);translate:var(--x,0) var(--dy,0px);box-shadow:0 .4em .9em rgba(24,29,36,.13);
-  transition:rotate .55s cubic-bezier(.3,1.5,.5,1),translate .55s cubic-bezier(.3,1.5,.5,1),scale .3s var(--ease),box-shadow .3s}
-.pl:first-child{margin-top:0}
-.pl.c-red{background:var(--red);color:#fff}
-.pl.c-ink{background:var(--ink);color:#fff}
-.pl.c-pink{background:var(--pink);color:var(--ink)}
-.pl.c-out{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink),0 .4em .9em rgba(24,29,36,.08)}
-/* hovered / tapped pill floats up and straightens; the rest settle a little deeper into the heap */
-.pile.active .pl{translate:var(--x,0) calc(var(--dy,0px) + .1em);rotate:calc(var(--r,0deg) * 1.3)}
-.pile .pl.up{translate:var(--x,0) -.35em;rotate:0deg;scale:1.07;z-index:3;box-shadow:0 1em 1.6em rgba(24,29,36,.22)}
-/* first time the screen is seen, the pills drop in: bottom row first */
+.pile{display:flex;flex-wrap:wrap;justify-content:center;align-content:flex-end;gap:clamp(6px,1.6vh,16px) 0;padding:0 1% clamp(4px,1vh,12px)}
+.pl{height:clamp(44px,9.4vh,96px);padding:0 1em;margin:0 -.06em;border-radius:999px;font:500 clamp(16px,min(2.5vw,5vh),48px)/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;
+  background:var(--grey);color:var(--ink);transform:translateY(var(--dy,0)) rotate(var(--r,0deg));transition:transform .45s var(--ease),box-shadow .3s;box-shadow:0 10px 22px rgba(24,29,36,.12)}
+.pl:nth-child(4n+1){background:var(--red);color:#fff}
+.pl:nth-child(4n+2){background:var(--ink);color:#fff}
+.pl:nth-child(4n+3){background:var(--pink);color:var(--ink)}
+.pl:nth-child(4n){background:#fff;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink),0 10px 22px rgba(24,29,36,.08)}
+.pl:hover,.pl[aria-pressed=true]{transform:translateY(calc(var(--dy,0px) - 12px)) rotate(0deg);z-index:2;box-shadow:0 18px 30px rgba(24,29,36,.18)}
+/* pills drop into the pile when the screen comes into view */
 @media (prefers-reduced-motion:no-preference){
-  .js .pile:not(.on) .pl{opacity:0;translate:var(--x,0) -70vh}
-  .js .pile.on:not(.landed) .pl{transition:translate .9s cubic-bezier(.25,1.45,.45,1) calc(var(--i) * 90ms),rotate .9s var(--ease) calc(var(--i) * 90ms),opacity .3s calc(var(--i) * 90ms)}
+  .js .pile .pl{opacity:0;transform:translateY(-60vh) rotate(calc(var(--r,0deg) * 3))}
+  .js .pile.on .pl{opacity:1;transform:translateY(var(--dy,0)) rotate(var(--r,0deg));transition:transform .9s cubic-bezier(.25,1.4,.4,1),opacity .3s;transition-delay:calc(var(--i) * 70ms)}
+  .js .pile.on .pl:hover,.js .pile.on .pl[aria-pressed=true]{transform:translateY(calc(var(--dy,0px) - 12px)) rotate(0deg);transition-delay:0s}
 }
 
 /* ---------- WORK ---------- */
@@ -289,10 +284,11 @@ footer .logo{font-size:30px}
 @media (max-width:860px){
   .hero-cta{display:inline-flex}
   .bwrap{grid-template-columns:1fr}
-  .bin{grid-template-columns:1fr;align-content:center;align-items:start;gap:24px}
+  .bin{grid-template-columns:1fr}
   .pcap{margin-top:0}
 }
 @media (max-width:1100px){
+  .pl{font-size:clamp(15px,min(2.2vw,4.4vh),40px)}
   .hero-main{grid-template-columns:1fr;gap:28px}
   .hero-main p{max-width:460px}
   h1{font-size:clamp(36px,8.4vw,96px)}
@@ -337,6 +333,8 @@ footer .logo{font-size:30px}
   .mf-steps{right:12px}
   .badge{width:84px}
 
+  .pl{font-size:clamp(15px,2.5vh,21px);height:clamp(40px,6.6vh,58px);padding:0 .85em}
+  .pile{gap:6px 0}
   .pcap{min-height:3.2em;font-size:14px}
   .seg{height:46px}
   .faq summary{padding:12px 0;font-size:15px}
@@ -419,14 +417,14 @@ footer .logo{font-size:30px}
       <p class="pcap" id="pcap" aria-live="polite"><span data-i="hint">Tap any pill to see the details.</span></p>
     </div>
     <div class="pile" id="pile">
-      <button class="pl c-red" style="--i:7;--r:-4deg;--x:-.7em" aria-pressed="false" data-d="pd1" data-i="pl1">Fast</button>
-      <button class="pl c-ink" style="--i:6;--r:3deg;--x:.6em" aria-pressed="false" data-d="pd2" data-i="pl2">Pays off</button>
-      <button class="pl c-pink" style="--i:5;--r:-3deg;--x:-.5em" aria-pressed="false" data-d="pd3" data-i="pl3">Fully yours</button>
-      <button class="pl c-out" style="--i:4;--r:4deg;--x:.7em" aria-pressed="false" data-d="pd4" data-i="pl4">3 languages</button>
-      <button class="pl c-ink" style="--i:3;--r:-4deg;--x:-.6em" aria-pressed="false" data-d="pd5" data-i="pl5">Effortless</button>
-      <button class="pl c-red" style="--i:2;--r:3deg;--x:.5em" aria-pressed="false" data-d="pd6" data-i="pl6">Choose from 3 designs</button>
-      <button class="pl c-out" style="--i:1;--r:-3deg;--x:-.7em" aria-pressed="false" data-d="pd7" data-i="pl7">Mobile-ready</button>
-      <button class="pl c-pink" style="--i:0;--r:4deg;--x:.6em" aria-pressed="false" data-d="pd8" data-i="pl8">Flawless</button>
+      <button class="pl" style="--i:0;--r:-6deg;--dy:8px" aria-pressed="false" data-d="pd1" data-i="pl1">Fast</button>
+      <button class="pl" style="--i:1;--r:4deg" aria-pressed="false" data-d="pd2" data-i="pl2">Pays off</button>
+      <button class="pl" style="--i:2;--r:-3deg;--dy:-6px" aria-pressed="false" data-d="pd3" data-i="pl3">Fully yours</button>
+      <button class="pl" style="--i:3;--r:7deg;--dy:4px" aria-pressed="false" data-d="pd4" data-i="pl4">3 languages</button>
+      <button class="pl" style="--i:4;--r:-8deg;--dy:10px" aria-pressed="false" data-d="pd5" data-i="pl5">Effortless</button>
+      <button class="pl" style="--i:5;--r:3deg;--dy:-4px" aria-pressed="false" data-d="pd6" data-i="pl6">Choose from 3 designs</button>
+      <button class="pl" style="--i:6;--r:-4deg;--dy:6px" aria-pressed="false" data-d="pd7" data-i="pl7">Mobile-ready</button>
+      <button class="pl" style="--i:7;--r:6deg" aria-pressed="false" data-d="pd8" data-i="pl8">Flawless</button>
     </div>
   </div>
 </section>
@@ -755,7 +753,8 @@ function setLang(l, remember){
   updateLinks();
   fitHero();
   if (typeof mfSplit === 'function') mfSplit();
-  if (window.benReady) { fitBen(); fitPile(); const on = pls.find(x => x.getAttribute('aria-pressed') === 'true'); if (on) showPill(on); }
+  if (window.pillsReady) fitBen();
+  if (window.pillsReady) { const on = pls.find(x => x.getAttribute('aria-pressed') === 'true'); if (on) showPill(on); }
 }
 
 // Size the headline so its fixed lines fill the free space next to the text:
@@ -838,7 +837,7 @@ function mfUpdate(){
 let mfRaf; addEventListener('scroll', () => { cancelAnimationFrame(mfRaf); mfRaf = requestAnimationFrame(mfUpdate); }, {passive:true});
 addEventListener('resize', mfUpdate);
 
-// ---- Benefit pills: tap / hover shows the explanation on the left ----
+// ---- Option C pills: tap / hover shows the explanation in the caption ----
 const pcap = document.getElementById('pcap'), pls = [...document.querySelectorAll('#pile .pl')];
 function showPill(b){
   pls.forEach(x => x.setAttribute('aria-pressed', x === b));
@@ -846,33 +845,14 @@ function showPill(b){
   pcap.querySelector('b').textContent = b.textContent;
   pcap.querySelector('span').textContent = T[lang][b.dataset.d];
 }
-const pile = document.getElementById('pile');
-function lift(b){ pile.classList.add('active'); pls.forEach(x => x.classList.toggle('up', x === b)); showPill(b); }
-pls.forEach(b => { b.addEventListener('click', () => lift(b)); b.addEventListener('mouseenter', () => lift(b)); b.addEventListener('focus', () => lift(b)); });
-pile.addEventListener('mouseleave', () => { pile.classList.remove('active'); pls.forEach(x => x.classList.remove('up')); });
-// heap size: the widest row fills the column, the heap never takes more than ~half the screen height
-function fitPile(){
-  pile.style.fontSize = '30px';
-  const widest = Math.max(...pls.map(x => x.offsetWidth)) + 30 * 1.6;
-  const byW = pile.clientWidth / widest;
-  const share = innerWidth <= 860 ? .46 : .86;
-  const byH = document.getElementById('benefits').clientHeight * share / pile.offsetHeight;
-  pile.style.fontSize = Math.max(14, Math.min(30 * Math.min(byW, byH), 40)) + 'px';
-}
-addEventListener('resize', fitPile); document.fonts && document.fonts.ready.then(fitPile); fitPile();
-if ('IntersectionObserver' in window) {
-  const pio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); pio.disconnect(); } }), {threshold:.35});
-  pio.observe(pile);
-} else pile.classList.add('on');
-// after the drop, hover reacts instantly (no stagger delays)
-new MutationObserver(() => { if (pile.classList.contains('on')) setTimeout(() => pile.classList.add('landed'), 1700); }).observe(pile, {attributes:true, attributeFilter:['class']});
+pls.forEach(b => { b.addEventListener('click', () => showPill(b)); b.addEventListener('mouseenter', () => showPill(b)); b.addEventListener('focus', () => showPill(b)); });
 // benefits headline: as big as the left column allows, never taller than ~1/2 screen
 const bh2 = document.getElementById('bh2');
 function fitBen(){
   const stacked = innerWidth <= 860;
   bh2.style.fontSize = '100px';
   const byW = bh2.parentElement.clientWidth / bh2.offsetWidth;
-  const byH = innerHeight * (stacked ? .2 : .5) / bh2.offsetHeight;
+  const byH = innerHeight * (stacked ? .24 : .5) / bh2.offsetHeight;
   bh2.style.fontSize = Math.max(30, Math.min(100 * Math.min(byW, byH), 120)) + 'px';
 }
 addEventListener('resize', fitBen); document.fonts && document.fonts.ready.then(fitBen);
@@ -881,7 +861,11 @@ if ('IntersectionObserver' in window) {
   const tio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); tio.disconnect(); } }), {threshold:.4});
   tio.observe(document.getElementById('tl'));
 } else document.getElementById('tl').classList.add('on');
-window.benReady = true;
+if ('IntersectionObserver' in window) {
+  const pio = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); pio.disconnect(); } }), {threshold:.35});
+  pio.observe(document.getElementById('pile'));
+} else document.getElementById('pile').classList.add('on');
+window.pillsReady = true;
 
 let saved = null;
 try { saved = localStorage.getItem('lang'); } catch(e) {}
