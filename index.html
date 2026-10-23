@@ -116,8 +116,8 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .bh2 em{color:var(--red);font-size:1.06em;letter-spacing:-.02em}
 .pcap{max-width:400px;min-height:4.4em;font-size:clamp(15px,2.4vh,19px);line-height:1.45;margin-top:auto;background:#fff;box-shadow:0 0 0 8px #fff}
 .pcap b{display:block;font-weight:500;margin-bottom:2px}
-.pile{display:flex;flex-wrap:wrap;justify-content:center;align-content:center;gap:clamp(6px,1.6vh,16px) 0;padding:0 1% clamp(4px,1vh,12px)}
-.pl{height:clamp(44px,9.4vh,96px);padding:0 1em;margin:0 -.06em;border-radius:999px;font:500 clamp(16px,min(2.5vw,5vh),48px)/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;
+.pile{display:flex;flex-wrap:wrap;justify-content:flex-start;align-content:center;gap:clamp(8px,1.6vh,16px) clamp(8px,.9vw,14px);padding:0 0 clamp(4px,1vh,12px)}
+.pl{height:clamp(44px,9.4vh,96px);padding:0 1em;border-radius:999px;font:500 clamp(16px,min(2.5vw,5vh),48px)/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;
   background:var(--grey);color:var(--ink);transform:translateY(var(--dy,0)) rotate(var(--r,0deg));transition:transform .45s var(--ease),box-shadow .3s;box-shadow:0 10px 22px rgba(24,29,36,.12)}
 .pl:nth-child(4n+1){background:var(--red);color:#fff}
 .pl:nth-child(4n+2){background:var(--ink);color:#fff}
@@ -263,7 +263,7 @@ details p{color:var(--muted);padding:0 50px 22px 0}
 /* ---------- FOOTER ---------- */
 footer{background:var(--ink);color:#fff;padding:28px 0 26px}
 footer .logo{font-size:30px}
-.fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.fgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:40px}
 .fgrid a,.fgrid p{display:block;font-size:16px;line-height:2}
 .fgrid a:hover{color:var(--red-soft)}
 .fgrid small{display:block;font-size:13px;color:#8a909a;margin-top:10px}
@@ -336,7 +336,7 @@ footer .logo{font-size:30px}
   .badge{width:84px}
 
   .pl{font-size:clamp(15px,2.5vh,21px);height:clamp(40px,6.6vh,58px);padding:0 .85em}
-  .pile{gap:6px 0}
+  .pile{gap:8px}
   .pcap{min-height:3.2em;font-size:14px}
   .seg{height:46px}
   .faq summary{padding:12px 0;font-size:15px}
@@ -419,14 +419,14 @@ footer .logo{font-size:30px}
       <p class="pcap" id="pcap" aria-live="polite"><span data-i="hint">Tap any pill to see the details.</span></p>
     </div>
     <div class="pile" id="pile">
-      <button class="pl" style="--i:0;--r:-4deg;--dy:4px" aria-pressed="false" data-d="pd1" data-i="pl1">Fast</button>
-      <button class="pl" style="--i:1;--r:4deg;--dy:0px" aria-pressed="false" data-d="pd2" data-i="pl2">Pays off</button>
-      <button class="pl" style="--i:2;--r:-4deg;--dy:4px" aria-pressed="false" data-d="pd3" data-i="pl3">Fully yours</button>
-      <button class="pl" style="--i:3;--r:4deg;--dy:0px" aria-pressed="false" data-d="pd4" data-i="pl4">3 languages</button>
-      <button class="pl" style="--i:4;--r:-4deg;--dy:4px" aria-pressed="false" data-d="pd5" data-i="pl5">Effortless</button>
-      <button class="pl" style="--i:5;--r:4deg;--dy:0px" aria-pressed="false" data-d="pd6" data-i="pl6">Choose from 3 designs</button>
-      <button class="pl" style="--i:6;--r:-4deg;--dy:4px" aria-pressed="false" data-d="pd7" data-i="pl7">Mobile-ready</button>
-      <button class="pl" style="--i:7;--r:4deg;--dy:0px" aria-pressed="false" data-d="pd8" data-i="pl8">Flawless</button>
+      <button class="pl" style="--i:0" aria-pressed="false" data-d="pd1" data-i="pl1">Fast</button>
+      <button class="pl" style="--i:1" aria-pressed="false" data-d="pd2" data-i="pl2">Pays off</button>
+      <button class="pl" style="--i:2" aria-pressed="false" data-d="pd3" data-i="pl3">Fully yours</button>
+      <button class="pl" style="--i:3" aria-pressed="false" data-d="pd4" data-i="pl4">3 languages</button>
+      <button class="pl" style="--i:4" aria-pressed="false" data-d="pd5" data-i="pl5">Effortless</button>
+      <button class="pl" style="--i:5" aria-pressed="false" data-d="pd6" data-i="pl6">Choose from 3 designs</button>
+      <button class="pl" style="--i:6" aria-pressed="false" data-d="pd7" data-i="pl7">Mobile-ready</button>
+      <button class="pl" style="--i:7" aria-pressed="false" data-d="pd8" data-i="pl8">Flawless</button>
     </div>
   </div>
 </section>
@@ -553,8 +553,8 @@ footer .logo{font-size:30px}
     <div class="seg b" style="--dl:.3s"><span data-i="d2">Days 2–4</span></div>
     <div class="seg c" style="--dl:.6s"><span data-i="d3">Days 5–7</span><span class="live" data-i="live">Site is live</span></div>
     <div class="st a"><h3 data-i="s1">In-depth brief</h3><p data-i="s1d">We dig into your business: your clients, competitors and what you want from the site. You just talk, we do the rest.</p></div>
-    <div class="st b"><h3 data-i="s2">3 designs to choose from</h3><p data-i="s2d">We show three design drafts. You pick one, and we polish it with your edits.</p></div>
-    <div class="st c"><h3 data-i="s3">Build &amp; launch</h3><p data-i="s3d">We build the site, make the final edits, connect your web address, and it goes live.</p></div>
+    <div class="st b"><h3 data-i="s2">3 designs to choose from</h3><p data-i="s2d">We show three design drafts. You pick one, and we polish it to perfection with your edits.</p></div>
+    <div class="st c"><h3 data-i="s3">Build &amp; launch</h3><p data-i="s3d">We build the site, do two rounds of edits, connect your web address, and it goes live.</p></div>
   </div>
 </section>
 
@@ -628,7 +628,6 @@ footer .logo{font-size:30px}
     <div class="fgrid">
       <div><a href="#work" data-i="nav_work">Work</a><a href="#services" data-i="nav_services">Services</a><a href="#days" data-i="nav_process">Process</a><a href="#contact" data-i="f_contact_l">Contact</a></div>
       <div><small data-i="f_contact">Contact us</small><a href="https://wa.me/37068894563" target="_blank" rel="noopener">WhatsApp +370 688 94563</a><a href="mailto:hello@avstudio.agency">hello@avstudio.agency</a></div>
-      <div><small data-i="f_based">Based in</small><p><span data-i="f_city">Vilnius</span> <span class="clock">--:--</span></p></div>
     </div>
     <div class="fbot">
       <span>© AV Studio 2026 · <a class="pp" href="privacy/" data-i="privacy_l">Privacy policy</a></span>
@@ -657,8 +656,8 @@ const T = {
     p3:'Atnaujinimas',p3d:'Sena svetainė, kurią gėda rodyti? Padarysime naują ir greitą tuo pačiu domenu, išlaikydami tai, kas veikia.',p3t:'iki 7 dienų',
     h_days:'Paruošta per <em>savaitę</em>',d1:'1 diena',d2:'2–4 dienos',d3:'5–7 dienos',
     s1:'Išsamus brifas',s1d:'Gerai įsigiliname į jūsų verslą: klientus, konkurentus ir ko tikitės iš svetainės. Jūs tik pasakojate, visa kita padarome mes.',
-    s2:'3 dizaino variantai',s2d:'Parodome tris dizaino juodraščius. Jūs išsirenkate vieną, o mes jį patobuliname pagal jūsų pastabas.',
-    s3:'Kūrimas ir paleidimas',s3d:'Sukuriame svetainę, atliekame paskutinius pataisymus, prijungiame adresą, ir ji veikia.',
+    s2:'3 dizaino variantai',s2d:'Parodome tris dizaino juodraščius. Jūs išsirenkate vieną, o mes jį ištobuliname iki idealo pagal jūsų pastabas.',
+    s3:'Kūrimas ir paleidimas',s3d:'Sukuriame svetainę, atliekame du pataisymų ratus, prijungiame adresą, ir ji veikia.',
     why_l:'Apie mus',badge_l:'Parašykite mums',badge:'Reikia svetainės? • Parašykite • ',
     m1:'Kiekvieną svetainę pradedame <u>nuo pokalbio apie jūsų verslą</u>: kuo užsiimate, kas pas jus ateina ir kas jiems svarbu. Todėl ji tampa <u>tikrai jūsų</u>, o ne tokia kaip visų.',
     m2:'Tada parodome <u>tris dizaino variantus</u>. Jūs išsirenkate patinkantį, o mes kartu jį ištobuliname iki idealo. <u>Po savaitės</u> svetainė paruošta ir veikia.',
@@ -688,7 +687,7 @@ const T = {
     need:'Man reikia',o1:'vieno puslapio svetainės',o2:'įmonės svetainės',o3:'atnaujinimo',o4:'dar nežinau',next:'toliau',back:'← atgal',
     b2:'Apie jūsų verslą',l1:'Verslas ir kuo užsiimate',l2:'Svetainė arba Instagram',sendnote:'Mygtukas atidarys programėlę su paruošta žinute. Siųsti ar ne, sprendžiate jūs.',privacy_l:'Privatumo politika',menu_l:'Atidaryti meniu',menu_d:'Meniu',where:'Kur patogiau bendrauti?',
     msg:'Sveiki! Man reikia: ',
-    f_contact_l:'Kontaktai',f_contact:'Susisiekite',f_based:'Įsikūrę',f_city:'Vilniuje',totop:'Į viršų'
+    f_contact_l:'Kontaktai',f_contact:'Susisiekite',totop:'Į viršų'
   },
   ru:{
     nav_work:'Работы',nav_services:'Услуги',nav_process:'Процесс',nav_faq:'Вопросы',touch:'написать.',menu:'меню.',close:'закрыть.',
@@ -702,8 +701,8 @@ const T = {
     p3:'Редизайн',p3d:'Старый сайт, который стыдно показывать? Сделаем новый и быстрый на том же домене, сохранив то, что работает.',p3t:'до 7 дней',
     h_days:'Готово за <em>неделю</em>',d1:'День 1',d2:'Дни 2–4',d3:'Дни 5–7',
     s1:'Глубокий бриф',s1d:'Подробно разбираемся в вашем деле: кто ваши клиенты, кто конкуренты и чего вы ждёте от сайта. Вы просто рассказываете, остальное за нами.',
-    s2:'3 варианта дизайна',s2d:'Показываем три черновика дизайна. Вы выбираете один, и мы доводим его по вашим правкам.',
-    s3:'Сборка и запуск',s3d:'Собираем сайт, вносим последние правки, подключаем адрес сайта, и он работает.',
+    s2:'3 варианта дизайна',s2d:'Показываем три черновика дизайна. Вы выбираете один, и мы доводим его до идеала по вашим правкам.',
+    s3:'Сборка и запуск',s3d:'Собираем сайт, делаем два круга правок, подключаем адрес сайта, и он работает.',
     why_l:'О нас',badge_l:'Написать нам',badge:'Нужен сайт? • Напишите нам • ',
     m1:'Каждый сайт мы начинаем <u>с разговора о вашем деле</u>: чем вы занимаетесь, кто к вам приходит и что для них важно. Поэтому он получается <u>именно про вас</u>, а не как у всех.',
     m2:'Потом показываем <u>три варианта дизайна</u>. Вы выбираете понравившийся, и мы вместе доводим его до идеала. <u>Через неделю</u> сайт готов и работает.',
@@ -733,7 +732,7 @@ const T = {
     need:'Мне нужен',o1:'лендинг',o2:'сайт компании',o3:'редизайн',o4:'пока не знаю',next:'дальше',back:'← назад',
     b2:'Пара слов о бизнесе',l1:'Бизнес и чем занимаетесь',l2:'Сайт или Instagram',sendnote:'Кнопка откроет приложение с готовым сообщением. Отправлять его или нет, решаете вы.',privacy_l:'Политика конфиденциальности',menu_l:'Открыть меню',menu_d:'Меню',where:'Где удобнее общаться?',
     msg:'Привет! Мне нужен: ',
-    f_contact_l:'Контакт',f_contact:'Связь',f_based:'Мы в',f_city:'Вильнюсе',totop:'Наверх'
+    f_contact_l:'Контакт',f_contact:'Связь',totop:'Наверх'
   }
 };
 
@@ -903,10 +902,6 @@ menuBtn.addEventListener('click', () => toggleMenu(true));
 document.getElementById('menuClose').addEventListener('click', () => toggleMenu(false));
 menu.querySelectorAll('nav a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
 addEventListener('keydown', e => { if (e.key === 'Escape') toggleMenu(false); });
-
-// ---- Live Vilnius time ----
-const tick = () => { const t = new Date().toLocaleTimeString('en-GB',{timeZone:'Europe/Vilnius',hour:'2-digit',minute:'2-digit'}); document.querySelectorAll('.clock').forEach(c => c.textContent = t); };
-tick(); setInterval(tick, 20000);
 
 if ('IntersectionObserver' in window) {
   const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } }), {rootMargin:'0px 0px -10% 0px'});
