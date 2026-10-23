@@ -114,7 +114,7 @@ h1 em{color:var(--ink);font-size:1.08em;letter-spacing:-.02em;padding-right:.06e
 .kick{display:block;font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .bh2{font:700 clamp(34px,10vh,112px)/.95 var(--wide);letter-spacing:-.045em;text-transform:uppercase;white-space:nowrap;width:max-content}
 .bh2 em{color:var(--red);font-size:1.06em;letter-spacing:-.02em}
-.pcap{max-width:400px;min-height:4.4em;font-size:clamp(15px,2.4vh,19px);line-height:1.45;margin-top:auto;background:#fff;box-shadow:0 0 0 8px #fff}
+.pcap{max-width:400px;min-height:4.4em;font-size:clamp(15px,2.4vh,19px);line-height:1.45;margin-top:clamp(14px,3.2vh,32px);background:#fff;box-shadow:0 0 0 8px #fff}
 .pcap b{display:block;font-weight:500;margin-bottom:2px}
 .pile{display:flex;flex-wrap:wrap;justify-content:flex-start;align-content:center;gap:clamp(8px,1.6vh,16px) clamp(8px,.9vw,14px);padding:0 0 clamp(4px,1vh,12px)}
 .pl{height:clamp(44px,9.4vh,96px);padding:0 1em;border-radius:999px;font:500 clamp(16px,min(2.5vw,5vh),48px)/1 var(--sans);letter-spacing:-.02em;white-space:nowrap;
@@ -249,14 +249,19 @@ details p{color:var(--muted);padding:0 50px 22px 0}
 .fl + input{margin-bottom:8px}
 .bcard input:not([type=radio]){width:100%;height:clamp(42px,6.4vh,50px);border:1.5px solid #cfcfd6;border-radius:12px;padding:0 14px;background:#f7f7f9;font-size:16px;color:var(--ink);transition:border-color .2s,background .2s}
 .bcard input:not([type=radio]):focus{outline:none;border-color:var(--ink);background:#fff}
-.sendrow{display:flex;gap:10px;flex-wrap:wrap}
 .sbtn{display:inline-flex;align-items:center;gap:10px;height:clamp(46px,7vh,56px);padding:0 22px;border-radius:999px;font-size:16px;font-weight:500;transition:transform .2s var(--ease),background .2s,color .2s}
 .sbtn:hover{transform:translateY(-2px)}
 .sbtn svg{width:20px;height:20px;flex:none}
-.sbtn.wa{background:var(--ink);color:#fff}
-.sbtn.wa:hover{background:var(--red)}
-.sbtn.em{box-shadow:inset 0 0 0 1.5px var(--ink);color:var(--ink)}
-.sbtn.em:hover{background:var(--ink);color:#fff}
+.sbtn.go{background:var(--ink);color:#fff;border:0;font-family:inherit;cursor:pointer;justify-self:start}
+.sbtn.go:hover{background:var(--red)}
+.sbtn.go[aria-busy=true]{opacity:.6;pointer-events:none}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.sent{margin:auto;border:0;border-radius:var(--r);padding:clamp(28px,5vh,44px) clamp(24px,4vw,44px);max-width:min(420px,calc(100vw - 32px));text-align:center;color:var(--ink);box-shadow:0 30px 80px rgba(0,0,0,.3)}
+.sent::backdrop{background:rgba(24,29,36,.55)}
+.sent-ok{display:grid;place-items:center;width:56px;height:56px;margin:0 auto 16px;border-radius:50%;background:var(--red);color:#fff;font-size:26px}
+.sent h3{font:700 clamp(22px,2.4vw,28px)/1.15 var(--wide);letter-spacing:-.02em;text-transform:uppercase;margin-bottom:10px}
+.sent p{color:var(--muted);margin-bottom:22px}
+.sent .sbtn{justify-self:auto;margin:0 auto}
 .sendnote{font-size:13px;color:var(--muted);margin-top:10px}
 .sendnote a,.fbot a.pp{text-decoration:underline;text-underline-offset:3px}
 
@@ -580,16 +585,15 @@ footer .logo{font-size:30px}
 </section>
 
 <!-- ============ BRIEF ============ -->
-<!-- Contacts: WhatsApp number lives in WA (script below). -->
 <section class="panel need" id="contact">
   <div class="in bwrap">
     <div class="bintro">
       <span class="kick" data-i="k_brief">Request</span>
       <h2 data-i="h_brief">Let's talk about <em>your site</em></h2>
-      <p data-i="brief_p">Fill in a couple of fields and choose where to send them. WhatsApp or your email opens with a ready message, you just press Send.</p>
-      <p class="direct"><span data-i="direct">Or write to us directly:</span><br><a href="https://wa.me/37068894563" target="_blank" rel="noopener">WhatsApp +370 688 94563</a><a href="mailto:hello@avstudio.agency">hello@avstudio.agency</a></p>
+      <p data-i="brief_p">Fill in a couple of fields and we will get back to you ourselves.</p>
+      <p class="direct"><span data-i="direct">Or email us directly:</span><br><a href="mailto:hello@avstudio.agency">hello@avstudio.agency</a></p>
     </div>
-    <form class="bcard" id="brief" onsubmit="return false">
+    <form class="bcard" id="brief" novalidate>
       <fieldset class="chips" id="opts">
         <legend class="bq"><i>1</i><span data-i="f1">What do you need?</span></legend>
         <label class="chip"><input type="radio" name="need"><span data-i="o1">a landing page</span></label>
@@ -608,16 +612,19 @@ footer .logo{font-size:30px}
         <p class="fnote" data-i="fnote">* required fields</p>
       </div>
       <div>
-        <span class="bq"><i>3</i><span data-i="f3">Where should we send it?</span></span>
-        <div class="sendrow">
-          <a class="sbtn wa" id="wa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 18.8z" stroke-linejoin="round"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5l1-1.2 1.8.7-.4 1.7c-3.6.3-7.2-3.3-6.9-6.9l1.7-.4.7 1.8z" fill="currentColor" stroke="none"/></svg><span data-i="send_wa">Send via WhatsApp</span></a>
-          <a class="sbtn em" id="em" href="mailto:hello@avstudio.agency"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg><span data-i="send_em">By email</span></a>
-        </div>
+        <div class="hp" aria-hidden="true"><label>Website <input name="website" id="hpf" tabindex="-1" autocomplete="off"></label></div>
+        <button class="sbtn go" type="submit" id="send"><span data-i="send">Send request</span> <span aria-hidden="true">→</span></button>
         <p class="ferr" id="ferr" role="alert" hidden></p>
-        <p class="sendnote"><span data-i="sendnote">The button opens your app with a ready message, and you decide whether to send it.</span> <a href="privacy/" data-i="privacy_l">Privacy policy</a></p>
+        <p class="sendnote"><span data-i="sendnote">We use these details only to contact you about your site.</span> <a href="privacy/" data-i="privacy_l">Privacy policy</a></p>
       </div>
     </form>
   </div>
+  <dialog class="sent" id="sent" aria-labelledby="sent_h">
+    <span class="sent-ok" aria-hidden="true">✓</span>
+    <h3 id="sent_h" data-i="sent_h">Request sent!</h3>
+    <p data-i="sent_p">Thank you! We will contact you soon.</p>
+    <button type="button" class="sbtn go" id="sent_x" data-i="sent_x">Great</button>
+  </dialog>
 </section>
 </main>
 
@@ -640,8 +647,6 @@ footer .logo{font-size:30px}
 document.documentElement.classList.add('js');
 
 // Contacts: fill these in once the real ones exist.
-const WA = '37068894563';
-const MAIL = 'hello@avstudio.agency';
 
 const T = {
   lt:{
@@ -682,11 +687,10 @@ const T = {
     q5:'Ar yra mėnesinių mokesčių?',a5:'Dažniausiai ne. Daugumai svetainių talpinimas nemokamas, todėl mokate tik už domeną, apie 10–20 € per metus. Priežiūra pagal norą, 25 € per mėnesį.',
     q8:'O jei reikia parduotuvės, registracijos internetu ar administravimo srities?',a8:'Sukursime. Tokioms svetainėms reikia mokamo talpinimo, todėl kūrimo ir talpinimo kainą skaičiuojame atskirai ir pasakome prieš pradedant.',
     q6:'Nieko neišmanau apie technologijas.',a6:'Ir nereikia. Domeną, talpinimą, el. paštą, Google profilį sutvarkome patys.',
-    k_brief:'Užklausa',h_brief:'Aptarkime <em>jūsų svetainę</em>',brief_p:'Užpildykite porą laukų ir pasirinkite, kur siųsti. Atsidarys WhatsApp arba el. paštas su paruošta žinute, jums liks tik paspausti „Siųsti“.',direct:'Arba parašykite mums patys:',
-    f1:'Ko reikia?',f2:'Apie jus',ln:'Vardas',lp:'Telefonas',fnote:'* privalomi laukai',err:'Įrašykite vardą ir telefoną, kad galėtume su jumis susisiekti.',f3:'Kur siųsti?',send_wa:'Siųsti per WhatsApp',send_em:'El. paštu',
+    k_brief:'Užklausa',h_brief:'Aptarkime <em>jūsų svetainę</em>',brief_p:'Užpildykite porą laukų, ir mes patys su jumis susisieksime.',direct:'Arba parašykite mums el. paštu:',
+    f1:'Ko reikia?',f2:'Apie jus',ln:'Vardas',lp:'Telefonas',fnote:'* privalomi laukai',err:'Įrašykite vardą ir telefoną, kad galėtume su jumis susisiekti.',send:'Siųsti užklausą',send_err:'Nepavyko išsiųsti. Bandykite dar kartą arba parašykite mums hello@avstudio.agency.',sent_h:'Užklausa išsiųsta!',sent_p:'Ačiū! Netrukus su jumis susisieksime.',sent_x:'Puiku',
     need:'Man reikia',o1:'vieno puslapio svetainės',o2:'įmonės svetainės',o3:'atnaujinimo',o4:'dar nežinau',next:'toliau',back:'← atgal',
-    b2:'Apie jūsų verslą',l1:'Verslas ir kuo užsiimate',l2:'Svetainė arba Instagram',sendnote:'Mygtukas atidarys programėlę su paruošta žinute. Siųsti ar ne, sprendžiate jūs.',privacy_l:'Privatumo politika',menu_l:'Atidaryti meniu',menu_d:'Meniu',where:'Kur patogiau bendrauti?',
-    msg:'Sveiki! Man reikia: ',
+    b2:'Apie jūsų verslą',l1:'Verslas ir kuo užsiimate',l2:'Svetainė arba Instagram',sendnote:'Šiuos duomenis naudojame tik tam, kad susisiektume su jumis dėl svetainės.',privacy_l:'Privatumo politika',menu_l:'Atidaryti meniu',menu_d:'Meniu',where:'Kur patogiau bendrauti?',
     f_contact_l:'Kontaktai',f_contact:'Susisiekite',totop:'Į viršų'
   },
   ru:{
@@ -727,18 +731,17 @@ const T = {
     q5:'Будут ежемесячные платежи?',a5:'Обычно нет. Для большинства сайтов хостинг бесплатный, и вы платите только за домен, около €10–20 в год. Поддержка по желанию, €25 в месяц.',
     q8:'А если нужен магазин, онлайн-запись или админка?',a8:'Сделаем. Таким сайтам нужен платный хостинг, поэтому разработку и хостинг считаем отдельно и называем цену до старта.',
     q6:'Я ничего не понимаю в технике.',a6:'И не нужно. Домен, хостинг, почту, профиль в Google настроим сами.',
-    k_brief:'Заявка',h_brief:'Обсудим <em>ваш сайт</em>?',brief_p:'Заполните пару полей и выберите, куда отправить. Откроется WhatsApp или почта с готовым сообщением, вам останется только нажать «Отправить».',direct:'Или напишите нам сами:',
-    f1:'Что нужно?',f2:'О вас',ln:'Имя',lp:'Телефон',fnote:'* обязательные поля',err:'Заполните имя и телефон, чтобы мы могли с вами связаться.',f3:'Куда отправить?',send_wa:'Отправить в WhatsApp',send_em:'На почту',
+    k_brief:'Заявка',h_brief:'Обсудим <em>ваш сайт</em>?',brief_p:'Заполните пару полей, и мы сами с вами свяжемся.',direct:'Или напишите нам на почту:',
+    f1:'Что нужно?',f2:'О вас',ln:'Имя',lp:'Телефон',fnote:'* обязательные поля',err:'Заполните имя и телефон, чтобы мы могли с вами связаться.',send:'Отправить заявку',send_err:'Не получилось отправить. Попробуйте ещё раз или напишите нам на hello@avstudio.agency.',sent_h:'Заявка отправлена!',sent_p:'Спасибо! Скоро с вами свяжемся.',sent_x:'Отлично',
     need:'Мне нужен',o1:'лендинг',o2:'сайт компании',o3:'редизайн',o4:'пока не знаю',next:'дальше',back:'← назад',
-    b2:'Пара слов о бизнесе',l1:'Бизнес и чем занимаетесь',l2:'Сайт или Instagram',sendnote:'Кнопка откроет приложение с готовым сообщением. Отправлять его или нет, решаете вы.',privacy_l:'Политика конфиденциальности',menu_l:'Открыть меню',menu_d:'Меню',where:'Где удобнее общаться?',
-    msg:'Привет! Мне нужен: ',
+    b2:'Пара слов о бизнесе',l1:'Бизнес и чем занимаетесь',l2:'Сайт или Instagram',sendnote:'Используем эти данные только чтобы связаться с вами по поводу сайта.',privacy_l:'Политика конфиденциальности',menu_l:'Открыть меню',menu_d:'Меню',where:'Где удобнее общаться?',
     f_contact_l:'Контакт',f_contact:'Связь',totop:'Наверх'
   }
 };
 
 // English lives in the HTML; read it once so switching back works.
 const nodes = document.querySelectorAll('[data-i]'), labels = document.querySelectorAll('[data-al]');
-T.en = {msg:'Hi! I need: ', err:'Please add your name and phone so we can get back to you.', pd1:'7 days, not 3 months. Live next week, and requests start coming next week.', pd2:'Price starts from €200. One new client covers the whole site.', pd3:'No subscription. Pay once, and the site belongs to you.', pd4:'LT, EN and RU included. Every client in Vilnius understands you.', pd5:'One chat is all we need. We do all the rest: put the idea together, build and launch.', pd6:'We provide you three designs to choose from. Keep the one you like, and we bring it to perfection with you.', pd7:'Mobile version included, free. Looks perfect on any phone, where most of your clients find you.', pd8:'Loads within seconds and works flawlessly on any device. Clients never wait, so they never leave.'};
+T.en = {send_err:'Could not send. Please try again or email us at hello@avstudio.agency.', err:'Please add your name and phone so we can get back to you.', pd1:'7 days, not 3 months. Live next week, and requests start coming next week.', pd2:'Price starts from €200. One new client covers the whole site.', pd3:'No subscription. Pay once, and the site belongs to you.', pd4:'LT, EN and RU included. Every client in Vilnius understands you.', pd5:'One chat is all we need. We do all the rest: put the idea together, build and launch.', pd6:'We provide you three designs to choose from. Keep the one you like, and we bring it to perfection with you.', pd7:'Mobile version included, free. Looks perfect on any phone, where most of your clients find you.', pd8:'Loads within seconds and works flawlessly on any device. Clients never wait, so they never leave.'};
 nodes.forEach(n => { T.en[n.dataset.i] ??= n.innerHTML; });
 labels.forEach(n => { T.en[n.dataset.al] = n.getAttribute('aria-label'); });
 
@@ -751,7 +754,6 @@ function setLang(l, remember){
   document.querySelectorAll('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
   // remember only a language the visitor picked themselves (no storage on a plain visit)
   if (remember) try { localStorage.setItem('lang', lang); } catch(e) {}
-  updateLinks();
   fitHero();
   if (typeof mfSplit === 'function') mfSplit();
   if (window.pillsReady) fitBen();
@@ -775,16 +777,16 @@ function fitHero(){
 let fitRaf; addEventListener('resize', () => { cancelAnimationFrame(fitRaf); fitRaf = requestAnimationFrame(fitHero); });
 document.fonts && document.fonts.ready.then(fitHero);
 
-// ---- Brief form: the answers become a ready message for WhatsApp or email ----
+// ---- Brief form: the answers go to /api/brief, which emails them to us ----
+const brief = document.getElementById('brief'), sendBtn = document.getElementById('send'), sent = document.getElementById('sent');
 const opts = [...document.querySelectorAll('#opts input')];
 const biz = document.getElementById('biz'), link = document.getElementById('link');
 const fname = document.getElementById('fname'), fphone = document.getElementById('fphone'), ferr = document.getElementById('ferr');
 [...opts, fname, fphone, biz, link].forEach(i => i.addEventListener('input', () => {
   i.removeAttribute('aria-invalid');
   if (!ferr.hidden && fname.value.trim() && (fphone.value.match(/\d/g) || []).length >= 6) ferr.hidden = true;
-  updateLinks();
 }));
-// name and phone are required: without them the send buttons only point to what's missing
+// name and phone are required: without them the button only points to what's missing
 function briefValid(){
   const bad = [];
   if (!fname.value.trim()) bad.push(fname);
@@ -794,16 +796,30 @@ function briefValid(){
   if (bad.length) { ferr.textContent = T[lang].err; bad[0].focus(); }
   return !bad.length;
 }
-['wa', 'em'].forEach(id => document.getElementById(id).addEventListener('click', e => { if (!briefValid()) e.preventDefault(); }));
-function updateLinks(){
-  const picked = opts.filter(o => o.checked).map(o => o.nextElementSibling.textContent).join(', ');
-  const who = [fname.value.trim(), fphone.value.trim()].filter(Boolean).join(', ');
-  const text = encodeURIComponent([T[lang].msg + (picked || '…'), who, biz.value.trim(), link.value.trim()].filter(Boolean).join('\n'));
-  const wa = document.getElementById('wa');
-  wa.hidden = !WA;   // no dead button until the real number is filled in
-  if (WA) wa.href = `https://wa.me/${WA}?text=${text}`;
-  document.getElementById('em').href = `mailto:${MAIL}?subject=AV%20Studio&body=${text}`;
-}
+brief.addEventListener('submit', async e => {
+  e.preventDefault();
+  if (!briefValid() || sendBtn.getAttribute('aria-busy') === 'true') return;
+  sendBtn.setAttribute('aria-busy', 'true');
+  ferr.hidden = true;
+  const data = {
+    need: opts.filter(o => o.checked).map(o => o.nextElementSibling.textContent).join(', '),
+    name: fname.value.trim(), phone: fphone.value.trim(), biz: biz.value.trim(), link: link.value.trim(),
+    lang, website: document.getElementById('hpf').value,
+  };
+  try {
+    const r = await fetch('/api/brief', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(data) });
+    if (!r.ok) throw new Error(r.status);
+    brief.reset();
+    sent.showModal();
+  } catch (err) {
+    ferr.textContent = T[lang].send_err;
+    ferr.hidden = false;
+  } finally {
+    sendBtn.removeAttribute('aria-busy');
+  }
+});
+document.getElementById('sent_x').addEventListener('click', () => sent.close());
+sent.addEventListener('click', e => { if (e.target === sent) sent.close(); });   // click on the backdrop closes it too
 
 // ---- Manifesto: paragraphs swap and words light up as you scroll (Ignite-style) ----
 const mfSec = document.getElementById('why'), mfPs = [...mfSec.querySelectorAll('.mf p')], mfDots = [...mfSec.querySelectorAll('.mf-steps i')];
