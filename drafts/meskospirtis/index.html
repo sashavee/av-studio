@@ -263,11 +263,11 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
       Meškos pirtis
     </a>
     <nav class="nav" aria-label="Pagrindinis meniu">
-      <a href="#sodybos">Sodybos</a><a href="#progos">Šventėms</a><a href="#kainos">Kainos</a><a href="#kaip-rasti">Kaip atvykti</a><a href="#kontaktai">Kontaktai</a>
+      <a href="#sodybos">Sodybos</a><a href="#kainos">Kainos</a><a href="#kontaktai">Kontaktai</a>
     </nav>
     <div class="tright">
       <a class="tel" href="tel:+37063200003">+370 632 00003</a>
-      <a class="btn sm" href="#uzklausa">Rezervuoti datą</a>
+      <a class="btn sm" href="#kontaktai">Rezervuoti datą</a>
     </div>
   </div>
 </header>
@@ -280,7 +280,7 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
       <h1 id="h1">Jūsų šventė <em>prie pirties</em> ir tvenkinio</h1>
       <p>Trys jaukios sodybos Vilniaus pakraštyje: garinė pirtis, kubilas, pavėsinės ir nakvynė. Gimtadieniams, įmonės šventėms ar ramiam savaitgaliui su draugais.</p>
       <div class="row">
-        <a class="btn" href="#uzklausa">Rezervuoti datą</a>
+        <a class="btn" href="#kontaktai">Rezervuoti datą</a>
         <a class="btn ghost" href="tel:+37063200003">Skambinti</a>
       </div>
       <div class="facts">
@@ -303,37 +303,38 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
       <p class="lead">Nuo jaukios pirtelės mažai kompanijai iki rezidencijos prie tvenkinio dvidešimčiai svečių.</p>
     </div>
     <div class="places">
-      <a class="place rv" href="#didzioji">
+      <div class="place rv">
         <div class="ph"><img src="img/didz-namas-s.jpg" alt="Didžiosios Meškos pirties namas su užrašu" width="800" height="534" loading="lazy"></div>
         <div class="bd">
           <span class="tag">Didelėms šventėms</span>
           <h3>Didžioji Meškos pirtis</h3>
           <p>Pavėsinė iki 40 svečių, garinė pirtis, kubilas, tinklinio aikštelė ir tvenkinys. Nakvynė 10 žmonių.</p>
-          <div class="ft"><span class="price"><small>nuo</small>250 €</span><span class="more">Plačiau →</span></div>
+          <div class="ft"><span class="price"><small>nuo</small>250 €</span></div>
         </div>
-      </a>
-      <a class="place rv" href="#mazoji">
+      </div>
+      <div class="place rv">
         <div class="ph"><img src="img/maz-namas-s.jpg" alt="Mažoji Meškos pirtelė iš lauko" width="800" height="534" loading="lazy"></div>
         <div class="bd">
           <span class="tag">Mažai kompanijai</span>
           <h3>Mažoji Meškos pirtelė</h3>
           <p>Jauki pirtelė su švediška krosnimi, lauko židiniu ir rūkykla. Iki 6–7 žmonių.</p>
-          <div class="ft"><span class="price"><small>nuo</small>50 €</span><span class="more">Plačiau →</span></div>
+          <div class="ft"><span class="price"><small>nuo</small>50 €</span></div>
         </div>
-      </a>
-      <a class="place rv" href="#rezidencija">
+      </div>
+      <div class="place rv">
         <div class="ph"><img src="img/rez-panorama-s.jpg" alt="Meškos Rezidencija prie tvenkinio iš paukščio skrydžio" width="800" height="450" loading="lazy"></div>
         <div class="bd">
           <span class="tag">Šventėms ir nakvynei</span>
           <h3>Meškos Rezidencija</h3>
           <p>Skandinaviško stiliaus sodyba hektaro teritorijoje: tvenkinys maudynėms, 5 miegamieji, vaikų zona. Iki 20 žmonių.</p>
-          <div class="ft"><span class="price"><small>nuo</small>300 €</span><span class="more">Plačiau →</span></div>
+          <div class="ft"><span class="price"><small>nuo</small>300 €</span></div>
         </div>
-      </a>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- [occasions and the three place pages: hidden for now]
 <section class="occ" id="progos" aria-labelledby="h-occ">
   <div class="wrap">
     <div class="rv">
@@ -456,6 +457,7 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
     </div>
   </div>
 </section>
+-->
 
 <section class="prices" id="kainos" aria-labelledby="h-kain">
   <div class="wrap">
@@ -477,6 +479,7 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
   </div>
 </section>
 
+<!-- [steps, booking form, how to find us: hidden for now]
 <section aria-labelledby="h-kaip">
   <div class="wrap">
     <div class="shead rv"><div><span class="kick">Rezervacija</span><h2 id="h-kaip">Trys <em>paprasti</em> žingsniai</h2></div></div>
@@ -533,9 +536,10 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
     </div>
   </div>
 </section>
+-->
 </main>
 
-<footer>
+<footer id="kontaktai">
   <div class="wrap">
     <div>
       <a class="logo" href="#main">Meškos pirtis</a>
@@ -547,7 +551,7 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
   </div>
 </footer>
 
-<nav class="mbar" aria-label="Greiti veiksmai"><a href="tel:+37063200003">Skambinti</a><a href="#uzklausa">Rezervuoti</a></nav>
+<nav class="mbar" aria-label="Greiti veiksmai"><a href="tel:+37063200003">Skambinti</a><a href="#kontaktai">Rezervuoti</a></nav>
 
 <dialog class="lb" id="lb" aria-label="Nuotraukų peržiūra">
   <div class="lb-in">
@@ -585,12 +589,12 @@ document.querySelectorAll('[data-place]').forEach(a => a.addEventListener('click
 
 // dates in the past make no sense
 const dateIn = document.getElementById('f-date');
-dateIn.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+if (dateIn) dateIn.min = new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 10);
 
 // request form: draft only, shows what would happen
 const form = document.getElementById('bform'), ferr = document.getElementById('ferr');
 const fname = document.getElementById('f-name'), fphone = document.getElementById('f-phone');
-form.addEventListener('submit', e => {
+if (form) form.addEventListener('submit', e => {   // the form block is hidden for now
   e.preventDefault();
   const bad = [];
   if (!fname.value.trim()) bad.push(fname);
