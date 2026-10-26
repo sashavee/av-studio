@@ -197,6 +197,66 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
 .ok h3{font-size:30px;margin-bottom:10px}
 .ok p{color:var(--muted);margin-bottom:22px}
 
+/* review labels for the three candidate blocks (temporary) */
+.vlab{display:none;position:absolute;top:14px;left:14px;z-index:3;background:#ffd84d;color:#2a1c13;font:700 13px var(--sans);padding:6px 12px;border-radius:999px}
+
+/* option 1: occasion picker */
+.pick{background:var(--bark);color:var(--cream);border-radius:calc(var(--r) + 6px);margin:0 clamp(10px,1.4vw,20px);position:relative}
+.pick .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,80px);align-items:center}
+.pick .kick{color:var(--amber)}
+.pick h2 em{color:var(--amber)}
+.pick .q{font-size:14px;font-weight:600;color:#d9c9b3;margin:clamp(22px,3.4vh,34px) 0 12px;display:block;border:0}
+.pick fieldset{border:0}
+.pick fieldset{margin-top:clamp(22px,3.4vh,34px)}
+.pick legend{font-size:14px;font-weight:600;color:#d9c9b3;margin-bottom:12px;padding:0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.opt{position:relative}
+.opt input{position:absolute;inset:0;opacity:0;margin:0;cursor:pointer}
+.opt span{display:inline-flex;align-items:center;height:44px;padding:0 18px;border-radius:999px;border:1.5px solid rgba(241,211,166,.4);color:var(--honey);font-weight:500;transition:background .2s,color .2s,border-color .2s}
+.opt:hover span{border-color:var(--honey)}
+.opt input:checked + span{background:var(--amber);border-color:var(--amber);color:var(--bark)}
+.opt input:focus-visible + span{outline:3px solid var(--honey);outline-offset:2px}
+.match{background:var(--paper);color:var(--bark);border-radius:var(--r);overflow:hidden}
+.match img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.match .bd{padding:24px 26px 26px;display:grid;gap:10px}
+.match .for{font-size:14px;font-weight:600;color:var(--rust)}
+.match h3{font-size:clamp(26px,2.4vw,34px)}
+.match p{color:var(--muted)}
+.match .ft{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:6px}
+
+/* option 2: one evening in four photos */
+.eve{position:relative}
+.eve .row4{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(10px,1.4vw,18px)}
+.eve figure{display:grid;gap:14px;align-content:start}
+.eve figure .ph{aspect-ratio:3/4;border-radius:var(--r);overflow:hidden}
+.eve figure img{width:100%;height:100%;object-fit:cover}
+.eve figcaption b{display:block;font:600 24px/1.15 var(--serif);margin-bottom:4px}
+.eve figcaption b i{font:600 13px var(--sans);font-style:normal;color:var(--rust);display:block;letter-spacing:.1em;margin-bottom:6px}
+.eve figcaption span{color:var(--muted);font-size:15px}
+
+/* option 3: why us */
+.why4{position:relative;background:var(--paper)}
+.why4 .grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line)}
+.why4 .it{padding:28px 24px 8px 0;border-right:1px solid var(--line);margin-right:24px}
+.why4 .it:last-child{border-right:0;margin-right:0}
+.why4 .it b{display:block;font:500 15px var(--sans);color:var(--rust);margin-bottom:28px}
+.why4 h3{font-size:clamp(24px,2.2vw,30px);margin-bottom:10px}
+.why4 p{color:var(--muted);font-size:16px}
+
+@media (max-width:860px){
+  .pick .wrap{grid-template-columns:1fr}
+  .eve .row4{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}
+  .eve figure{scroll-snap-align:start}
+  .why4 .grid{grid-template-columns:1fr 1fr}
+  .why4 .it:nth-child(2){border-right:0;margin-right:0}
+  .why4 .it:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+@media (max-width:600px){
+  .why4 .grid{grid-template-columns:1fr}
+  .why4 .it{border-right:0;margin-right:0;border-bottom:1px solid var(--line);padding:22px 0}
+  .why4 .it b{margin-bottom:12px}
+}
+
 /* reveal */
 @media (prefers-reduced-motion:no-preference){
   .js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
@@ -292,6 +352,78 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
     </div>
   </div>
 </section>
+
+<!-- ============ OPTION 1: occasion picker ============ -->
+<section class="pick" id="parinkti" aria-labelledby="h-pick">
+  <div class="wrap">
+    <div class="rv">
+      <span class="kick">Parinksime sodybą</span>
+      <h2 id="h-pick">Kokiai <em>progai</em> ruošiatės?</h2>
+      <fieldset><legend>Proga</legend>
+        <div class="opts" id="p-occ">
+          <label class="opt"><input type="radio" name="occ" value="gimtadieniui" checked><span>Gimtadienis</span></label>
+          <label class="opt"><input type="radio" name="occ" value="įmonės šventei"><span>Įmonės šventė</span></label>
+          <label class="opt"><input type="radio" name="occ" value="bernvakariui ar mergvakariui"><span>Bernvakaris / mergvakaris</span></label>
+          <label class="opt"><input type="radio" name="occ" value="krikštynoms"><span>Krikštynos</span></label>
+          <label class="opt"><input type="radio" name="occ" value="savaitgaliui su draugais"><span>Savaitgalis su draugais</span></label>
+        </div>
+      </fieldset>
+      <fieldset><legend>Kiek svečių?</legend>
+        <div class="opts" id="p-ppl">
+          <label class="opt"><input type="radio" name="ppl" value="s"><span>iki 7</span></label>
+          <label class="opt"><input type="radio" name="ppl" value="m"><span>8–20</span></label>
+          <label class="opt"><input type="radio" name="ppl" value="l" checked><span>21–40</span></label>
+        </div>
+      </fieldset>
+    </div>
+    <article class="match rv" aria-live="polite">
+      <img id="m-img" src="img/didz-tvenkinys-s.jpg" alt="" width="800" height="534">
+      <div class="bd">
+        <span class="for" id="m-for">Gimtadieniui, 21–40 svečių</span>
+        <h3 id="m-name">Didžioji Meškos pirtis</h3>
+        <p id="m-why">Pavėsinė iki 40 svečių, kubilas, tinklinio aikštelė ir tvenkinys. Nakvynė 10 žmonių.</p>
+        <div class="ft"><a class="btn sm" href="#kontaktai">Rezervuoti datą</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ OPTION 2: one evening in four photos ============ -->
+<section class="eve" aria-labelledby="h-eve">
+  <div class="wrap">
+    <div class="shead rv">
+      <div><span class="kick">Kaip tai atrodo</span><h2 id="h-eve">Vienas <em>vakaras</em> pas mus</h2></div>
+      <p class="lead">Nuo pirmo garo iki ramaus ryto, viskas vienoje sodyboje.</p>
+    </div>
+    <div class="row4" tabindex="0" aria-label="Vakaro akimirkos">
+      <figure class="rv"><div class="ph"><img src="img/didz-pirtis-s.jpg" alt="Pirties krosnis ir malkos" width="800" height="534" loading="lazy"></div>
+        <figcaption><b><i>01</i>Pirtis</b><span>Kaitri garinė pirtis su priešpirtimi ir dušu.</span></figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/didz-kubilas-s.jpg" alt="Kubilas po medine pavėsine" width="800" height="534" loading="lazy"></div>
+        <figcaption><b><i>02</i>Kubilas</b><span>Šiltas kubilas pavėsinėje 8–10 žmonių kompanijai.</span></figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/didz-stalas-s.jpg" alt="Ilgas medinis stalas su suolais salėje" width="800" height="534" loading="lazy"></div>
+        <figcaption><b><i>03</i>Vakarienė</b><span>Ilgas stalas salėje arba pavėsinėje.</span></figcaption></figure>
+      <figure class="rv"><div class="ph"><img src="img/didz-miegamasis-s.jpg" alt="Miegamasis su lovomis antrame aukšte" width="800" height="534" loading="lazy"></div>
+        <figcaption><b><i>04</i>Nakvynė</b><span>Niekur nereikia važiuoti, lovos jau paklotos.</span></figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<!-- [why us: hidden, kept as an option]
+<!-- ============ OPTION 3: why us ============ -->
+<section class="why4" aria-labelledby="h-why4">
+  <div class="wrap">
+    <div class="shead rv">
+      <div><span class="kick">Kodėl mes</span><h2 id="h-why4">Šventė be <em>rūpesčių</em></h2></div>
+    </div>
+    <div class="grid">
+      <div class="it rv"><b>01</b><h3>Viskas vienoje vietoje</h3><p>Garinė pirtis, kubilas, pavėsinė ir nakvynė. Nereikia nieko derinti atskirai.</p></div>
+      <div class="it rv"><b>02</b><h3>Aptverta teritorija</h3><p>Erdvus kiemas su tvenkiniu ir pavėsinėmis tik jūsų kompanijai.</p></div>
+      <div class="it rv"><b>03</b><h3>Vos 17 km nuo Vilniaus</h3><p>Atvyksite Eišiškių plentu arba naujuoju pietiniu aplinkkeliu.</p></div>
+      <div class="it rv"><b>04</b><h3>Smagu ir vaikams</h3><p>Rezidencijoje įrengta vaikų zona su sūpynėmis ir kalneliu.</p></div>
+    </div>
+  </div>
+</section>
+-->
 
 <section id="sodybos" aria-labelledby="h-sod">
   <div class="wrap">
@@ -454,8 +586,8 @@ dialog::backdrop{background:rgba(20,13,8,.88)}
       <button type="button"><img src="img/rez-pirtis-s.jpg" data-full="img/rez-pirtis.jpg" alt="Rezidencijos garinė pirtis" width="800" height="534" loading="lazy"></button>
       <button type="button"><img src="img/rez-terasa-s.jpg" data-full="img/rez-terasa.jpg" alt="Terasa su vaizdu į tvenkinį" width="800" height="534" loading="lazy"></button>
       <button type="button"><img src="img/rez-miegamasis-s.jpg" data-full="img/rez-miegamasis.jpg" alt="Miegamasis su dviem lovomis" width="800" height="534" loading="lazy"></button>
-      <button type="button"><img src="img/rez-pavesine-s.jpg" data-full="img/rez-pavesine.jpg" alt="Didelė pavėsinė su ilgu stalu" width="800" height="534" loading="lazy"></button>
-      <button type="button"><img src="img/rez-zidinys-s.jpg" data-full="img/rez-zidinys.jpg" alt="Lauko židinys su griliumi prie tvenkinio" width="800" height="534" loading="lazy"></button>
+      <button type="button"><img src="img/rez-pavesine-s.jpg" data-full="img/rez-pavesine.jpg" alt="Pavėsinė ir lauko židinys sode" width="800" height="534" loading="lazy"></button>
+      <button type="button"><img src="img/rez-zidinys-s.jpg" data-full="img/rez-zidinys.jpg" alt="Rezidencijos pirtis su krosnimi" width="800" height="534" loading="lazy"></button>
     </div>
   </div>
 </section>
@@ -627,6 +759,24 @@ document.getElementById('lb-p').addEventListener('click', () => show(cur - 1));
 document.getElementById('lb-n').addEventListener('click', () => show(cur + 1));
 lb.addEventListener('click', e => { if (e.target === lb || e.target.classList.contains('lb-in')) lb.close(); });
 lb.addEventListener('keydown', e => { if (e.key === 'ArrowLeft') show(cur - 1); if (e.key === 'ArrowRight') show(cur + 1); });
+
+// option 1: the occasion picker suggests a place by guest count
+const PL = {
+  s: { name: 'Mažoji Meškos pirtelė', img: 'img/maz-sale-s.jpg', why: 'Jauki pirtelė mažai kompanijai: garinė su švediška krosnimi, lauko židinys ir rūkykla.' },
+  m: { name: 'Meškos Rezidencija', img: 'img/rez-tvenkinys-s.jpg', why: 'Iki 20 svečių, nakvynė 5 kambariuose, tvenkinys maudynėms ir vaikų zona.' },
+  l: { name: 'Didžioji Meškos pirtis', img: 'img/didz-tvenkinys-s.jpg', why: 'Pavėsinė iki 40 svečių, kubilas, tinklinio aikštelė ir tvenkinys. Nakvynė 10 žmonių.' },
+};
+const PPL = { s: 'iki 7', m: '8–20', l: '21–40' };
+function pickUpdate(){
+  const occ = document.querySelector('input[name=occ]:checked').value;
+  const ppl = document.querySelector('input[name=ppl]:checked').value, pl = PL[ppl];
+  const forTxt = occ.charAt(0).toUpperCase() + occ.slice(1) + ', ' + PPL[ppl] + ' svečių';
+  document.getElementById('m-for').textContent = forTxt;
+  document.getElementById('m-name').textContent = pl.name;
+  document.getElementById('m-why').textContent = pl.why;
+  document.getElementById('m-img').src = pl.img;
+}
+document.querySelectorAll('#parinkti input').forEach(i => i.addEventListener('change', pickUpdate));
 </script>
 </body>
 </html>
